@@ -1,25 +1,14 @@
 package org.trainer;
 
-public class Addition {
+public class Addition extends Arithmetic {
 
-    private int numberOfTasks;
+    private final char ADDITION_SIGN = '+';
 
-    private RandomNumberGenerator r1 = new RandomNumberGenerator(1, 10);
-
-    public Addition(int numberOfTasks) {
-        this.numberOfTasks = numberOfTasks;
-    }
-
-    public int getNumberOfTasks() {
-        return numberOfTasks;
-    }
-
-    public void setNumberOfTasks(int numberOfTasks) {
-        this.numberOfTasks = numberOfTasks;
+    public char getAdditionSign() {
+        return ADDITION_SIGN;
     }
 
     public int[] getAddition() {
-
         int rnd1 = r1.getRandom(r1.getMinValue(), r1.getMaxValue());
         int rnd2 = r1.getRandom(r1.getMinValue(), r1.getMaxValue());
         int sum = rnd1 + rnd2;

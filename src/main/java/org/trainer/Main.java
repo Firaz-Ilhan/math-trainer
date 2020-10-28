@@ -6,25 +6,21 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Addition a1 = new Addition(5);
+        Addition a1 = new Addition();
 
         try (final Scanner scanner = new Scanner(System.in)) {
 
             int userInput;
 
-            for (int i = 0; i < a1.getNumberOfTasks(); i++) {
-                int result[] = a1.getAddition();
-                int rnd1 = result[0];
-                int rnd2 = result[1];
-                int sum = result[2];
-
-                System.out.println("calculate: " + rnd1 + " + " + rnd2);
+            for (int i = 0; i < a1.getNumberOfTask(); i++) {
+                int[] result = a1.getAddition();
+                System.out.println("calculate: " + result[0] + a1.getAdditionSign() + result[1]);
 
                 userInput = scanner.nextInt();
-                if (userInput == sum) {
+                if (userInput == result[2]) {
                     System.out.println(userInput + " is correct");
                 } else {
-                    System.out.println(userInput + " isn't correct. " + sum + " is correct");
+                    System.out.println(userInput + " isn't correct. " + result[2] + " is correct");
                 }
             }
         }
