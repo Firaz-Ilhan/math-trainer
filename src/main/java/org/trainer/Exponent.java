@@ -6,45 +6,31 @@ public class Exponent {
 
     private final char EXPONENT_SIGN = '^';
     public char getExponentSign() { return EXPONENT_SIGN; }
-    private int result = 0;
     private final Random rand = new Random();
 
     //set a level
     //different constructors for different levels
-    //return result separately
-    public int getResult(){return result;}
-
+    
     /** level 1 **/
-    public String exponent1(){
-
+    public int[] exponent1(){
         int num = rand.nextInt(10);
-
-        result = num * num;
-        return num + EXPONENT_SIGN + "2";
+        return new int[]{num, num * num};
     }
     /** level 2 **/
-    public String exponent2(){
-
-        int num = rand.nextInt(100);
-
-        result = num * num;
-        return num + EXPONENT_SIGN + "2";
+    public int[] exponent2(){
+        int num = rand.nextInt(100); //exclude below 10
+        return new int[]{num, num * num};
     }
     /** level 3 **/
-    public String exponent3(){
-
+    public int[] exponent3(){
         int num = rand.nextInt(10);
-
-        result = num * num * num;
-        return num + EXPONENT_SIGN + "3";
+        return new int[]{num, num * num * num};
     }
     /** level 4 **/
-    public String exponent4(){
+    public int[] exponent4(){
 
-        int num = rand.nextInt(100);
-
-        result = num * num;
-        return num + EXPONENT_SIGN + "2";
+        int num = rand.nextInt(100); //exclude below 10
+        return new int[]{num, num * num * num};
     }
 }
 
