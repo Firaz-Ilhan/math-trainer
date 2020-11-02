@@ -1,18 +1,66 @@
 package org.trainer;
 
-public class Addition extends Arithmetic {
+public class Addition implements CalculationService {
 
-    private final char ADDITION_SIGN = '+';
+    private final char SIGN = '+';
+    private String difficulty;
+    private int amountOfTasks;
 
-    public char getAdditionSign() {
-        return ADDITION_SIGN;
+    public Addition(String difficulty, int amountOfTasks) {
+        this.difficulty = difficulty;
+        this.amountOfTasks = amountOfTasks;
     }
 
-    public int[] getAddition() {
-        int rnd1 = r1.getRandom(r1.getMinValue(), r1.getMaxValue());
-        int rnd2 = r1.getRandom(r1.getMinValue(), r1.getMaxValue());
-        int sum = rnd1 + rnd2;
+    @Override
+    public char getSign() {
+        return SIGN;
+    }
 
-        return new int[] {rnd1, rnd2, sum};
+    @Override
+    public int getAmountOfTasks() {
+        return amountOfTasks;
+    }
+
+    @Override
+    public String getDifficulty() {
+        return difficulty;
+    }
+
+    @Override
+    public void setDifficulty(String difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    @Override
+    public void setAmountOfTasks(int amountOfTask) {
+        this.amountOfTasks = amountOfTask;
+    }
+
+    @Override
+    public int[] getExercise() {
+        String difficultyLowerCase = difficulty.toLowerCase();
+        int max = 0, min = 0, rand1, rand2, sum;
+
+        switch (difficultyLowerCase) {
+            case "easy":
+                max = 20;
+                min = 1;
+                break;
+            case "medium":
+                max = 21;
+                min = 30;
+                break;
+            case "hard":
+                max = 30;
+                min = 40;
+                break;
+
+        }
+
+        rand1 = rand.nextInt((max - min) + 1) + min;
+        rand2 = rand.nextInt((max - min) + 1) + min;
+        sum = rand1 + rand2;
+
+        return new int[]{rand1, rand2, sum};
     }
 }
