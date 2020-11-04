@@ -2,7 +2,6 @@ package org.trainer;
 
 public class Addition implements CalculationService {
 
-    private final char SIGN = '+';
     private String difficulty;
     private int amountOfTasks;
 
@@ -13,7 +12,7 @@ public class Addition implements CalculationService {
 
     @Override
     public char getSign() {
-        return SIGN;
+        return '+';
     }
 
     @Override
@@ -37,7 +36,7 @@ public class Addition implements CalculationService {
     }
 
     @Override
-    public int[] getExercise() {
+    public int[] getTask() {
         String difficultyLowerCase = difficulty.toLowerCase();
         int max = 0, min = 0, rand1, rand2, sum;
 

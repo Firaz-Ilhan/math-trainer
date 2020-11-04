@@ -11,5 +11,5 @@ public interface CalculationService {
     String getDifficulty();
     void setDifficulty(String difficulty);
     void setAmountOfTasks(int amountOfTask);
-    int[] getExercise();
+    int[] getTask();
 }

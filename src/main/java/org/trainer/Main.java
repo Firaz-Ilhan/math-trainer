@@ -17,7 +17,7 @@ public class Main {
             int userInput;
 
             for (int i = 0; i < a1.getAmountOfTasks(); i++) {
-                int[] result = a1.getExercise();
+                int[] result = a1.getTask();
                 System.out.println("calculate: " + result[0] + a1.getSign() + result[1]);
 
                 userInput = scanner.nextInt();
