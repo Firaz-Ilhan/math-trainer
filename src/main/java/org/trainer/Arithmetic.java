@@ -2,7 +2,7 @@ package org.trainer;
 
 import java.util.Random;
 
-public interface CalculationService {
+public interface Arithmetic {
 
     Random rand = new Random();
 

@@ -1,6 +1,6 @@
 package org.trainer;
 
-public class Addition implements CalculationService {
+public class Addition implements Arithmetic {
 
     private String difficulty;
     private int amountOfTasks;
