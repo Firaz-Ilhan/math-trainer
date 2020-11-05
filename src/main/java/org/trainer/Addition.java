@@ -46,12 +46,12 @@ public class Addition implements Arithmetic {
                 min = 1;
                 break;
             case "medium":
-                max = 21;
-                min = 30;
+                max = 30;
+                min = 20;
                 break;
             case "hard":
-                max = 30;
-                min = 40;
+                max = 40;
+                min = 30;
                 break;
 
         }
