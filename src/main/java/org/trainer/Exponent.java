@@ -8,33 +8,47 @@ public class Exponent {
     public char getExponentSign() { return EXPONENT_SIGN; }
     private final Random rand = new Random();
 
-    //get level from Gui??
-    //private final int level = getLevel(){;}
-    private int level = 0;
-    //different constructors for different levels
-    public Exponent(int level){
+    private String level;
+
+    public Exponent(String level){
         this.level = level;}
 
 
-    public int[] getExponentExercise(int level){  //replace level with getLevel(){;}
-        this.level = level;
-        if(level == 0){
-            int num = rand.nextInt(10);
-            return new int[]{num, num * num}; //String: num ^2 = ? ---User input --- check if Input == num * num
+    public int[] getExponentExercise(){
+    // public String getExponentExercise(){
+        switch (level) {
+            case "beginner": {
+                int num = rand.nextInt(9)+1; //1-10
+                return new int[]{num, num * num};
+                // return num + "^" + 2 + " = ";
+                //break; unreachable?!
+            }
+            case "medium": {
+                int num = rand.nextInt(89)+11; //11-100
+                return new int[]{num, num * num};
+                /*
+                int[] calcNum = {num};
+                setNumber(calcNum);
+                int result = num * num;
+                setResult(result);
+                return num + "^" + 2 + " = ";
+                */
+                break;
+            }
+            case "hard": {
+                int num = rand.nextInt(9)+1; //1-10
+                return new int[]{num, num * num * num};
+                // return num + "^" + 3 + " = ";
+                break;
+            }
+            case "pro": {
+                int num = rand.nextInt(89)+11; //11-100
+                return new int[]{num, num * num * num};
+                // return num + "^" + 3 + " = ";
+                break;
+            }
+            default: return new int[0];
         }
-        else if(level == 1){
-            int num = rand.nextInt(100);
-            return new int[]{num, num * num};
-        }
-        else if(level == 2){
-            int num = rand.nextInt(10);
-            return new int[]{num, num * num * num};
-        }
-        else if(level == 3){
-            int num = rand.nextInt(100);
-            return new int[]{num, num * num * num};
-        }
-        return new int[0];
     }
 
     /** level 0 **/
