@@ -2,16 +2,43 @@ package org.trainer;
 
 import java.util.Random;
 
-public class Exponent {
+public class Exponent extends Exercise{
 
     private final char EXPONENT_SIGN = '^';
     public char getExponentSign() { return EXPONENT_SIGN; }
     private final Random rand = new Random();
 
-    private String level;
 
     public Exponent(String level){
         this.level = level;}
+
+    @Override
+    public String Question(){
+        switch (level) {
+            case "beginner": {
+                int num = rand.nextInt(9)+1; //1-10
+                setResult(num * num);
+                return num + "^" + 2 + " = ";
+            }
+            case "medium": {
+                int num = rand.nextInt(89)+11; //11-100
+                setResult(num * num);
+                return num + "^" + 2 + " = ";
+
+            }
+            case "hard": {
+                int num = rand.nextInt(9)+1; //1-10
+                setResult(num * num * num);
+                return num + "^" + 3 + " = ";
+            }
+            case "pro": {
+                int num = rand.nextInt(89)+11; //11-100
+                setResult(num * num * num);
+                return num + "^" + 3 + " = ";
+            }
+            default: return "The level input does not seem to exist, check the patch notes for more information";
+        }
+    }
 
 
     public int[] getExponentExercise(){
@@ -21,31 +48,27 @@ public class Exponent {
                 int num = rand.nextInt(9)+1; //1-10
                 return new int[]{num, num * num};
                 // return num + "^" + 2 + " = ";
-                //break; unreachable?!
             }
             case "medium": {
                 int num = rand.nextInt(89)+11; //11-100
                 return new int[]{num, num * num};
+
                 /*
                 int[] calcNum = {num};
-                setNumber(calcNum);
-                int result = num * num;
-                setResult(result);
+                setNumber(calcNum);??
+                setResult(num * num);
                 return num + "^" + 2 + " = ";
                 */
-                break;
             }
             case "hard": {
                 int num = rand.nextInt(9)+1; //1-10
                 return new int[]{num, num * num * num};
                 // return num + "^" + 3 + " = ";
-                break;
             }
             case "pro": {
                 int num = rand.nextInt(89)+11; //11-100
                 return new int[]{num, num * num * num};
                 // return num + "^" + 3 + " = ";
-                break;
             }
             default: return new int[0];
         }
