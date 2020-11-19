@@ -6,15 +6,17 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Addition a1 = new Addition();
+        Factory f1 = new Factory();
+
+        Arithmetic add = f1.getArithmetic("addition", "medium");
 
         try (final Scanner scanner = new Scanner(System.in)) {
 
             int userInput;
 
-            for (int i = 0; i < a1.getNumberOfTask(); i++) {
-                int[] result = a1.getAddition();
-                System.out.println("calculate: " + result[0] + a1.getAdditionSign() + result[1]);
+            for (int i = 0; i < 10; i++) {
+                int[] result = add.getTask();
+                System.out.println("calculate: " + result[0] + add.getSign() + result[1]);
 
                 userInput = scanner.nextInt();
                 if (userInput == result[2]) {
