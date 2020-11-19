@@ -6,19 +6,17 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Addition a1 = new Addition("easy", 5);
+        Factory f1 = new Factory();
 
-        System.out.println("Difficulty: " + a1.getDifficulty() + '\n'
-                + "Tasks: " + a1.getAmountOfTasks() + '\n');
-
+        Arithmetic add = f1.getArithmetic("addition", "medium");
 
         try (final Scanner scanner = new Scanner(System.in)) {
 
             int userInput;
 
-            for (int i = 0; i < a1.getAmountOfTasks(); i++) {
-                int[] result = a1.getTask();
-                System.out.println("calculate: " + result[0] + a1.getSign() + result[1]);
+            for (int i = 0; i < 10; i++) {
+                int[] result = add.getTask();
+                System.out.println("calculate: " + result[0] + add.getSign() + result[1]);
 
                 userInput = scanner.nextInt();
                 if (userInput == result[2]) {

@@ -2,19 +2,19 @@ package org.trainer;
 
 import java.util.Random;
 
-public class Addition implements Arithmetic {
+public class Multiplication implements Arithmetic {
 
     Random rand = new Random();
 
     private String difficulty;
 
-    public Addition(String difficulty) {
+    public Multiplication(String difficulty) {
         this.difficulty = difficulty;
     }
 
     @Override
     public char getSign() {
-        return '+';
+        return '*';
     }
 
     @Override
@@ -27,31 +27,32 @@ public class Addition implements Arithmetic {
         this.difficulty = difficulty;
     }
 
+
     @Override
     public int[] getTask() {
         String difficultyLowerCase = difficulty.toLowerCase();
-        int max = 0, min = 0, rand1, rand2, sum;
+        int max = 0, min = 0, rand1, rand2, product;
 
         switch (difficultyLowerCase) {
             case "easy":
-                max = 20;
+                max = 10;
                 min = 1;
                 break;
             case "medium":
-                max = 30;
-                min = 20;
+                max = 12;
+                min = 6;
                 break;
             case "hard":
-                max = 40;
-                min = 30;
+                max = 15;
+                min = 10;
                 break;
 
         }
 
         rand1 = rand.nextInt((max - min) + 1) + min;
         rand2 = rand.nextInt((max - min) + 1) + min;
-        sum = rand1 + rand2;
+        product = rand1 * rand2;
 
-        return new int[]{rand1, rand2, sum};
+        return new int[]{rand1, rand2, product};
     }
 }
