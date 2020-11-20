@@ -1,6 +1,27 @@
 package org.trainer;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 public class Factory {
+
+    private Random rand = new Random();
+
+    public String getRandomType(Boolean addition, boolean multiplication) {
+
+        ArrayList<String> typeList = new ArrayList<>(2);
+
+        if (addition) {
+            typeList.add("addition");
+        }
+
+        if (multiplication) {
+            typeList.add("multiplication");
+        }
+
+        String randomElement = typeList.get(rand.nextInt(typeList.size()));
+        return randomElement;
+    }
 
     public Arithmetic getArithmetic(String arithmeticType, String difficulty) {
 
@@ -16,4 +37,3 @@ public class Factory {
         return null;
     }
 }
-
