@@ -1,4 +1,6 @@
-package org.trainer;
+package org.trainer.Exercise;
+
+import org.trainer.Exercise.Arithmetic;
 
 import java.util.Random;
 

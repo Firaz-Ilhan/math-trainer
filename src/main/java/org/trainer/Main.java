@@ -1,5 +1,8 @@
 package org.trainer;
 
+import org.trainer.Exercise.Arithmetic;
+import org.trainer.Exercise.Factory;
+
 import java.util.Scanner;
 
 public class Main {

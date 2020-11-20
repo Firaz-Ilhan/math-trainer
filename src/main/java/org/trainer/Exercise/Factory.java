@@ -1,4 +1,4 @@
-package org.trainer;
+package org.trainer.Exercise;
 
 import java.util.ArrayList;
 import java.util.Random;

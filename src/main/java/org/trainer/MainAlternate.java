@@ -1,5 +1,8 @@
 package org.trainer;
 
+import org.trainer.Exercise.Exercise;
+import org.trainer.Exercise.Exponent;
+
 import java.util.Scanner;
 
 public class MainAlternate {
@@ -24,7 +27,7 @@ public class MainAlternate {
                 case "exponential":
                     Exercise expo = new Exponent(userInputLevel);
                     while(!breaker){
-                        System.out.print(expo.Question());
+                        System.out.print(expo.question());
                         userInputResult = scanner.nextInt();
                         //Exit button to set breaker true!
                         System.out.println(expo.isTrue(userInputResult));

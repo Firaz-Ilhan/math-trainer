@@ -1,7 +1,7 @@
-package org.trainer;
+package org.trainer.GuiPackage;
 
-import org.trainer.GuiHelper.Dialog;
-import org.trainer.GuiHelper.NumberField;
+import org.trainer.GuiPackage.GuiHelper.Dialog;
+import org.trainer.GuiPackage.GuiHelper.NumberField;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;

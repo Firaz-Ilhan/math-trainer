@@ -1,4 +1,4 @@
-package org.trainer;
+package org.trainer.GuiPackage;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

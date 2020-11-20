@@ -1,4 +1,4 @@
-package org.trainer.GuiHelper;
+package org.trainer.GuiPackage.GuiHelper;
 
 import javafx.scene.control.TextField;
 import org.apache.logging.log4j.LogManager;

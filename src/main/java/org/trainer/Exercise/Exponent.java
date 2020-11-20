@@ -1,8 +1,10 @@
-package org.trainer;
+package org.trainer.Exercise;
+
+import org.trainer.Exercise.Exercise;
 
 import java.util.Random;
 
-public class Exponent extends Exercise{
+public class Exponent extends Exercise {
 
     private final char EXPONENT_SIGN = '^';
     public char getExponentSign() { return EXPONENT_SIGN; }
@@ -13,7 +15,7 @@ public class Exponent extends Exercise{
         this.level = level;}
 
     @Override
-    public String Question(){
+    public String question(){
         switch (level) {
             case "beginner": {
                 int num = rand.nextInt(9)+1; //1-10

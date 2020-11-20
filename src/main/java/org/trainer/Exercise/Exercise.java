@@ -1,11 +1,11 @@
-package org.trainer;
+package org.trainer.Exercise;
 
 public class Exercise {
     public String level;
     private int result;
 
 
-    public String Question(){
+    public String question(){
         return "Something went wrong";
     }
 
