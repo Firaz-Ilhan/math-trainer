@@ -7,7 +7,7 @@ public class Factory {
 
     private Random rand = new Random();
 
-    public String getRandomType(Boolean addition, boolean multiplication) {
+    public String getRandomType(boolean addition, boolean multiplication) {
 
         ArrayList<String> typeList = new ArrayList<>(2);
 
