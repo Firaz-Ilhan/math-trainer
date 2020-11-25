@@ -52,9 +52,7 @@ public class Addition implements Arithmetic {
 
     @Override
     public String getRenderedTask(int[] task) {
-        String rand1 = Integer.toString(task[0]);
-        String rand2 = Integer.toString(task[1]);
-        return rand1 + '+' + rand2;
+        return task[0] + "+" + task[1];
     }
 
     @Override
