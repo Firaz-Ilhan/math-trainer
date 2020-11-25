@@ -1,7 +1,5 @@
 package org.trainer.Exercise;
 
-import org.trainer.Exercise.Arithmetic;
-
 import java.util.Random;
 
 public class Addition implements Arithmetic {
@@ -12,11 +10,6 @@ public class Addition implements Arithmetic {
 
     public Addition(String difficulty) {
         this.difficulty = difficulty;
-    }
-
-    @Override
-    public char getSign() {
-        return '+';
     }
 
     @Override
@@ -55,5 +48,21 @@ public class Addition implements Arithmetic {
         sum = rand1 + rand2;
 
         return new int[]{rand1, rand2, sum};
+    }
+
+    @Override
+    public String getRenderedTask(int[] task) {
+        String rand1 = Integer.toString(task[0]);
+        String rand2 = Integer.toString(task[1]);
+        return rand1 + '+' + rand2;
+    }
+
+    @Override
+    public boolean checkSolution(int[] task, int input) {
+        if (task == null || task.length == 0) {
+            return false;
+        } else {
+            return input == task[2];
+        }
     }
 }

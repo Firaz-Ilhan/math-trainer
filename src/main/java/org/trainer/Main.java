@@ -20,14 +20,15 @@ public class Main {
 
                 Arithmetic task = f1.getArithmetic(randomType, "easy");
 
-                int[] result = task.getTask();
-                System.out.println("calculate: " + result[0] + task.getSign() + result[1]);
+                int[] arr = task.getTask();
+                System.out.println("calculate: " + task.getRenderedTask(arr));
 
                 userInput = scanner.nextInt();
-                if (userInput == result[2]) {
+
+                if (task.checkSolution(arr, userInput)) {
                     System.out.println(userInput + " is correct");
                 } else {
-                    System.out.println(userInput + " isn't correct. " + result[2] + " is correct");
+                    System.out.println(userInput + " isn't correct. " + arr[2] + " is correct");
                 }
             } while (true);
         }
