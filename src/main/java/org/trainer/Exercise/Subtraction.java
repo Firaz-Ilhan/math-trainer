@@ -28,7 +28,7 @@ public class Substraction implements Arithmetic {
             String difficultyLowerCase = difficulty.toLowerCase();
             int max = 0, min = 0, rand1, rand2, sum;
 
-            switch (difficultyLowerCase) {
+            switch (difficulty) {
                 case "easy":
                     max = 20;
                     min = 1;
