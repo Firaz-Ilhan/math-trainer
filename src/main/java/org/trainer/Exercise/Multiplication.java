@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Multiplication implements Arithmetic {
 
-    Random rand = new Random();
+    private final Random rand = new Random();
 
     private String difficulty;
 
@@ -19,17 +19,16 @@ public class Multiplication implements Arithmetic {
 
     @Override
     public void setDifficulty(String difficulty) {
-        this.difficulty = difficulty;
+        this.difficulty = difficulty.toLowerCase();
     }
 
 
     @Override
     public int[] getTask() {
-        String difficultyLowerCase = difficulty.toLowerCase();
         int max = 0, min = 0, rand1, rand2, product;
 
-        switch (difficultyLowerCase) {
-            case "easy":
+        switch (difficulty) {
+            case "beginner":
                 max = 10;
                 min = 1;
                 break;
