@@ -7,12 +7,16 @@ public class Factory {
 
     private Random rand = new Random();
 
-    public String getRandomType(boolean addition, boolean multiplication, boolean exponent) {
+    public String getRandomType(boolean addition, boolean subtraction, boolean multiplication, boolean exponent) {
 
         ArrayList<String> typeList = new ArrayList<>(2);
 
         if (addition) {
             typeList.add("addition");
+        }
+
+        if (subtraction) {
+            typeList.add("subtraction");
         }
 
         if (multiplication) {
@@ -34,6 +38,8 @@ public class Factory {
         }
         if (arithmeticType.equalsIgnoreCase("addition")) {
             return new Addition(difficulty);
+        } else if (arithmeticType.equalsIgnoreCase("subtraction")) {
+                return new Multiplication(difficulty);
         } else if (arithmeticType.equalsIgnoreCase("multiplication")) {
             return new Multiplication(difficulty);
         } else if (arithmeticType.equalsIgnoreCase("exponent")) {

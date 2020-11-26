@@ -2,15 +2,15 @@ package org.trainer.Exercise;
 
 import java.util.Random;
 
-public class Substraction implements Arithmetic {
+public class Subtraction implements Arithmetic {
 
 
         Random rand = new Random();
 
         private String difficulty;
 
-        public Substraction(String difficulty) {
-            this.difficulty = difficulty;
+        public Subtraction(String difficulty) {
+            this.difficulty = difficulty.toLowerCase();
         }
 
         @Override
@@ -25,7 +25,6 @@ public class Substraction implements Arithmetic {
 
         @Override
         public int[] getTask() {
-            String difficultyLowerCase = difficulty.toLowerCase();
             int max = 0, min = 0, rand1, rand2, sum;
 
             switch (difficulty) {

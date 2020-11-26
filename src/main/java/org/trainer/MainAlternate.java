@@ -19,7 +19,7 @@ public class MainAlternate {
         System.out.println("beginner/medium/hard/pro ");
         userInputLevel = scanner.nextLine().toLowerCase();
 
-            /*switch(userInputTask){
+            switch(userInputTask){
                 case "addition":
                 case "subtraction":
                 case "multiplication":
@@ -32,8 +32,7 @@ public class MainAlternate {
                         //Exit button to set breaker true!
                         System.out.println(expo.isTrue(userInputResult));
                     } */
-
-            }*/
+            }
 
     }
 }
