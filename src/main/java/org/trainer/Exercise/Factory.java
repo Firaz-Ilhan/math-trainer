@@ -39,7 +39,7 @@ public class Factory {
         if (arithmeticType.equalsIgnoreCase("addition")) {
             return new Addition(difficulty);
         } else if (arithmeticType.equalsIgnoreCase("subtraction")) {
-                return new Multiplication(difficulty);
+                return new Subtraction(difficulty);
         } else if (arithmeticType.equalsIgnoreCase("multiplication")) {
             return new Multiplication(difficulty);
         } else if (arithmeticType.equalsIgnoreCase("exponent")) {
