@@ -4,8 +4,7 @@ import java.util.Random;
 
 public class Subtraction implements Arithmetic {
 
-
-        Random rand = new Random();
+        private final Random rand = new Random();
 
         private String difficulty;
 
@@ -28,7 +27,7 @@ public class Subtraction implements Arithmetic {
             int max = 0, min = 0, rand1, rand2, sum;
 
             switch (difficulty) {
-                case "easy":
+                case "beginner":
                     max = 20;
                     min = 1;
                     break;
@@ -40,7 +39,6 @@ public class Subtraction implements Arithmetic {
                     max = 40;
                     min = 30;
                     break;
-
             }
 
             rand1 = rand.nextInt((max - min) + 1) + min;
@@ -63,6 +61,4 @@ public class Subtraction implements Arithmetic {
                 return input == task[2];
             }
         }
-
-
 }

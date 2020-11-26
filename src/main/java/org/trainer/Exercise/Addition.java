@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Addition implements Arithmetic {
 
-    Random rand = new Random();
+    private final Random rand = new Random();
 
     private String difficulty;
 
@@ -39,7 +39,6 @@ public class Addition implements Arithmetic {
                 max = 40;
                 min = 30;
                 break;
-
         }
 
         rand1 = rand.nextInt((max - min) + 1) + min;

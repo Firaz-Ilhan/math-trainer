@@ -45,7 +45,6 @@ public class Factory {
         } else if (arithmeticType.equalsIgnoreCase("exponent")) {
             return new Exponent(difficulty);
         }
-
         return null;
     }
 }
