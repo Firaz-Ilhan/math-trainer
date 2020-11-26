@@ -16,9 +16,9 @@ public class Main {
             int userInput;
 
             do {
-                String randomType = f1.getRandomType(true, true);
+                String randomType = f1.getRandomType(true, true, true);
 
-                Arithmetic task = f1.getArithmetic(randomType, "easy");
+                Arithmetic task = f1.getArithmetic(randomType, "beGinneR");
 
                 int[] arr = task.getTask();
                 System.out.println("calculate: " + task.getRenderedTask(arr));
@@ -28,7 +28,7 @@ public class Main {
                 if (task.checkSolution(arr, userInput)) {
                     System.out.println(userInput + " is correct");
                 } else {
-                    System.out.println(userInput + " isn't correct. " + arr[2] + " is correct");
+                    System.out.println(userInput + " isn't correct.");
                 }
             } while (true);
         }
