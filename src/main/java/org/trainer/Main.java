@@ -16,7 +16,7 @@ public class Main {
             int userInput;
 
             do {
-                String randomType = f1.getRandomType(true, true, true);
+                String randomType = f1.getRandomType(true, true, true, true);
 
                 Arithmetic task = f1.getArithmetic(randomType, "beGinneR");
 
