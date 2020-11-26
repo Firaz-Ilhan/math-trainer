@@ -25,13 +25,13 @@ public class MainAlternate {
                 case "multiplication":
                 case "division":
                 case "exponential":
-                    Exercise expo = new Exponent(userInputLevel);
+                   /* Exercise expo = new Exponent(userInputLevel);
                     while(!breaker){
                         System.out.print(expo.question());
                         userInputResult = scanner.nextInt();
                         //Exit button to set breaker true!
                         System.out.println(expo.isTrue(userInputResult));
-                    }
+                    } */
 
             }
 
