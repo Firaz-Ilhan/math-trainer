@@ -9,7 +9,7 @@ public class Factory {
 
     public String getRandomType(boolean addition, boolean subtraction, boolean multiplication, boolean exponent) {
 
-        ArrayList<String> typeList = new ArrayList<>(2);
+        ArrayList<String> typeList = new ArrayList<>(4);
 
         if (addition) {
             typeList.add("addition");
@@ -31,11 +31,8 @@ public class Factory {
         return randomElement;
     }
 
-    public Arithmetic getArithmetic(String arithmeticType, String difficulty) {
+    public Arithmetic getArithmetic(String arithmeticType, String difficulty) throws IllegalFactoryArgument {
 
-        if (arithmeticType == null) {
-            return null;
-        }
         if (arithmeticType.equalsIgnoreCase("addition")) {
             return new Addition(difficulty);
         } else if (arithmeticType.equalsIgnoreCase("subtraction")) {
@@ -45,6 +42,7 @@ public class Factory {
         } else if (arithmeticType.equalsIgnoreCase("exponent")) {
             return new Exponent(difficulty);
         }
-        return null;
+
+        throw new IllegalFactoryArgument("Invalid type of Arithmetic");
     }
 }

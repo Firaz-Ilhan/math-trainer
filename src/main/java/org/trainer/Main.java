@@ -2,6 +2,7 @@ package org.trainer;
 
 import org.trainer.Exercise.Arithmetic;
 import org.trainer.Exercise.Factory;
+import org.trainer.Exercise.IllegalFactoryArgument;
 
 import java.util.Scanner;
 
@@ -31,6 +32,8 @@ public class Main {
                     System.out.println(userInput + " isn't correct.");
                 }
             } while (true);
+        } catch (IllegalFactoryArgument illegalFactoryArgument) {
+            illegalFactoryArgument.printStackTrace();
         }
     }
 }
