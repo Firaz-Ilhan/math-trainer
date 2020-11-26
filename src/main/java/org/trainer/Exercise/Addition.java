@@ -9,7 +9,7 @@ public class Addition implements Arithmetic {
     private String difficulty;
 
     public Addition(String difficulty) {
-        this.difficulty = difficulty;
+        this.difficulty = difficulty.toLowerCase();
     }
 
     @Override
@@ -24,11 +24,10 @@ public class Addition implements Arithmetic {
 
     @Override
     public int[] getTask() {
-        String difficultyLowerCase = difficulty.toLowerCase();
         int max = 0, min = 0, rand1, rand2, sum;
 
-        switch (difficultyLowerCase) {
-            case "easy":
+        switch (difficulty) {
+            case "beginner":
                 max = 20;
                 min = 1;
                 break;

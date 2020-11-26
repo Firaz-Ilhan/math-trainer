@@ -9,17 +9,17 @@ public class MainAlternate {
     public static void main(String[] args) {
 
         final Scanner scanner = new Scanner(System.in);
-            int userInputResult;
-            String userInputTask;
-            String userInputLevel;
-            boolean breaker = false;
+        int userInputResult;
+        String userInputTask;
+        String userInputLevel;
+        boolean breaker = false;
 
-            System.out.println("Addition/Subtraction/Multiplication/Division/Exponential ");
-            userInputTask = scanner.nextLine().toLowerCase();
-            System.out.println("beginner/medium/hard/pro ");
-            userInputLevel = scanner.nextLine().toLowerCase();
+        System.out.println("Addition/Subtraction/Multiplication/Division/Exponential ");
+        userInputTask = scanner.nextLine().toLowerCase();
+        System.out.println("beginner/medium/hard/pro ");
+        userInputLevel = scanner.nextLine().toLowerCase();
 
-            switch(userInputTask){
+            /*switch(userInputTask){
                 case "addition":
                 case "subtraction":
                 case "multiplication":
@@ -33,7 +33,7 @@ public class MainAlternate {
                         System.out.println(expo.isTrue(userInputResult));
                     }
 
-            }
+            }*/
 
     }
 }

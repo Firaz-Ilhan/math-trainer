@@ -9,7 +9,7 @@ public class Multiplication implements Arithmetic {
     private String difficulty;
 
     public Multiplication(String difficulty) {
-        this.difficulty = difficulty;
+        this.difficulty = difficulty.toLowerCase();
     }
 
     @Override
@@ -19,9 +19,8 @@ public class Multiplication implements Arithmetic {
 
     @Override
     public void setDifficulty(String difficulty) {
-        this.difficulty = difficulty.toLowerCase();
+        this.difficulty = difficulty;
     }
-
 
     @Override
     public int[] getTask() {

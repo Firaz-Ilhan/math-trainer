@@ -9,7 +9,7 @@ public class Exponent implements Arithmetic {
     private String difficulty;
 
     public Exponent(String difficulty) {
-        this.difficulty = difficulty;
+        this.difficulty = difficulty.toLowerCase();
     }
 
     @Override
@@ -25,7 +25,7 @@ public class Exponent implements Arithmetic {
 
     @Override
     public int[] getTask() {
-        int max = 0, min = 0, rand1, product;
+        int max = 0, min = 0, rand1;
 
         switch (difficulty) {
             case "beginner":
@@ -42,17 +42,17 @@ public class Exponent implements Arithmetic {
         }
         rand1 = rand.nextInt((max - min) + 1) + min;
 
-        if(difficulty.equals("hard")){
-            return new int[]{rand1,rand1*rand1*rand1}; //^3
+        if (difficulty.equals("hard")) {
+            return new int[]{rand1, rand1 * rand1 * rand1}; //^3
         } else {
-            return new int[]{rand1,rand1*rand1}; //^2
+            return new int[]{rand1, rand1 * rand1}; //^2
         }
 
     }
 
     @Override
     public String getRenderedTask(int[] task) {
-        if(difficulty.equals("hard")) {
+        if (difficulty.equals("hard")) {
             return task[0] + "^" + 3;
         } else {
             return task[0] + "^" + 2;
