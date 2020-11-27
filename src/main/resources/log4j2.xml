@@ -11,7 +11,7 @@
     <Loggers>
 
         <!-- You my want to define class or package level per-logger rules -->
-        <Logger name="org.trainer.GuiPackage.GuiDriver" level="debug">
+        <Logger name="org.trainer.Main" level="debug">
             <AppenderRef ref="A1"/>
         </Logger>
         <Root level="info">
