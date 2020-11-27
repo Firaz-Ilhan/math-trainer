@@ -1,11 +1,15 @@
 package org.trainer.Exercise;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Factory {
 
     private Random rand = new Random();
+    private static final Logger log = LogManager.getLogger(Factory.class);
 
     public String getRandomType(boolean addition, boolean subtraction, boolean multiplication, boolean exponent) {
 
@@ -43,6 +47,7 @@ public class Factory {
             return new Exponent(difficulty);
         }
 
+        log.error("Type not found");
         throw new IllegalFactoryArgument("Invalid type of Arithmetic");
     }
 }

@@ -1,5 +1,7 @@
 package org.trainer;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.trainer.Exercise.Arithmetic;
 import org.trainer.Exercise.Factory;
 import org.trainer.Exercise.IllegalFactoryArgument;
@@ -10,6 +12,7 @@ public class Main {
 
     public static void main(String[] args) {
 
+        final Logger log = LogManager.getLogger(Main.class);
         Factory f1 = new Factory();
 
         try (final Scanner scanner = new Scanner(System.in)) {
@@ -33,6 +36,7 @@ public class Main {
                 }
             } while (true);
         } catch (IllegalFactoryArgument illegalFactoryArgument) {
+            log.error(illegalFactoryArgument.toString());
             illegalFactoryArgument.printStackTrace();
         }
     }
