@@ -10,7 +10,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <javafx.base.version>15</javafx.base.version>
+        <javafx.base.version>15.0.1</javafx.base.version>
     </properties>
 
     <name>math-trainer</name>
