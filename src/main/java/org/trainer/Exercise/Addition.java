@@ -1,10 +1,6 @@
 package org.trainer.Exercise;
 
-import java.util.Random;
-
-public class Addition implements Arithmetic {
-
-    private final Random rand = new Random();
+public class Addition extends Exercise implements Arithmetic {
 
     private String difficulty;
 

@@ -2,6 +2,7 @@ package org.trainer.Exercise;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.trainer.exceptions.IllegalFactoryArgument;
 
 import java.util.ArrayList;
 import java.util.Random;

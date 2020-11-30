@@ -1,4 +1,4 @@
-package org.trainer.GuiPackage;
+package org.trainer.GUI;
 
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;

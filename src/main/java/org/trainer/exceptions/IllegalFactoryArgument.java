@@ -1,4 +1,4 @@
-package org.trainer.Exercise;
+package org.trainer.exceptions;
 
 public class IllegalFactoryArgument extends Exception {
     public IllegalFactoryArgument(String message) {

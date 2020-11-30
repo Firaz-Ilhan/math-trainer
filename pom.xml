@@ -62,7 +62,7 @@
                 <version>0.0.5</version>
                 <configuration>
                     <launcher>math-trainerdriver</launcher>
-                    <mainClass>org.trainer.GuiPackage.GuiDriver</mainClass>
+                    <mainClass>org.trainer.GUI.GuiDriver</mainClass>
                 </configuration>
             </plugin>
 

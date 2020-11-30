@@ -4,7 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.trainer.Exercise.Arithmetic;
 import org.trainer.Exercise.Factory;
-import org.trainer.Exercise.IllegalFactoryArgument;
+import org.trainer.exceptions.IllegalFactoryArgument;
 
 import java.util.Scanner;
 
@@ -35,9 +35,9 @@ public class Main {
                     System.out.println(userInput + " isn't correct.");
                 }
             } while (true);
-        } catch (IllegalFactoryArgument illegalFactoryArgument) {
-            log.error(illegalFactoryArgument.toString());
-            illegalFactoryArgument.printStackTrace();
+        } catch (IllegalFactoryArgument e1) {
+            log.error(e1.toString());
+            e1.printStackTrace();
         }
     }
 }

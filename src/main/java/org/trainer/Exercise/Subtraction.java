@@ -1,10 +1,6 @@
 package org.trainer.Exercise;
 
-import java.util.Random;
-
-public class Subtraction implements Arithmetic {
-
-    private final Random rand = new Random();
+public class Subtraction extends Exercise implements Arithmetic {
 
     private String difficulty;
 
