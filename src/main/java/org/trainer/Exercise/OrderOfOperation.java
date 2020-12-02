@@ -1,10 +1,10 @@
 package org.trainer.Exercise;
 
-public class Exponent extends Exercise implements Arithmetic {
+public class OrderOfOperation extends Exercise implements Arithmetic {
 
     private String difficulty;
 
-    public Exponent(String difficulty) {
+    public OrderOfOperation(String difficulty) {
         this.difficulty = difficulty.toLowerCase();
     }
 
@@ -20,38 +20,34 @@ public class Exponent extends Exercise implements Arithmetic {
 
     @Override
     public int[] getTask() {
-        int max = 0, min = 0, rand1;
+        int max = 0, min = 0, rand1, rand2, rand3, sum;
 
         switch (difficulty) {
             case "beginner":
-            case "hard":
                 max = 10;
                 min = 1;
                 break;
-
             case "medium":
-                max = 12;
-                min = 1;
+                max = 15;
+                min = 11;
                 break;
-
+            case "hard":
+                max = 20;
+                min = 16;
+                break;
         }
+
         rand1 = rand.nextInt((max - min) + 1) + min;
+        rand2 = rand.nextInt((max - min) + 1) + min;
+        rand3 = rand.nextInt((max - min) + 1) + min;
+        sum = rand1 + rand2 * rand3;
 
-        if (difficulty.equals("hard")) {
-            return new int[]{rand1, rand1 * rand1 * rand1}; //^3
-        } else {
-            return new int[]{rand1, rand1 * rand1}; //^2
-        }
-
+        return new int[]{rand1, rand2, rand3, sum};
     }
 
     @Override
     public String getRenderedTask(int[] task) {
-        if (difficulty.equals("hard")) {
-            return task[0] + "^" + 3;
-        } else {
-            return task[0] + "^" + 2;
-        }
+        return task[0] + "+" + task[1] + "*" + task[2];
     }
 
     @Override
@@ -59,8 +55,7 @@ public class Exponent extends Exercise implements Arithmetic {
         if (task == null || task.length == 0) {
             return false;
         } else {
-            return input == task[1];
+            return input == task[3];
         }
     }
 }
-

@@ -12,7 +12,8 @@ public class Factory {
     private Random rand = new Random();
     private static final Logger log = LogManager.getLogger(Factory.class);
 
-    public String getRandomType(boolean addition, boolean subtraction, boolean multiplication, boolean exponent) {
+    public String getRandomType(boolean addition, boolean subtraction, boolean multiplication,
+                                boolean orderOfOperation, boolean exponent) {
 
         ArrayList<String> typeList = new ArrayList<>(4);
 
@@ -26,6 +27,10 @@ public class Factory {
 
         if (multiplication) {
             typeList.add("multiplication");
+        }
+
+        if (orderOfOperation) {
+            typeList.add("orderOfOperation");
         }
 
         if (exponent) {
@@ -44,6 +49,8 @@ public class Factory {
             return new Subtraction(difficulty);
         } else if (arithmeticType.equalsIgnoreCase("multiplication")) {
             return new Multiplication(difficulty);
+        } else if (arithmeticType.equalsIgnoreCase("orderOfOperation")) {
+            return new OrderOfOperation(difficulty);
         } else if (arithmeticType.equalsIgnoreCase("exponent")) {
             return new Exponent(difficulty);
         }
