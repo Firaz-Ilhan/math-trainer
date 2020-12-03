@@ -58,9 +58,4 @@ public class OrderOfOperation extends Exercise implements Arithmetic {
             return input == task[3];
         }
     }
-
-    @Override
-    public int getSolution(int[] task) {
-        return task[3];
-    }
 }

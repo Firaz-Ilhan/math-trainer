@@ -58,9 +58,4 @@ public class Multiplication extends Exercise implements Arithmetic {
             return input == task[2];
         }
     }
-
-    @Override
-    public int getSolution(int[] task) {
-        return task[2];
-    }
 }

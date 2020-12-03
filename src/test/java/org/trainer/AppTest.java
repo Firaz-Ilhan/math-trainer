@@ -2,6 +2,7 @@ package org.trainer;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.trainer.Exercise.Addition;
 
 /**
  * Unit test for simple App.
