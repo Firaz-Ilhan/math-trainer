@@ -8,8 +8,9 @@ import java.util.Arrays;
 //currently stats for add sub mul div exp root ordOfOp
 public class Statistics {
     private int[][] currentCollection;
-     int[][] tempCollection;
+    int[][] tempCollection;
     private final String fileName = "stats.txt";
+    String tempStats;
 
     private Statistics() throws IOException {
         currentCollection = new int[][] {{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}};
@@ -87,16 +88,17 @@ public class Statistics {
                 toWrite.append(' ');
             }
             }
-        Files.deleteIfExists(Paths.get(fileName));
-        statSaver(toWrite.toString());
-
+        tempStats = toWrite.toString();
     }
 
-    protected void statSaver(String statString) throws IOException {
+    protected void statSaver() throws IOException { //careful! this deletes the Session Stats. should be called upon ending program?
+        statCombiner();
+        Files.deleteIfExists(Paths.get(fileName));
         FileWriter writer = new FileWriter(fileName,false);
-        writer.write(statString);
+        writer.write(tempStats);
         writer.close();
         tempCollection = new int[][] {{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}};
+        currentCollection = new int[][] {{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}};
     }
 
     protected void statReset() throws IOException {
@@ -104,4 +106,23 @@ public class Statistics {
         createInitialStatFile();
     }
 
+    private String getStats(boolean lifetime) {
+        int[][] array;
+        String whatStats;
+        if (lifetime) {
+            array = tempCollection;
+            whatStats = "Lifetime Stats:";
+        } else {
+            array = currentCollection;
+            whatStats = "Current Stats:";
+        }
+        return whatStats + "\n" +
+                "Addition: " + (array[0][1] / array [0][0]) +" von " + array[0][0] + "\n" +
+                "Subtraction: " + (array[1][1] / array [1][0]) +" von " + array[1][0] + "\n" +
+                "Multiplication" + (array[2][1] / array [2][0]) +" von " + array[2][0] + "\n" +
+                "Division" + (array[3][1] / array [3][0]) +" von " + array[3][0] + "\n" +
+                "Exponent" + (array[4][1] / array [4][0]) +" von " + array[4][0] + "\n" +
+                "Root" + (array[5][1] / array [5][0]) +" von " + array[5][0] + "\n" +
+                "OrderOfOperation" + (array[6][1] / array [6][0]) +" von " + array[6][0];
+    }
 }
