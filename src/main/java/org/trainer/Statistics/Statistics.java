@@ -10,11 +10,13 @@ public class Statistics {
      int[][] tempCollection;
     private final String fileName = "stats.txt";
 
+    /*
     public static void main(String[] args) throws IOException { //test purposes only
         Statistics test = new Statistics();
         test.collector("AddItIon",true);
         test.statCombiner();
     }
+    */
 
     private Statistics() throws IOException {
         currentCollection = new int[][] {{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}};
@@ -26,7 +28,7 @@ public class Statistics {
 
     private void createInitialStatFile() throws IOException {
         FileWriter initial = new FileWriter(fileName);
-        initial.write(" 0 0 0 0 0 0 0 0 0 0 0 0 ");
+        initial.write("0 0 0 0 0 0 0 0 0 0 0 0");
         initial.close();
     }
 
@@ -78,12 +80,17 @@ public class Statistics {
     }
 
     protected void statCombiner() throws IOException {
-        String fileContent = Files.readString(Paths.get(fileName));
+        BufferedReader reader = new BufferedReader(new FileReader(fileName));
+        String fileContent = reader.readLine();
+        reader.close();
+
         String[] splitFileContent = fileContent.split(" ");
+
+        System.out.println(fileContent);
+        System.out.println(splitFileContent);
+
         int counter = 0;
         StringBuilder toWrite = new StringBuilder();
-        toWrite.append(' ');
-
         for (int i = 0; i < currentCollection.length; i++) {
             toWrite.append(tempCollection[i][0] = currentCollection[i][0] + Integer.parseInt(splitFileContent[counter++]));
             toWrite.append(' ');
