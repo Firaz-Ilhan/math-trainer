@@ -1,24 +1,26 @@
 package org.trainer.Statistics;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 
-/**
- * Statistics gonna look like:
- * X =  tasks totally done
- * Y =  tasks solved correctly
- * X Y      X Y         X Y             X Y         X Y         X Y
- * Addition Subtraction Multiplication  Division    Exponent    Root
- */
+
 
 public class Statistics {
-    int[][] currentCollection;
+    private int[][] currentCollection;
+    private final String fileName = "stats.txt";
+
+    public static void main(String[] args) throws IOException { //test purposes only
+        Statistics test = new Statistics();
+        System.out.println(Paths.get("stats.txt"));
+        test.collector("AddItIon",true);
+        test.statCombiner();
+    }
 
     private Statistics() {
         this.currentCollection = new int[][] {{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}};
-        // if file does not exist create file with currentCollection als basic
+
     }
 
     private void collector(String taskType, boolean result) {
@@ -57,29 +59,28 @@ public class Statistics {
     }
 
     protected void statCombiner() throws IOException {
-        try(FileReader reader = new FileReader("/idk/idk/idk.txt")){
-            //reader
-            //String fileContent =
-            //String[] splitFileContent = fileContent.split(' ')
-            int counter = -1;
-            for (int i = 0; i < currentCollection.length; i++) {
-                currentCollection[i][0] =+ Integer.parseInt(splitFileContent[counter++]);
-                currentCollection[i][1] =+ Integer.parseInt(splitFileContent[counter++]);
+        String fileContent = Files.readString(Paths.get(fileName));
+        String[] splitFileContent = fileContent.split(" ");
+        int counter = -1;
+        StringBuilder toWrite = new StringBuilder();
+        for (int i = 0; i < currentCollection.length; i++) {
+            toWrite.append(currentCollection[i][0] =+ Integer.parseInt(splitFileContent[counter++]));
+            toWrite.append(' ');
+            toWrite.append(currentCollection[i][1] =+ Integer.parseInt(splitFileContent[counter++]));
+            toWrite.append(' ');
             }
-            statSaver(currentCollection);
-        } catch (FileNotFoundException e) {
-            //create File
-        }
+        statSaver(toWrite.toString());
 
     }
 
-    protected void statSaver(int[][] statsToSave){
-        //delete old file
-        //write new file
+    protected void statSaver(String statString) throws IOException {
+        FileWriter writer = new FileWriter(fileName,false);
+        writer.write(statString);
+        writer.close();
     }
 
-    protected void statReset(){
-        //delete file
+    protected void statReset() throws IOException {
+        Files.deleteIfExists(Paths.get(fileName));
     }
 
 }
