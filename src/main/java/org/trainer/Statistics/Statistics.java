@@ -12,9 +12,9 @@ public class Statistics {
     private final String fileName = "stats.txt";
     String tempStats;
 
-    private Statistics() throws IOException {
-        currentCollection = new int[][] {{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}};
-        tempCollection = new int[][] {{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}};
+    public Statistics() throws IOException {
+        currentCollection = new int[][] {{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}};
+        tempCollection = new int[][] {{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}};
         if(!Files.exists(Paths.get(fileName))){
             createInitialStatFile();
         }
@@ -22,52 +22,52 @@ public class Statistics {
 
     private void createInitialStatFile() throws IOException {
         FileWriter initial = new FileWriter(fileName);
-        initial.write("0 0 0 0 0 0 0 0 0 0 0 0");
+        initial.write("0 0 0 0 0 0 0 0 0 0 0 0 0 0");
         initial.close();
     }
 
-    private void collector(String taskType, boolean result) {
+    public void collector(String taskType, boolean result) {
         switch (taskType.toLowerCase()){
             case "addition":
-                currentCollection[0][0] =+ 1;
+                currentCollection[0][0] += 1;
                 if (result) {
-                    currentCollection[0][1] =+ 1;
+                    currentCollection[0][1] += 1;
                 }
                 break;
             case "subtraction":
-                currentCollection[1][0] =+ 1;
+                currentCollection[1][0] += 1;
                 if (result) {
-                    currentCollection[1][1] =+ 1;
+                    currentCollection[1][1] += 1;
                 }
                 break;
             case "multiplication":
-                currentCollection[2][0] =+ 1;
+                currentCollection[2][0] += 1;
                 if (result) {
-                    currentCollection[2][1] =+ 1;
+                    currentCollection[2][1] += 1;
                 }
                 break;
             case "division":
-                currentCollection[3][0] =+ 1;
+                currentCollection[3][0] += 1;
                 if (result) {
-                    currentCollection[3][1] =+ 1;
+                    currentCollection[3][1] += 1;
                 }
                 break;
             case "exponent":
-                currentCollection[4][0] =+ 1;
+                currentCollection[4][0] += 1;
                 if (result) {
-                    currentCollection[4][1] =+ 1;
+                    currentCollection[4][1] += 1;
                 }
                 break;
             case "root":
-                currentCollection[5][0] =+ 1;
+                currentCollection[5][0] += 1;
                 if (result) {
-                    currentCollection[5][1] =+ 1;
+                    currentCollection[5][1] += 1;
                 }
                 break;
             case "orderofoperation":
-                currentCollection[6][0] =+ 1;
+                currentCollection[6][0] += 1;
                 if (result) {
-                    currentCollection[6][1] =+ 1;
+                    currentCollection[6][1] += 1;
                 }
                 break;
         }
@@ -91,38 +91,48 @@ public class Statistics {
         tempStats = toWrite.toString();
     }
 
-    protected void statSaver() throws IOException { //careful! this deletes the Session Stats. should be called upon ending program?
+    public void statSaver() throws IOException { //careful! this deletes the Session Stats. should be called upon ending program?
         statCombiner();
         Files.deleteIfExists(Paths.get(fileName));
         FileWriter writer = new FileWriter(fileName,false);
         writer.write(tempStats);
         writer.close();
-        tempCollection = new int[][] {{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}};
-        currentCollection = new int[][] {{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}};
+        tempCollection = new int[][] {{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}};
+        currentCollection = new int[][] {{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}};
     }
 
     protected void statReset() throws IOException {
         Files.deleteIfExists(Paths.get(fileName));
         createInitialStatFile();
     }
+    private int percentStat(int[][] arr, int pos) {
+        if(arr[pos][0] != 0) {
+            float percent = ((float)arr[pos][1] / (float)arr[pos][0]) * 100;
+            return Math.round(percent);
+        } else {
+            return 0;
+        }
+    }
 
-    private String getStats(boolean lifetime) {
+    public String getStats(boolean lifetime) throws IOException {
         int[][] array;
         String whatStats;
         if (lifetime) {
+            statCombiner();
             array = tempCollection;
             whatStats = "Lifetime Stats:";
         } else {
             array = currentCollection;
             whatStats = "Current Stats:";
         }
+
         return whatStats + "\n" +
-                "Addition: " + (array[0][1] / array [0][0]) +" von " + array[0][0] + "\n" +
-                "Subtraction: " + (array[1][1] / array [1][0]) +" von " + array[1][0] + "\n" +
-                "Multiplication" + (array[2][1] / array [2][0]) +" von " + array[2][0] + "\n" +
-                "Division" + (array[3][1] / array [3][0]) +" von " + array[3][0] + "\n" +
-                "Exponent" + (array[4][1] / array [4][0]) +" von " + array[4][0] + "\n" +
-                "Root" + (array[5][1] / array [5][0]) +" von " + array[5][0] + "\n" +
-                "OrderOfOperation" + (array[6][1] / array [6][0]) +" von " + array[6][0];
+                "Addition: " + percentStat(array,0) +"% von " + array[0][0] + "\n" +
+                "Subtraction: " + percentStat(array,1) +"% von " + array[1][0] + "\n" +
+                "Multiplication: " + percentStat(array,2) +"% von " + array[2][0] + "\n" +
+                "Division: " + percentStat(array,3) +"% von " + array[3][0] + "\n" +
+                "Exponent: " + percentStat(array,4) +"% von " + array[4][0] + "\n" +
+                "Root: " + percentStat(array,5) +"% von " + array[5][0] + "\n" +
+                "OrderOfOperation: " + percentStat(array,6) +"% von " + array[6][0];
     }
 }

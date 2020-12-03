@@ -4,16 +4,19 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.trainer.Exercise.Arithmetic;
 import org.trainer.Exercise.Factory;
+import org.trainer.Statistics.Statistics;
 import org.trainer.exceptions.IllegalFactoryArgument;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         final Logger log = LogManager.getLogger(Main.class);
         Factory f1 = new Factory();
+        Statistics statCollector = new Statistics();
 
         try (final Scanner scanner = new Scanner(System.in)) {
 
@@ -34,6 +37,11 @@ public class Main {
                 } else {
                     System.out.println(userInput + " isn't correct. Correct Answer: " + task.getSolution(arr));
                 }
+                statCollector.collector(randomType,task.checkSolution(arr, userInput));
+                //stat testing
+                //System.out.println(statCollector.getStats(false));
+                //statCollector.statSaver();
+                //System.out.println(statCollector.getStats(true));
             } while (true);
         } catch (IllegalFactoryArgument e1) {
             log.error(e1.toString());
