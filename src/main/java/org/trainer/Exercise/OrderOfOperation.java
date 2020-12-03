@@ -49,18 +49,4 @@ public class OrderOfOperation extends Exercise implements Arithmetic {
     public String getRenderedTask(int[] task) {
         return task[0] + "+" + task[1] + "*" + task[2];
     }
-
-    @Override
-    public boolean checkSolution(int[] task, int input) {
-        if (task == null || task.length == 0) {
-            return false;
-        } else {
-            return input == task[3];
-        }
-    }
-
-    @Override
-    public int getSolution(int[] task) {
-        return task[3];
-    }
 }
