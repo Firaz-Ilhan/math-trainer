@@ -3,20 +3,13 @@ package org.trainer.Statistics;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
 
- //currently stats for add sub mul div exp root ordOfOp
+//currently stats for add sub mul div exp root ordOfOp
 public class Statistics {
     private int[][] currentCollection;
      int[][] tempCollection;
     private final String fileName = "stats.txt";
-
-    /*
-    public static void main(String[] args) throws IOException { //test purposes only
-        Statistics test = new Statistics();
-        test.collector("AddItIon",true);
-        test.statCombiner();
-    }
-    */
 
     private Statistics() throws IOException {
         currentCollection = new int[][] {{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}};
@@ -83,19 +76,16 @@ public class Statistics {
         BufferedReader reader = new BufferedReader(new FileReader(fileName));
         String fileContent = reader.readLine();
         reader.close();
-
         String[] splitFileContent = fileContent.split(" ");
-
-        System.out.println(fileContent);
-        System.out.println(splitFileContent);
-
         int counter = 0;
         StringBuilder toWrite = new StringBuilder();
         for (int i = 0; i < currentCollection.length; i++) {
             toWrite.append(tempCollection[i][0] = currentCollection[i][0] + Integer.parseInt(splitFileContent[counter++]));
             toWrite.append(' ');
             toWrite.append(tempCollection[i][1] = currentCollection[i][1] + Integer.parseInt(splitFileContent[counter++]));
-            toWrite.append(' ');
+            if(i != currentCollection.length - 1) {
+                toWrite.append(' ');
+            }
             }
         Files.deleteIfExists(Paths.get(fileName));
         statSaver(toWrite.toString());
