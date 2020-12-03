@@ -86,7 +86,7 @@ public class Statistics {
             toWrite.append(tempCollection[i][1] = currentCollection[i][1] + Integer.parseInt(splitFileContent[counter++]));
             if(i != currentCollection.length - 1) {
                 toWrite.append(' ');
-            }
+                }
             }
         tempStats = toWrite.toString();
     }
