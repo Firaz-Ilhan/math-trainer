@@ -22,7 +22,7 @@ public class Main {
             do {
                 String randomType = f1.getRandomType(true, true, true, true, true);
 
-                Arithmetic task = f1.getArithmetic(randomType, "beGinneR");
+                Arithmetic task = f1.getArithmetic(randomType, "medium");
 
                 int[] arr = task.getTask();
                 System.out.println("calculate: " + task.getRenderedTask(arr));
@@ -32,7 +32,7 @@ public class Main {
                 if (task.checkSolution(arr, userInput)) {
                     System.out.println(userInput + " is correct");
                 } else {
-                    System.out.println(userInput + " isn't correct.");
+                    System.out.println(userInput + " isn't correct. Correct Answer: " + task.getSolution(arr));
                 }
             } while (true);
         } catch (IllegalFactoryArgument e1) {

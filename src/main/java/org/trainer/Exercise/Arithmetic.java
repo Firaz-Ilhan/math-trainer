@@ -11,4 +11,6 @@ public interface Arithmetic {
     String getRenderedTask(int[] task);
 
     boolean checkSolution(int[] task, int input);
+
+    int getSolution(int[] task);
 }

@@ -62,5 +62,10 @@ public class Exponent extends Exercise implements Arithmetic {
             return input == task[1];
         }
     }
+
+    @Override
+    public int getSolution(int[] task) {
+        return task[1];
+    }
 }
 
