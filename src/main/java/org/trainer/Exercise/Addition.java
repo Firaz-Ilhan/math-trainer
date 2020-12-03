@@ -48,13 +48,4 @@ public class Addition extends Exercise implements Arithmetic {
     public String getRenderedTask(int[] task) {
         return task[0] + "+" + task[1];
     }
-
-    @Override
-    public boolean checkSolution(int[] task, int input) {
-        if (task == null || task.length == 0) {
-            return false;
-        } else {
-            return input == task[2];
-        }
-    }
 }

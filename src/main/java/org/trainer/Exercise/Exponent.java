@@ -53,14 +53,5 @@ public class Exponent extends Exercise implements Arithmetic {
             return task[0] + "^" + 2;
         }
     }
-
-    @Override
-    public boolean checkSolution(int[] task, int input) {
-        if (task == null || task.length == 0) {
-            return false;
-        } else {
-            return input == task[1];
-        }
-    }
 }
 
