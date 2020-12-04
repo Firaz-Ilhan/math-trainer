@@ -5,12 +5,11 @@ import org.apache.logging.log4j.Logger;
 import org.trainer.exceptions.IllegalFactoryArgument;
 
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Random;
 
 public class Factory {
 
-    private Random rand = new Random();
+    private final Random rand = new Random();
     private static final Logger log = LogManager.getLogger(Factory.class);
 
     public String getRandomType(boolean addition, boolean subtraction, boolean multiplication,
@@ -38,8 +37,7 @@ public class Factory {
             typeList.add("exponent");
         }
 
-        String randomElement = typeList.get(rand.nextInt(typeList.size()));
-        return randomElement;
+        return typeList.get(rand.nextInt(typeList.size()));
     }
 
     public Arithmetic getArithmetic(String arithmeticType, String difficulty) throws IllegalFactoryArgument {

@@ -3,7 +3,6 @@ package org.trainer.Statistics;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
 
 //currently stats for add sub mul div exp root ordOfOp
 public class Statistics {
@@ -13,9 +12,9 @@ public class Statistics {
     String tempStats;
 
     public Statistics() throws IOException {
-        currentCollection = new int[][] {{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}};
-        tempCollection = new int[][] {{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}};
-        if(!Files.exists(Paths.get(fileName))){
+        currentCollection = new int[][]{{0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}};
+        tempCollection = new int[][]{{0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}};
+        if (!Files.exists(Paths.get(fileName))) {
             createInitialStatFile();
         }
     }
@@ -27,7 +26,7 @@ public class Statistics {
     }
 
     public void collector(String taskType, boolean result) {
-        switch (taskType.toLowerCase()){
+        switch (taskType.toLowerCase()) {
             case "addition":
                 currentCollection[0][0] += 1;
                 if (result) {
@@ -84,30 +83,31 @@ public class Statistics {
             toWrite.append(tempCollection[i][0] = currentCollection[i][0] + Integer.parseInt(splitFileContent[counter++]));
             toWrite.append(' ');
             toWrite.append(tempCollection[i][1] = currentCollection[i][1] + Integer.parseInt(splitFileContent[counter++]));
-            if(i != currentCollection.length - 1) {
+            if (i != currentCollection.length - 1) {
                 toWrite.append(' ');
-                }
             }
+        }
         tempStats = toWrite.toString();
     }
 
     public void statSaver() throws IOException { //careful! this deletes the Session Stats. should be called upon ending program?
         statCombiner();
         Files.deleteIfExists(Paths.get(fileName));
-        FileWriter writer = new FileWriter(fileName,false);
+        FileWriter writer = new FileWriter(fileName, false);
         writer.write(tempStats);
         writer.close();
-        tempCollection = new int[][] {{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}};
-        currentCollection = new int[][] {{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}};
+        tempCollection = new int[][]{{0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}};
+        currentCollection = new int[][]{{0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}};
     }
 
     protected void statReset() throws IOException {
         Files.deleteIfExists(Paths.get(fileName));
         createInitialStatFile();
     }
+
     private int percentStat(int[][] arr, int pos) {
-        if(arr[pos][0] != 0) {
-            float percent = ((float)arr[pos][1] / (float)arr[pos][0]) * 100;
+        if (arr[pos][0] != 0) {
+            float percent = ((float) arr[pos][1] / (float) arr[pos][0]) * 100;
             return Math.round(percent);
         } else {
             return 0;
@@ -127,12 +127,12 @@ public class Statistics {
         }
 
         return whatStats + "\n" +
-                "Addition: " + percentStat(array,0) +"% von " + array[0][0] + "\n" +
-                "Subtraction: " + percentStat(array,1) +"% von " + array[1][0] + "\n" +
-                "Multiplication: " + percentStat(array,2) +"% von " + array[2][0] + "\n" +
-                "Division: " + percentStat(array,3) +"% von " + array[3][0] + "\n" +
-                "Exponent: " + percentStat(array,4) +"% von " + array[4][0] + "\n" +
-                "Root: " + percentStat(array,5) +"% von " + array[5][0] + "\n" +
-                "OrderOfOperation: " + percentStat(array,6) +"% von " + array[6][0];
+                "Addition: " + percentStat(array, 0) + "% von " + array[0][0] + "\n" +
+                "Subtraction: " + percentStat(array, 1) + "% von " + array[1][0] + "\n" +
+                "Multiplication: " + percentStat(array, 2) + "% von " + array[2][0] + "\n" +
+                "Division: " + percentStat(array, 3) + "% von " + array[3][0] + "\n" +
+                "Exponent: " + percentStat(array, 4) + "% von " + array[4][0] + "\n" +
+                "Root: " + percentStat(array, 5) + "% von " + array[5][0] + "\n" +
+                "OrderOfOperation: " + percentStat(array, 6) + "% von " + array[6][0];
     }
 }
