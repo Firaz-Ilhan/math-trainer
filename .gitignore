@@ -12,6 +12,7 @@ dependency-reduced-pom.xml
 # User-specific stuff
 .idea/
 math-trainer.iml
+stats.txt
 
 # CMake
 cmake-build-debug/

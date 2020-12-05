@@ -21,6 +21,9 @@ public class Main {
         try (final Scanner scanner = new Scanner(System.in)) {
 
             int userInput;
+            boolean loop = true;
+
+            System.out.println("enter 9999 to exit");
 
             do {
                 String randomType = f1.getRandomType(true, true, true, true, true);
@@ -32,20 +35,22 @@ public class Main {
 
                 userInput = scanner.nextInt();
 
-                if (task.checkSolution(arr, userInput)) {
+                if (userInput == 9999) {
+                    loop = false;
+                } else if (task.checkSolution(arr, userInput)) {
                     System.out.println(userInput + " is correct");
                 } else {
                     System.out.println(userInput + " isn't correct. Correct Answer: " + task.getSolution(arr));
                 }
-                statCollector.collector(randomType,task.checkSolution(arr, userInput));
-                //stat testing
-                //System.out.println(statCollector.getStats(false));
-                //statCollector.statSaver();
-                //System.out.println(statCollector.getStats(true));
-            } while (true);
+                statCollector.collector(randomType, task.checkSolution(arr, userInput));
+            } while (loop);
         } catch (IllegalFactoryArgument e1) {
             log.error(e1.toString());
             e1.printStackTrace();
+        } finally {
+            //stat
+            System.out.println(statCollector.getStats(false));
+            statCollector.statSaver();
         }
     }
 }
