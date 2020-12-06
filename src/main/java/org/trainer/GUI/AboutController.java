@@ -44,11 +44,13 @@ public class AboutController implements Initializable {
     @FXML
     public void openHome(ActionEvent actionEvent) throws IOException {
         try {
+            final String fxmlFile = "/fxml/home.fxml";
             Scene home = new Scene(FXMLLoader.load(getClass().
-                    getResource("/fxml/home.fxml")));
+                    getResource(fxmlFile)));
             Stage primaryStage = (Stage) aboutToHomeButton.getScene().getWindow();
             primaryStage.setScene(home);
             primaryStage.show();
+            log.info("Switching to: " + fxmlFile);
         } catch (IOException e1) {
             log.warn(e1.toString());
             e1.printStackTrace();

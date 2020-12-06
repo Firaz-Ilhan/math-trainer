@@ -20,11 +20,13 @@ public class HomeController {
     @FXML
     public void openAbout(ActionEvent actionEvent) {
         try {
+            final String fxmlFile = "/fxml/about.fxml";
             Scene about = new Scene(FXMLLoader.load(getClass().
-                    getResource("/fxml/about.fxml")));
+                    getResource(fxmlFile)));
             Stage primaryStage = (Stage) aboutButton.getScene().getWindow();
             primaryStage.setScene(about);
             primaryStage.show();
+            log.info("Switching to: " + fxmlFile);
         } catch (IOException e1) {
             log.error(e1.toString());
             e1.printStackTrace();

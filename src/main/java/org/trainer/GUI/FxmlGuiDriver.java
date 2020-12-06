@@ -22,11 +22,11 @@ public class FxmlGuiDriver extends Application {
         log.info("Starting JavaFX application");
 
         final String fxmlFile = "/fxml/home.fxml";
-        log.debug("Loading FXML for main view from: {}", fxmlFile);
+        log.info("Loading FXML for main view from: {}", fxmlFile);
         final FXMLLoader loader = new FXMLLoader();
         final Parent rootNode = (Parent) loader.load(getClass().getResourceAsStream(fxmlFile));
 
-        log.debug("Showing JFX scene");
+        log.info("Showing JFX scene");
         final Scene scene = new Scene(rootNode);
         //scene.getStylesheets().add("/styles/styles.css");
 
