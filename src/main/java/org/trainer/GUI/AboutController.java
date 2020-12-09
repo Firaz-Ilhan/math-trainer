@@ -34,6 +34,7 @@ public class AboutController implements Initializable {
 
     @FXML
     public TextArea aboutTextArea;
+    @FXML
     public Button aboutToHomeButton;
 
     @FXML

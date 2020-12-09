@@ -31,7 +31,7 @@
                <font>
                   <Font size="15.0" />
                </font></Button>
-            <TextArea fx:id="aboutTextArea" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextArea fx:id="aboutTextArea" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="15.0" />
                </font>
@@ -40,7 +40,7 @@
                <children>
                   <Label text="Developers: Firaz Ilhan, Maximilian Dolbaum, Jens Schlegel">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="15.0" />
                      </font>
                   </Label>
                   <Hyperlink text="https://github.com/Firaz-Ilhan/math-trainer">

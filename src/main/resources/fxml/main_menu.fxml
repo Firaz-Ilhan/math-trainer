@@ -61,7 +61,7 @@
                         <Font size="24.0" />
                     </font>
                 </CheckBox>
-                <CheckBox fx:id="subtractionCheckbox" mnemonicParsing="false" selected="true" text="Substraction">
+                <CheckBox fx:id="subtractionCheckbox" mnemonicParsing="false" selected="true" text="Subtraction">
                     <font>
                         <Font size="24.0" />
                     </font>
