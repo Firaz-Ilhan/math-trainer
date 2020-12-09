@@ -21,7 +21,7 @@ public class FxmlGuiDriver extends Application {
 
         log.info("Starting JavaFX application");
 
-        final String fxmlFile = "/fxml/home.fxml";
+        final String fxmlFile = "/fxml/main_menu.fxml";
         log.info("Loading FXML for main view from: {}", fxmlFile);
         final FXMLLoader loader = new FXMLLoader();
         final Parent rootNode = (Parent) loader.load(getClass().getResourceAsStream(fxmlFile));

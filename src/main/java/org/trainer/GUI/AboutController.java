@@ -29,12 +29,7 @@ public class AboutController implements Initializable {
         aboutTextArea.setText("Operating System: " + osName + ' ' + osArch + '\n'
                 + "Java runtime version: " + javaVersion + '\n'
                 + "JavaFX version: " + javafxVersion + '\n' + '\n'
-                + "Math Trainer: 1.0" + '\n' + '\n'
-                + "Developers:" + '\n'
-                + "Firaz Ilhan" + '\n'
-                + "Jens Schlegel" + '\n'
-                + "Maximillian Dolbaum" + '\n' + '\n'
-                + "https://github.com/Firaz-Ilhan/math-trainer");
+                + "Math Trainer: 1.0" + '\n' + '\n');
     }
 
     @FXML
@@ -44,7 +39,7 @@ public class AboutController implements Initializable {
     @FXML
     public void openHome(ActionEvent actionEvent) throws IOException {
         try {
-            final String fxmlFile = "/fxml/home.fxml";
+            final String fxmlFile = "/fxml/main_menu.fxml";
             Scene home = new Scene(FXMLLoader.load(getClass().
                     getResource(fxmlFile)));
             Stage primaryStage = (Stage) aboutToHomeButton.getScene().getWindow();
