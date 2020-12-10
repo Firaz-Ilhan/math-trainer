@@ -13,7 +13,7 @@ public class Factory {
     private static final Logger log = LogManager.getLogger(Factory.class);
 
     public String getRandomType(boolean addition, boolean subtraction, boolean multiplication,
-                                boolean orderOfOperation, boolean exponent) {
+                                boolean orderOfOperation, boolean exponent, boolean root) {
 
         ArrayList<String> typeList = new ArrayList<>(4);
 
@@ -36,6 +36,9 @@ public class Factory {
         if (exponent) {
             typeList.add("exponent");
         }
+        if (root) {
+            typeList.add("root");
+        }
 
         return typeList.get(rand.nextInt(typeList.size()));
     }
@@ -53,6 +56,8 @@ public class Factory {
                 return new OrderOfOperation(difficulty);
             case "exponent":
                 return new Exponent(difficulty);
+            case "root":
+                return new Root(difficulty);
             default:
                 log.error("Type not found");
                 throw new IllegalFactoryArgument("Invalid type of Arithmetic");

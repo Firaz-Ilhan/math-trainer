@@ -23,10 +23,10 @@ public class Main {
             int userInput;
             boolean loop = true;
 
-            System.out.println("enter 9999 to exit");
+            System.out.println("enter 9999 to exit\n");
 
             do {
-                String randomType = f1.getRandomType(true, true, true, true, true);
+                String randomType = f1.getRandomType(true, true, true, true, true, true);
 
                 Arithmetic task = f1.getArithmetic(randomType, "medium");
 
@@ -38,9 +38,9 @@ public class Main {
                 if (userInput == 9999) {
                     loop = false;
                 } else if (task.checkSolution(arr, userInput)) {
-                    System.out.println(userInput + " is correct");
+                    System.out.println(userInput + " is correct\n");
                 } else {
-                    System.out.println(userInput + " isn't correct. Correct Answer: " + task.getSolution(arr));
+                    System.out.println(userInput + " isn't correct. Correct Answer: " + task.getSolution(arr) + "\n");
                 }
                 statCollector.collector(randomType, task.checkSolution(arr, userInput));
             } while (loop);
