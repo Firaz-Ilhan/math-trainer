@@ -7,9 +7,9 @@ import java.nio.file.Paths;
 //currently stats for add sub mul div exp root ordOfOp
 public class Statistics {
     private int[][] currentCollection;
-    int[][] tempCollection;
+    private int[][] tempCollection;
     private final String fileName = "stats.txt";
-    String tempStats;
+    private String tempStats;
 
     public Statistics() throws IOException {
         currentCollection = new int[][]{{0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}};
@@ -72,7 +72,7 @@ public class Statistics {
         }
     }
 
-    protected void statCombiner() throws IOException {
+    private void statCombiner() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(fileName));
         String fileContent = reader.readLine();
         reader.close();
@@ -100,7 +100,7 @@ public class Statistics {
         currentCollection = new int[][]{{0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}};
     }
 
-    protected void statReset() throws IOException {
+    private void statReset() throws IOException {
         Files.deleteIfExists(Paths.get(fileName));
         createInitialStatFile();
     }
