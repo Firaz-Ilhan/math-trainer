@@ -1,7 +1,11 @@
 package org.trainer.Exercise;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class OrderOfOperation extends Exercise implements Arithmetic {
 
+    final Logger log = LogManager.getLogger(OrderOfOperation.class);
     private String difficulty;
 
     public OrderOfOperation(String difficulty) {
@@ -42,6 +46,7 @@ public class OrderOfOperation extends Exercise implements Arithmetic {
         rand3 = rand.nextInt((max - min) + 1) + min;
         sum = rand1 + rand2 * rand3;
 
+        log.info(rand1 + " + " + rand2 + " * " + rand3 + " = " + sum);
         return new int[]{rand1, rand2, rand3, sum};
     }
 
