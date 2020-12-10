@@ -17,22 +17,22 @@ public class MainMenuController {
     private final static Logger log = LogManager.getLogger(MainMenuController.class);
 
     @FXML
-    public Button aboutButton;
+    private Button aboutButton;
     @FXML
-    public ToggleGroup difficulty;
+    private ToggleGroup difficulty;
     @FXML
-    public CheckBox additionCheckbox;
+    private CheckBox additionCheckbox;
     @FXML
-    public CheckBox subtractionCheckbox;
+    private CheckBox subtractionCheckbox;
     @FXML
-    public CheckBox multiplicationCheckbox;
+    private CheckBox multiplicationCheckbox;
     @FXML
-    public Button startGameButton;
+    private Button startGameButton;
 
     //private RadioButton selectedDifficulty = (RadioButton) difficulty.getSelectedToggle();
 
     @FXML
-    public void openAbout(ActionEvent actionEvent) {
+    private void openAbout(ActionEvent actionEvent) {
         try {
             final String fxmlFile = "/fxml/about.fxml";
             Scene about = new Scene(FXMLLoader.load(getClass().
@@ -48,7 +48,7 @@ public class MainMenuController {
     }
 
     @FXML
-    public void startGame(ActionEvent actionEvent) {
+    private void startGame(ActionEvent actionEvent) {
         try {
             final String fxmlFile = "/fxml/game.fxml";
             Scene game = new Scene(FXMLLoader.load(getClass().

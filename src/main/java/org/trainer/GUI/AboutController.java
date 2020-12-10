@@ -19,26 +19,13 @@ public class AboutController implements Initializable {
 
     private final static Logger log = LogManager.getLogger(AboutController.class);
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        String osName = System.getProperty("os.name");
-        String osArch = System.getProperty("os.arch");
-        String javaVersion = System.getProperty("java.version");
-        String javafxVersion = System.getProperty("javafx.version");
-        aboutTextArea.setText("Operating System: " + osName + ' ' + osArch + '\n'
-                + "Java runtime version: " + javaVersion + '\n'
-                + "JavaFX version: " + javafxVersion + '\n' + '\n'
-                + "Math Trainer: 1.0" + '\n' + '\n');
-    }
+    @FXML
+    private TextArea aboutTextArea;
+    @FXML
+    private Button aboutToHomeButton;
 
     @FXML
-    public TextArea aboutTextArea;
-    @FXML
-    public Button aboutToHomeButton;
-
-    @FXML
-    public void openHome(ActionEvent actionEvent) throws IOException {
+    public void openHome(ActionEvent actionEvent) {
         try {
             final String fxmlFile = "/fxml/main_menu.fxml";
             Scene home = new Scene(FXMLLoader.load(getClass().
@@ -51,5 +38,18 @@ public class AboutController implements Initializable {
             log.warn(e1.toString());
             e1.printStackTrace();
         }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        String osName = System.getProperty("os.name");
+        String osArch = System.getProperty("os.arch");
+        String javaVersion = System.getProperty("java.version");
+        String javafxVersion = System.getProperty("javafx.version");
+        aboutTextArea.setText("Operating System: " + osName + ' ' + osArch + '\n'
+                + "Java runtime version: " + javaVersion + '\n'
+                + "JavaFX version: " + javafxVersion + '\n' + '\n'
+                + "Math Trainer: 1.0" + '\n' + '\n');
     }
 }

@@ -22,15 +22,13 @@ import java.util.ResourceBundle;
 public class GameController implements Initializable {
 
     @FXML
-    public Button stopGameButton;
+    private Button stopGameButton;
     @FXML
-    public Label taskLabel;
+    private Label taskLabel;
     @FXML
-    public Button answerButton;
+    private TextField answerField;
     @FXML
-    public TextField answerField;
-    @FXML
-    public Label gameModeratorAnswer;
+    private Label gameModeratorAnswer;
 
     private final static Logger log = LogManager.getLogger(GameController.class);
 
@@ -38,7 +36,8 @@ public class GameController implements Initializable {
     private Arithmetic taskType;
     private int[] task;
 
-    public void stopGame(ActionEvent actionEvent) {
+    @FXML
+    private void stopGame(ActionEvent actionEvent) {
         try {
             final String fxmlFile = "/fxml/main_menu.fxml";
             Scene main_menu = new Scene(FXMLLoader.load(getClass().
@@ -70,7 +69,7 @@ public class GameController implements Initializable {
     }
 
     @FXML
-    public void enterAnswer(ActionEvent actionEvent) {
+    private void enterAnswer(ActionEvent actionEvent) {
         int input = Integer.parseInt(answerField.getText());
 
         if (taskType.checkSolution(task, input)) {

@@ -35,12 +35,12 @@
             </Label>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
-                  <TextField fx:id="answerField">
+                  <TextField fx:id="answerField" prefHeight="31.0" prefWidth="80.0">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </TextField>
-                  <Button fx:id="answerButton" mnemonicParsing="false" onAction="#enterAnswer" text="Enter">
+                  <Button mnemonicParsing="false" onAction="#enterAnswer" text="Enter">
                      <font>
                         <Font size="15.0" />
                      </font>
