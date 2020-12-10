@@ -3,6 +3,8 @@ package org.trainer.Statistics;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 //currently stats for add sub mul div exp root ordOfOp
 public class Statistics {
@@ -10,8 +12,9 @@ public class Statistics {
     private int[][] tempCollection;
     private final String fileName = "stats.txt";
     private String tempStats;
+    private final Logger log = LogManager.getLogger(Statistics.class);
 
-    public Statistics() throws IOException {
+    public Statistics() {
         currentCollection = new int[][]{{0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}};
         tempCollection = new int[][]{{0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}};
         if (!Files.exists(Paths.get(fileName))) {
@@ -19,10 +22,13 @@ public class Statistics {
         }
     }
 
-    private void createInitialStatFile() throws IOException {
-        FileWriter initial = new FileWriter(fileName);
-        initial.write("0 0 0 0 0 0 0 0 0 0 0 0 0 0");
-        initial.close();
+    private void createInitialStatFile() {
+        try(FileWriter initial = new FileWriter(fileName)) {
+            initial.write("0 0 0 0 0 0 0 0 0 0 0 0 0 0");
+        } catch(IOException e1) {
+            log.error(e1.toString());
+            e1.printStackTrace();
+        }
     }
 
     public void collector(String taskType, boolean result) {
@@ -72,36 +78,54 @@ public class Statistics {
         }
     }
 
-    private void statCombiner() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(fileName));
-        String fileContent = reader.readLine();
-        reader.close();
-        String[] splitFileContent = fileContent.split(" ");
-        int counter = 0;
-        StringBuilder toWrite = new StringBuilder();
-        for (int i = 0; i < currentCollection.length; i++) {
-            toWrite.append(tempCollection[i][0] = currentCollection[i][0] + Integer.parseInt(splitFileContent[counter++]));
-            toWrite.append(' ');
-            toWrite.append(tempCollection[i][1] = currentCollection[i][1] + Integer.parseInt(splitFileContent[counter++]));
-            if (i != currentCollection.length - 1) {
+    private void statCombiner() {
+        try(BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String fileContent = reader.readLine();
+            reader.close();
+            String[] splitFileContent = fileContent.split(" ");
+            int counter = 0;
+            StringBuilder toWrite = new StringBuilder();
+            for (int i = 0; i < currentCollection.length; i++) {
+                toWrite.append(tempCollection[i][0] = currentCollection[i][0] + Integer.parseInt(splitFileContent[counter++]));
                 toWrite.append(' ');
+                toWrite.append(tempCollection[i][1] = currentCollection[i][1] + Integer.parseInt(splitFileContent[counter++]));
+                if (i != currentCollection.length - 1) {
+                    toWrite.append(' ');
+                }
             }
+            tempStats = toWrite.toString();
+        } catch (IOException e1) {
+            log.error(e1.toString());
+            e1.printStackTrace();
         }
-        tempStats = toWrite.toString();
     }
 
-    public void statSaver() throws IOException { //careful! this deletes the Session Stats. should be called upon ending program?
+    public void statSaver() { //careful! this deletes the Session Stats. should be called upon ending program?
         statCombiner();
-        Files.deleteIfExists(Paths.get(fileName));
-        FileWriter writer = new FileWriter(fileName, false);
-        writer.write(tempStats);
-        writer.close();
+        try {
+            Files.deleteIfExists(Paths.get(fileName));
+        } catch (IOException e1) {
+            log.error(e1.toString());
+            e1.printStackTrace();
+        }
+        try (FileWriter writer = new FileWriter(fileName, false)) {
+                writer.write(tempStats);
+        } catch (IOException e1) {
+            log.error(e1.toString());
+            e1.printStackTrace();
+        }
+
         tempCollection = new int[][]{{0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}};
         currentCollection = new int[][]{{0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}};
     }
 
-    private void statReset() throws IOException {
-        Files.deleteIfExists(Paths.get(fileName));
+    private void statReset() {
+        try {
+            Files.deleteIfExists(Paths.get(fileName));
+        } catch (IOException e1) {
+            log.error(e1.toString());
+            e1.printStackTrace();
+        }
         createInitialStatFile();
     }
 
@@ -114,7 +138,7 @@ public class Statistics {
         }
     }
 
-    public String getStats(boolean lifetime) throws IOException {
+    public String getStats(boolean lifetime) {
         int[][] array;
         String whatStats;
         if (lifetime) {
