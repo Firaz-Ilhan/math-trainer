@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.trainer.Exercise.Addition;
 import org.trainer.Exercise.Arithmetic;
+import org.trainer.Exercise.Multiplication;
 
 /**
  * Unit test for simple App.
@@ -27,5 +28,18 @@ public class AppTest {
     }
 
     /* -- Multiplication -- */
+    @Test public void test_multiplication_beginner() {
+        Arithmetic multi = new Multiplication("beginner");
+        Assert.assertTrue(multi.getSolution(multi.getTask()) >= -49 && multi.getSolution(multi.getTask()) <= 400);
+    }
 
+    @Test public void test_multiplication_medium() {
+        Arithmetic multi = new Multiplication("medium");
+        Assert.assertTrue(multi.getSolution(multi.getTask()) >= 1 && multi.getSolution(multi.getTask()) <= 361);
+    }
+
+    @Test public void test_multiplication_hard() {
+        Arithmetic multi = new Multiplication("hard");
+        Assert.assertTrue(multi.getSolution(multi.getTask()) >= 36 && multi.getSolution(multi.getTask()) <= 441);
+    }
 }
