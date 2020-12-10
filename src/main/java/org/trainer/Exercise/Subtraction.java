@@ -1,7 +1,10 @@
 package org.trainer.Exercise;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Subtraction extends Exercise implements Arithmetic {
 
+    final Logger log = LogManager.getLogger(Subtraction.class);
     private String difficulty;
 
     public Subtraction(String difficulty) {
@@ -41,6 +44,7 @@ public class Subtraction extends Exercise implements Arithmetic {
         rand2 = rand.nextInt((max - min) + 1) + min;
         diff = rand1 - rand2;
 
+        log.info(rand1 + " - " + rand2 + " = " + diff);
         return new int[]{rand1, rand2, diff};
     }
 

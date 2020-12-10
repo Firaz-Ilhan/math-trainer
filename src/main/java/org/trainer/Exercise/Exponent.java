@@ -1,7 +1,10 @@
 package org.trainer.Exercise;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Exponent extends Exercise implements Arithmetic {
 
+    final Logger log = LogManager.getLogger(Exponent.class);
     private String difficulty;
 
     public Exponent(String difficulty) {
@@ -38,11 +41,12 @@ public class Exponent extends Exercise implements Arithmetic {
         rand1 = rand.nextInt((max - min) + 1) + min;
 
         if (difficulty.equals("hard")) {
+            log.info(rand1 + rand1 + "^3" + " = " + rand1 * rand1 * rand1);
             return new int[]{rand1, rand1 * rand1 * rand1}; //^3
         } else {
+            log.info(rand1 + rand1 + "^2" + " = " + rand1 * rand1);
             return new int[]{rand1, rand1 * rand1}; //^2
         }
-
     }
 
     @Override

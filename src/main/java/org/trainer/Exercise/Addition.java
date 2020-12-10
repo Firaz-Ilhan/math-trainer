@@ -1,7 +1,10 @@
 package org.trainer.Exercise;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Addition extends Exercise implements Arithmetic {
 
+    final Logger log = LogManager.getLogger(Addition.class);
     private String difficulty;
 
     public Addition(String difficulty) {
@@ -41,8 +44,11 @@ public class Addition extends Exercise implements Arithmetic {
         rand2 = rand.nextInt((max - min) + 1) + min;
         sum = rand1 + rand2;
 
+        log.info(rand1 + " + " + rand2 + " = " + sum);
         return new int[]{rand1, rand2, sum};
     }
+
+
 
     @Override
     public String getRenderedTask(int[] task) {

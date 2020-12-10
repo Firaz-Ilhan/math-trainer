@@ -1,7 +1,10 @@
 package org.trainer.Exercise;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Multiplication extends Exercise implements Arithmetic {
 
+    final Logger log = LogManager.getLogger(Multiplication.class);
     private String difficulty;
 
     public Multiplication(String difficulty) {
@@ -42,6 +45,7 @@ public class Multiplication extends Exercise implements Arithmetic {
         rand2 = rand.nextInt((max - min) + 1) + min;
         product = rand1 * rand2;
 
+        log.info(rand1 + " * " + rand2 + " = " + product);
         return new int[]{rand1, rand2, product};
     }
 
