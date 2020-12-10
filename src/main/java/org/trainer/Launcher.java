@@ -1,10 +1,10 @@
 package org.trainer;
 
-import org.trainer.GUI.FxmlGuiDriver;
+import org.trainer.GUI.MainMenuController;
 
 public class Launcher {
 
     public static void main(String[] args) {
-        FxmlGuiDriver.main(args);
+        MainMenuController.main(args);
     }
 }
