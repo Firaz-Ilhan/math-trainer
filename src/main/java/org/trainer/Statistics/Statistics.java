@@ -25,6 +25,7 @@ public class Statistics {
     private void createInitialStatFile() {
         try(FileWriter initial = new FileWriter(fileName)) {
             initial.write("0 0 0 0 0 0 0 0 0 0 0 0 0 0");
+            log.info("Creating the default stat file");
         } catch(IOException e1) {
             log.error(e1.toString());
             e1.printStackTrace();
@@ -76,6 +77,7 @@ public class Statistics {
                 }
                 break;
         }
+        log.info("Adding a " + result + "completed" + taskType);
     }
 
     private void statCombiner() {
@@ -98,6 +100,7 @@ public class Statistics {
             log.error(e1.toString());
             e1.printStackTrace();
         }
+        log.info("");
     }
 
     public void statSaver() { //careful! this deletes the Session Stats. should be called upon ending program?
@@ -114,7 +117,7 @@ public class Statistics {
             log.error(e1.toString());
             e1.printStackTrace();
         }
-
+        log.info("Saving the current stats to lifetime stats");
         tempCollection = new int[][]{{0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}};
         currentCollection = new int[][]{{0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}};
     }
@@ -126,6 +129,7 @@ public class Statistics {
             log.error(e1.toString());
             e1.printStackTrace();
         }
+        log.info("Deleting the stats File");
         createInitialStatFile();
     }
 
@@ -150,7 +154,7 @@ public class Statistics {
             whatStats = "Current Stats:";
         }
 
-        return whatStats + "\n" +
+        String displayStats = whatStats + "\n" +
                 "Addition: " + percentStat(array, 0) + "% von " + array[0][0] + "\n" +
                 "Subtraction: " + percentStat(array, 1) + "% von " + array[1][0] + "\n" +
                 "Multiplication: " + percentStat(array, 2) + "% von " + array[2][0] + "\n" +
@@ -158,5 +162,7 @@ public class Statistics {
                 "Exponent: " + percentStat(array, 4) + "% von " + array[4][0] + "\n" +
                 "Root: " + percentStat(array, 5) + "% von " + array[5][0] + "\n" +
                 "OrderOfOperation: " + percentStat(array, 6) + "% von " + array[6][0];
+        log.info(displayStats);
+        return displayStats;
     }
 }

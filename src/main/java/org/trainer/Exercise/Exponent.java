@@ -52,9 +52,9 @@ public class Exponent extends Exercise implements Arithmetic {
     @Override
     public String getRenderedTask(int[] task) {
         if (difficulty.equals("hard")) {
-            return task[0] + "^" + 3;
+            return task[0] + "³";
         } else {
-            return task[0] + "^" + 2;
+            return task[0] + "²";
         }
     }
 }
