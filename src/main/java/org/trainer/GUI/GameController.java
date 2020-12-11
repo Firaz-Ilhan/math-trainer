@@ -8,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -55,7 +54,7 @@ public class GameController implements Initializable {
 
     private void typeLoader() {
         try {
-            String randomType = f1.getRandomType(true, true, true, true, true);
+            String randomType = f1.getRandomType(true, true, true, true, true, true);
             taskType = f1.getArithmetic(randomType, "beginner");
 
         } catch (IllegalFactoryArgument e1) {
