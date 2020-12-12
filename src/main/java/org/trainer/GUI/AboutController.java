@@ -6,19 +6,33 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 
+import java.awt.*;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AboutController extends Controller implements Initializable {
 
     @FXML
-    public GridPane root;
+    private GridPane root;
     @FXML
     private TextArea aboutTextArea;
 
     @FXML
-    public void openHome(ActionEvent actionEvent) {
+    private void openHome(ActionEvent actionEvent) {
         changeScene(MAIN_MENU_FXML, root);
+    }
+
+    @FXML
+    private void openGithubLink(ActionEvent actionEvent) {
+        try {
+            Desktop.getDesktop().browse(new URL("https://github.com/Firaz-Ilhan/math-trainer").toURI());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

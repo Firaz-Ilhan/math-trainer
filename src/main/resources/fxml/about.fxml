@@ -41,7 +41,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Hyperlink text="https://github.com/Firaz-Ilhan/math-trainer">
+            <Hyperlink onAction="#openGithubLink" text="https://github.com/Firaz-Ilhan/math-trainer">
                <font>
                   <Font size="15.0" />
                </font>
