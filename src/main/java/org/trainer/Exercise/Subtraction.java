@@ -44,7 +44,7 @@ public class Subtraction extends Exercise implements Arithmetic {
         rand2 = rand.nextInt((max - min) + 1) + min;
         diff = rand1 - rand2;
 
-        log.info(rand1 + " - " + rand2 + " = " + diff);
+        log.info(rand1 + "-" + rand2 + "=" + diff);
         return new int[]{rand1, rand2, diff};
     }
 

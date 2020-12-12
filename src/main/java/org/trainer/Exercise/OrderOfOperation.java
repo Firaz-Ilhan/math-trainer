@@ -46,7 +46,7 @@ public class OrderOfOperation extends Exercise implements Arithmetic {
         rand3 = rand.nextInt((max - min) + 1) + min;
         sum = rand1 + rand2 * rand3;
 
-        log.info(rand1 + " + " + rand2 + " * " + rand3 + " = " + sum);
+        log.info(rand1 + "+" + rand2 + "*" + rand3 + "=" + sum);
         return new int[]{rand1, rand2, rand3, sum};
     }
 

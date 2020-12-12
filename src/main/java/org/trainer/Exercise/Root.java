@@ -42,10 +42,10 @@ public class Root extends Exercise implements Arithmetic {
         rand1 = rand.nextInt((max - min) + 1) + min;
 
         if (difficulty.equals("hard")) {
-            log.info("³√" + rand1 * rand1 * rand1 + " = " + rand1);
+            log.info("³√" + rand1 * rand1 * rand1 + "=" + rand1);
             return new int[]{rand1 * rand1 * rand1, rand1}; //^3
         } else {
-            log.info("²√" + rand1 * rand1 + " = " + rand1);
+            log.info("²√" + rand1 * rand1 + "=" + rand1);
             return new int[]{rand1 * rand1, rand1}; //^2
         }
     }
