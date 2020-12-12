@@ -26,7 +26,7 @@ public class Main {
             System.out.println("enter 9999 to exit\n");
 
             do {
-                String randomType = f1.getRandomType(true, true, true, true, true, true);
+                String randomType = f1.getRandomType(true, true, true, true, true, true, true);
 
                 Arithmetic task = f1.getArithmetic(randomType, "medium");
 

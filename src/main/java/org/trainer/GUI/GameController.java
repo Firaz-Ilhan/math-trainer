@@ -55,7 +55,7 @@ public class GameController implements Initializable {
 
     private void typeLoader() {
         try {
-            String randomType = f1.getRandomType(true, true, true, true, true, true);
+            String randomType = f1.getRandomType(true, true, true, true, true, true, true);
             taskType = f1.getArithmetic(randomType, "beginner");
 
         } catch (IllegalFactoryArgument e1) {
