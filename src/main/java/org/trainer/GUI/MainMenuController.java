@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
@@ -19,10 +18,6 @@ public class MainMenuController extends Application {
 
     @FXML
     private VBox root;
-    @FXML
-    private Button aboutButton;
-    @FXML
-    private Button startGameButton;
 
     public static void main(String[] args) {
         launch(args);
