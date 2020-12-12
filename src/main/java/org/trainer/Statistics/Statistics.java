@@ -81,7 +81,7 @@ public class Statistics {
             log.info("Adding a correct answer to statistics\n");
         } else {
             log.info("Adding an incorrect answer to the statistics\n");
-        };
+        }
     }
 
     private void statCombiner() {
