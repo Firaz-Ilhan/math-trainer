@@ -1,8 +1,5 @@
 package org.trainer.GUI;
 
-import com.sun.glass.ui.Pixels;
-import com.sun.glass.ui.View;
-import com.sun.javafx.stage.EmbeddedWindow;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,8 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,15 +18,9 @@ public class MainMenuController extends Application {
     private final static Logger log = LogManager.getLogger(MainMenuController.class);
 
     @FXML
+    private VBox root;
+    @FXML
     private Button aboutButton;
-    @FXML
-    private ToggleGroup difficulty;
-    @FXML
-    private CheckBox additionCheckbox;
-    @FXML
-    private CheckBox subtractionCheckbox;
-    @FXML
-    private CheckBox multiplicationCheckbox;
     @FXML
     private Button startGameButton;
 
@@ -60,9 +50,10 @@ public class MainMenuController extends Application {
     private void openAbout(ActionEvent actionEvent) {
         try {
             final String fxmlFile = "/fxml/about.fxml";
-            Scene about = new Scene(FXMLLoader.load(getClass().getResource(fxmlFile)));
-            Stage stage = (Stage) aboutButton.getScene().getWindow();
-            stage.setScene(about);
+            Parent root2 = FXMLLoader.load(getClass().getResource(fxmlFile));
+            Scene scene = new Scene(root2, root.getWidth(), root.getHeight());
+            Stage stage = (Stage) root.getScene().getWindow();
+            stage.setScene(scene);
             stage.show();
             log.info("Switching to: " + fxmlFile);
         } catch (IOException e1) {
@@ -75,9 +66,10 @@ public class MainMenuController extends Application {
     private void startGame(ActionEvent actionEvent) {
         try {
             final String fxmlFile = "/fxml/game.fxml";
-            Scene game = new Scene(FXMLLoader.load(getClass().getResource(fxmlFile)));
-            Stage stage = (Stage) startGameButton.getScene().getWindow();
-            stage.setScene(game);
+            Parent root2 = FXMLLoader.load(getClass().getResource(fxmlFile));
+            Scene scene = new Scene(root2, root.getWidth(), root.getHeight());
+            Stage stage = (Stage) root.getScene().getWindow();
+            stage.setScene(scene);
             stage.show();
             log.info("Switching to: " + fxmlFile);
         } catch (IOException e1) {

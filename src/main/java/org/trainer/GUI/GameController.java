@@ -4,10 +4,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,6 +23,8 @@ import java.util.ResourceBundle;
 
 public class GameController implements Initializable {
 
+    @FXML
+    private GridPane root;
     @FXML
     private Button stopGameButton;
     @FXML
@@ -40,11 +44,11 @@ public class GameController implements Initializable {
     private void stopGame(ActionEvent actionEvent) {
         try {
             final String fxmlFile = "/fxml/main_menu.fxml";
-            Scene main_menu = new Scene(FXMLLoader.load(getClass().
-                    getResource(fxmlFile)));
-            Stage primaryStage = (Stage) stopGameButton.getScene().getWindow();
-            primaryStage.setScene(main_menu);
-            primaryStage.show();
+            Parent root2 = FXMLLoader.load(getClass().getResource(fxmlFile));
+            Scene scene = new Scene(root2, root.getWidth(), root.getHeight());
+            Stage stage = (Stage) root.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
             log.info("Switching to: " + fxmlFile);
         } catch (IOException e1) {
             log.error(e1.toString());

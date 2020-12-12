@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-  <GridPane prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.trainer.GUI.AboutController">
+<GridPane fx:id="root" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.trainer.GUI.AboutController">
       <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0" />
           <ColumnConstraints hgrow="SOMETIMES" />
