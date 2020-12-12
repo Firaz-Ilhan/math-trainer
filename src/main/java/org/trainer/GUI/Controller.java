@@ -1,5 +1,7 @@
 package org.trainer.GUI;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -17,6 +19,7 @@ public class Controller {
     final String MAIN_MENU_FXML = "/fxml/main_menu.fxml";
     final String ABOUT_FXML = "/fxml/about.fxml";
     final String GAME_FXML = "/fxml/game.fxml";
+    final String Statistics_FXML ="/fxml/statistics.fxml";
 
     public void changeScene(String fxmlFile, Pane root) {
         try {

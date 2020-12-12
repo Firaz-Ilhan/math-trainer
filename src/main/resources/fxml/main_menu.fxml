@@ -16,6 +16,11 @@
             <Font size="30.0" />
          </font>
       </Button>
+      <Button fx:id="statisticsButton" mnemonicParsing="false" onAction="#openStatistics" text="Statistics">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
       <Button fx:id="aboutButton" mnemonicParsing="false" onAction="#openAbout" text="About">
          <font>
             <Font size="30.0" />

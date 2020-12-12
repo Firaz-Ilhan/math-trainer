@@ -136,13 +136,29 @@ public class Statistics {
         createInitialStatFile();
     }
 
-    private int percentStat(int[][] arr, int pos) {
+    protected int percentStat(int[][] arr, int pos) {
         if (arr[pos][0] != 0) {
             float percent = ((float) arr[pos][1] / (float) arr[pos][0]) * 100;
             return Math.round(percent);
         } else {
             return 0;
         }
+    }
+
+    public int[] getPercentStats(boolean lifetime) {
+
+        int array[][];
+        int stats[] = new int[7];
+        if (lifetime) {
+            statCombiner();
+            array = tempCollection;
+        } else {
+            array = currentCollection;
+        }
+        for (int position = 0; position < 7; position++) {
+            stats[position] = percentStat(array, position);
+        }
+        return stats;
     }
 
     public String getStats(boolean lifetime) {
