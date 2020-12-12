@@ -77,7 +77,11 @@ public class Statistics {
                 }
                 break;
         }
-        log.info("Adding a " + result + "completed" + taskType);
+        if (result) {
+            log.info("Adding a correct answer to statistics\n");
+        } else {
+            log.info("Adding an incorrect answer to the statistics\n");
+        };
     }
 
     private void statCombiner() {
@@ -100,7 +104,6 @@ public class Statistics {
             log.error(e1.toString());
             e1.printStackTrace();
         }
-        log.info("");
     }
 
     public void statSaver() { //careful! this deletes the Session Stats. should be called upon ending program?
