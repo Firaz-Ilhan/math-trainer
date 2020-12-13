@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import org.trainer.Exercise.Arithmetic;
 import org.trainer.Exercise.Factory;
+import org.trainer.Statistics.Statistics;
 import org.trainer.exceptions.IllegalFactoryArgument;
 
 import java.net.URL;
@@ -25,7 +26,9 @@ public class GameController extends Controller implements Initializable {
     private Label gameModeratorAnswer;
 
     private final Factory f1 = new Factory();
+    private final Statistics statCollector = new Statistics();
     private Arithmetic taskType;
+    private String randomType;
     private int[] task;
 
     @FXML
@@ -35,7 +38,7 @@ public class GameController extends Controller implements Initializable {
 
     private void typeLoader() {
         try {
-            String randomType = f1.getRandomType(true, true, true, true, true, true, true);
+            randomType = f1.getRandomType(true, true, true, true, true, true, true);
             taskType = f1.getArithmetic(randomType, "beginner");
 
         } catch (IllegalFactoryArgument e1) {
@@ -60,6 +63,9 @@ public class GameController extends Controller implements Initializable {
             } else {
                 gameModeratorAnswer.setText(numericInput + " is NOT correct. Correct answer " + taskType.getSolution(task));
             }
+
+            statCollector.collector(randomType, taskType.checkSolution(task, numericInput));
+            statCollector.statSaver();
             typeLoader();
             displayTask();
             answerField.clear();
