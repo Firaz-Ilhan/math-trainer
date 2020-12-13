@@ -1,46 +1,28 @@
 package org.trainer.GUI;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.trainer.Statistics.Statistics;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class StatisticsController extends Statistics implements Initializable {
+public class StatisticsController extends Controller implements Initializable {
 
     int[] stats;
 
-    final Logger log = LogManager.getLogger(StatisticsController.class);
-
     @FXML
-    public GridPane root;
+    private GridPane root;
     @FXML
     private BarChart<String, Number> barchart;
 
     @FXML
     private void backMenu(ActionEvent actionEvent) {
-        try {
-            Parent root2 = FXMLLoader.load(getClass().getResource("/fxml/main_menu.fxml"));
-            Scene scene = new Scene(root2, root.getWidth(), root.getHeight());
-            Stage stage = (Stage) root.getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-            log.info("Switching to: " + "/fxml/main_menu.fxml");
-        } catch (IOException e1) {
-            log.error(e1.toString());
-            e1.printStackTrace();
-        }
+        changeScene(MAIN_MENU_FXML, root);
     }
 
     @Override
