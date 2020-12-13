@@ -51,16 +51,21 @@ public class GameController extends Controller implements Initializable {
 
     @FXML
     private void enterAnswer(ActionEvent actionEvent) {
-        int input = Integer.parseInt(answerField.getText());
 
-        if (taskType.checkSolution(task, input)) {
-            gameModeratorAnswer.setText(input + " is correct");
+        if (answerField.getText().matches("\\d+")) {
+            int numericInput = Integer.parseInt(answerField.getText());
+
+            if (taskType.checkSolution(task, numericInput)) {
+                gameModeratorAnswer.setText(numericInput + " is correct");
+            } else {
+                gameModeratorAnswer.setText(numericInput + " is NOT correct. Correct answer " + taskType.getSolution(task));
+            }
+            typeLoader();
+            displayTask();
+            answerField.clear();
         } else {
-            gameModeratorAnswer.setText(input + " is NOT correct. Correct answer " + taskType.getSolution(task));
+            gameModeratorAnswer.setText("Enter a number into the input field");
         }
-        typeLoader();
-        displayTask();
-        answerField.clear();
     }
 
     @Override
