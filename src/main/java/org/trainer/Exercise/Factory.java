@@ -15,7 +15,7 @@ public class Factory {
     public String getRandomType(boolean addition, boolean subtraction, boolean multiplication,
                                 boolean orderOfOperation, boolean exponent, boolean root, boolean division) {
 
-        ArrayList<String> typeList = new ArrayList<>(4);
+        ArrayList<String> typeList = new ArrayList<>(7);
 
         if (addition) {
             typeList.add("addition");
@@ -36,10 +36,12 @@ public class Factory {
         if (exponent) {
             typeList.add("exponent");
         }
+
         if (root) {
             typeList.add("root");
         }
-        if (root) {
+
+        if (division) {
             typeList.add("division");
         }
 
