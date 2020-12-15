@@ -1,9 +1,9 @@
 package org.trainer.GUI;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -20,13 +20,11 @@ import java.util.ResourceBundle;
 public class GameController extends Controller implements Initializable {
 
     @FXML
-    private Button enterButton;
-    @FXML
     private GridPane root;
     @FXML
     private Label taskLabel;
     @FXML
-    private TextField answerField;
+    public TextField answerField;
     @FXML
     private Label gameModeratorAnswer;
 
@@ -86,9 +84,9 @@ public class GameController extends Controller implements Initializable {
         }
     }
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         displayTask();
+        Platform.runLater(() -> answerField.requestFocus());
     }
 }
