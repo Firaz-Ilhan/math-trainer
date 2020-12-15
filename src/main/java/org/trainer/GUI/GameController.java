@@ -3,8 +3,11 @@ package org.trainer.GUI;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import org.trainer.Exercise.Arithmetic;
 import org.trainer.Exercise.Factory;
@@ -16,6 +19,8 @@ import java.util.ResourceBundle;
 
 public class GameController extends Controller implements Initializable {
 
+    @FXML
+    private Button enterButton;
     @FXML
     private GridPane root;
     @FXML
@@ -53,9 +58,9 @@ public class GameController extends Controller implements Initializable {
     }
 
     @FXML
-    private void enterAnswer(ActionEvent actionEvent) {
+    private void enterAnswer() {
 
-        if (answerField.getText().matches("\\d+")) {
+        if (answerField.getText().matches("-?[0-9]{0,10}")) {
             int numericInput = Integer.parseInt(answerField.getText());
 
             if (taskType.checkSolution(task, numericInput)) {
@@ -73,6 +78,14 @@ public class GameController extends Controller implements Initializable {
             gameModeratorAnswer.setText("Enter a number into the input field");
         }
     }
+
+    @FXML
+    private void onKeyPressedEnter(KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            enterAnswer();
+        }
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

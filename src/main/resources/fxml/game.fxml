@@ -27,17 +27,17 @@
       </Button>
       <Label fx:id="taskLabel" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
-            <Font size="30.0" />
+            <Font size="42.0" />
          </font>
       </Label>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
          <children>
-            <TextField fx:id="answerField" prefHeight="31.0" prefWidth="80.0">
+            <TextField fx:id="answerField" onKeyPressed="#onKeyPressedEnter" prefHeight="31.0" prefWidth="80.0">
                <font>
                   <Font size="15.0" />
                </font>
             </TextField>
-            <Button mnemonicParsing="false" onAction="#enterAnswer" text="Enter">
+            <Button fx:id="enterButton" mnemonicParsing="false" onAction="#enterAnswer" text="Enter">
                <font>
                   <Font size="15.0" />
                </font>
