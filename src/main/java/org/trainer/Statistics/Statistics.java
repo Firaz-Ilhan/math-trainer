@@ -3,8 +3,13 @@ package org.trainer.Statistics;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Scanner;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.trainer.Exercise.Arithmetic;
+import org.trainer.Exercise.Factory;
+import org.trainer.exceptions.IllegalFactoryArgument;
 
 //currently stats for add sub mul div exp root ordOfOp
 public class Statistics {
@@ -13,6 +18,24 @@ public class Statistics {
     private final String fileName = "stats.txt";
     private String tempStats;
     private final Logger log = LogManager.getLogger(Statistics.class);
+
+    //for testing
+    public static void main(String[] args) throws IllegalFactoryArgument {
+        Statistics statCollector = new Statistics();
+        Factory f1 = new Factory();
+        Scanner scanner = new Scanner(System.in);
+
+        Arithmetic task0 = f1.getArithmetic("addition", "beginner");
+        System.out.println(task0.getRenderedTask(task0.getTask()));
+        int userInput0 = scanner.nextInt();
+        statCollector.collector("addition", task0.checkSolution(task0.getTask(), userInput0));
+
+        Arithmetic task1 = f1.getArithmetic("addition", "beginner");
+        System.out.println(task1.getRenderedTask(task1.getTask()));
+        int userInput1 = scanner.nextInt();
+        statCollector.collector("addition", task1.checkSolution(task1.getTask(), userInput1));
+        statCollector.statSaver();
+    }
 
     public Statistics() {
         currentCollection = new int[][]{{0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}};
@@ -108,12 +131,6 @@ public class Statistics {
 
     public void statSaver() { //careful! this deletes the Session Stats. should be called upon ending program?
         statCombiner();
-        try {
-            Files.deleteIfExists(Paths.get(fileName));
-        } catch (IOException e1) {
-            log.error(e1.toString());
-            e1.printStackTrace();
-        }
         try (FileWriter writer = new FileWriter(fileName, false)) {
                 writer.write(tempStats);
         } catch (IOException e1) {
@@ -147,8 +164,8 @@ public class Statistics {
 
     public int[] getPercentStats(boolean lifetime) {
 
-        int array[][];
-        int stats[] = new int[7];
+        int[][] array;
+        int[] stats = new int[7];
         if (lifetime) {
             statCombiner();
             array = tempCollection;
