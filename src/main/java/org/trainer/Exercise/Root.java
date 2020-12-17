@@ -31,12 +31,12 @@ public class Root extends Exercise implements Arithmetic {
                 min = 1;
                 break;
             case "medium":
-                max = 12;
-                min = 1;
+                max = 20;
+                min = 8;
                 break;
             case "hard":
-                max = 10;
-                min = 1;
+                max = 15;
+                min = 3;
                 break;
         }
         rand1 = rand.nextInt((max - min) + 1) + min;
