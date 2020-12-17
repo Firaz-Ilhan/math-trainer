@@ -18,6 +18,7 @@ public class Controller {
     final String ABOUT_FXML = "/fxml/about.fxml";
     final String GAME_FXML = "/fxml/game.fxml";
     final String Statistics_FXML = "/fxml/statistics.fxml";
+    final String SETTING_FXML = "/fxml/setting.fxml";
 
     public void changeScene(String fxmlFile, Pane root) {
         try {

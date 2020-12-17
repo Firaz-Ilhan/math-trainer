@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<GridPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.trainer.GUI.SettingController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints vgrow="SOMETIMES" />
+    <RowConstraints vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" GridPane.rowIndex="1">
+         <children>
+            <CheckBox fx:id="additionCheckbox" mnemonicParsing="false" selected="true" text="Addition">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="subtractionCheckbox" mnemonicParsing="false" selected="true" text="Subtraction">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="multiplicationCheckbox" mnemonicParsing="false" selected="true" text="Multiplication">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="divisionCheckbox" mnemonicParsing="false" text="Division">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="orderOfOperationCheckbox" mnemonicParsing="false" selected="true" text="Order of operation">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="exponentCheckbox" mnemonicParsing="false" text="Exponent">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="rootCheckbox" mnemonicParsing="false" text="Root">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+         </children>
+         <padding>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+         </padding>
+      </VBox>
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <children>
+            <RadioButton fx:id="beginnerRadioButton" mnemonicParsing="false" selected="true" text="Beginner">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="difficulty" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="mediumRadioButton" mnemonicParsing="false" text="Medium" toggleGroup="$difficulty">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="hardRadioButton" mnemonicParsing="false" text="Hard" toggleGroup="$difficulty">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </RadioButton>
+         </children>
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+         <padding>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+         </padding>
+      </VBox>
+      <Button mnemonicParsing="false" onAction="#openMenu" text="Main Menu" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button mnemonicParsing="false" onAction="#startGame" text="Start Game" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+   </children>
+</GridPane>
