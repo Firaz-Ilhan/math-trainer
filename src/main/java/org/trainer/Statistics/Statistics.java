@@ -159,7 +159,7 @@ public class Statistics {
         createInitialStatFile();
     }
 
-    private int percentStat(int[][] arr, int pos) {
+    public int percentStat(int[][] arr, int pos) {
         if (arr[pos][0] != 0) {
             float percent = ((float) arr[pos][1] / (float) arr[pos][0]) * 100;
             return Math.round(percent);

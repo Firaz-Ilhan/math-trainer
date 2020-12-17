@@ -62,5 +62,12 @@ public class StatisticsTest {
     }
 
     @Test
-    public void test_getPercent(){}
+    public void test_percentStat(){
+        Statistics statsPercent = new Statistics();
+        int[][] arr = new int[][]{{2,1},{1,1},{3,1},{3,2}};
+        Assert.assertEquals(50,statsPercent.percentStat(arr,0));
+        Assert.assertEquals(100,statsPercent.percentStat(arr,1));
+        Assert.assertEquals(33,statsPercent.percentStat(arr,2));
+        Assert.assertEquals(67,statsPercent.percentStat(arr,3));
+    }
 }
