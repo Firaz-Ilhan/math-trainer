@@ -24,9 +24,9 @@
       <RowConstraints minHeight="10.0" percentHeight="5.0" prefHeight="30.0" vgrow="SOMETIMES" />
       </rowConstraints>
       <children>
-          <Button fx:id="aboutToHomeButton" mnemonicParsing="false" onAction="#openHome" text="Go back" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+          <Button fx:id="aboutToHomeButton" mnemonicParsing="false" onAction="#openHome" text="Main Menu" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <font>
-            <Font size="15.0" />
+            <Font size="16.0" />
          </font>
       </Button>
       <TextArea fx:id="aboutTextArea" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
