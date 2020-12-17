@@ -39,6 +39,7 @@ public class Root extends Exercise implements Arithmetic {
                 min = 3;
                 break;
         }
+
         rand1 = rand.nextInt((max - min) + 1) + min;
 
         if (difficulty.equals("hard")) {
