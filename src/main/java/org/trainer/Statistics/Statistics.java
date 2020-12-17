@@ -107,10 +107,15 @@ public class Statistics {
         }
     }
 
+    public int[][] getCurrentCollection() {
+        return currentCollection;
+    }
+
     private void statCombiner() {
         try(BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String fileContent = reader.readLine();
             reader.close();
+            log.info("Current stats: " + fileContent);
             String[] splitFileContent = fileContent.split(" ");
             int counter = 0;
             StringBuilder toWrite = new StringBuilder();
@@ -123,6 +128,7 @@ public class Statistics {
                 }
             }
             tempStats = toWrite.toString();
+            log.info("Saved stats:   " + tempStats);
         } catch (IOException e1) {
             log.error(e1.toString());
             e1.printStackTrace();
