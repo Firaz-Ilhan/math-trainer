@@ -5,8 +5,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.trainer.Exercise.*;
 
-import java.util.OptionalDouble;
-
 /**
  * Unit test for simple App.
  */
