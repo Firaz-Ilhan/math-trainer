@@ -27,16 +27,17 @@ public class Exponent extends Exercise implements Arithmetic {
 
         switch (difficulty) {
             case "beginner":
+                max = 10;
+                min = 1;
+                break;
+            case "medium":
+                max = 20;
+                min = 10;
+                break;
             case "hard":
                 max = 10;
                 min = 1;
                 break;
-
-            case "medium":
-                max = 12;
-                min = 1;
-                break;
-
         }
         rand1 = rand.nextInt((max - min) + 1) + min;
 
