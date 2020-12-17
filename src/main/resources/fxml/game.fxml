@@ -32,7 +32,7 @@
       </Label>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
          <children>
-            <TextField fx:id="answerField" onKeyPressed="#onKeyPressedEnter" prefHeight="31.0" prefWidth="80.0">
+            <TextField fx:id="answerField" prefHeight="31.0" prefWidth="80.0">
                <font>
                   <Font size="15.0" />
                </font>

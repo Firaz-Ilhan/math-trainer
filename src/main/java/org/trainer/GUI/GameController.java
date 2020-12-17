@@ -7,7 +7,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import org.trainer.Exercise.Arithmetic;
 import org.trainer.Exercise.Factory;
@@ -77,16 +76,15 @@ public class GameController extends Controller implements Initializable {
         }
     }
 
-    @FXML
-    private void onKeyPressedEnter(KeyEvent keyEvent) {
-        if (keyEvent.getCode() == KeyCode.ENTER) {
-            enterAnswer();
-        }
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         displayTask();
         Platform.runLater(() -> answerField.requestFocus());
+
+        answerField.setOnKeyPressed((event) -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                enterAnswer();
+            }
+        });
     }
 }
