@@ -1,7 +1,6 @@
 package org.trainer.GUI;
 
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -34,7 +33,7 @@ public class GameController extends Controller implements Initializable {
     private int[] task;
 
     @FXML
-    private void stopGame(ActionEvent actionEvent) {
+    private void stopGame() {
         changeScene(MAIN_MENU_FXML, root);
     }
 
@@ -84,6 +83,10 @@ public class GameController extends Controller implements Initializable {
         answerField.setOnKeyPressed((event) -> {
             if (event.getCode() == KeyCode.ENTER) {
                 enterAnswer();
+            }
+
+            if (event.getCode() == KeyCode.ESCAPE) {
+                stopGame();
             }
         });
     }

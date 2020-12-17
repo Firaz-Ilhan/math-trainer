@@ -20,8 +20,8 @@ public class MainMenuController extends Controller {
     }
 
     @FXML
-    private void startGame(ActionEvent actionEvent) {
-        changeScene(GAME_FXML, root);
+    private void newGame(ActionEvent actionEvent) {
+        changeScene(SETTING_FXML, root);
     }
 
 }
