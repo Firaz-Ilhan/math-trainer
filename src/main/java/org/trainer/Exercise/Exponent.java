@@ -39,6 +39,7 @@ public class Exponent extends Exercise implements Arithmetic {
                 min = 1;
                 break;
         }
+
         rand1 = rand.nextInt((max - min) + 1) + min;
 
         if (difficulty.equals("hard")) {
