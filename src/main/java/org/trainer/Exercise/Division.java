@@ -17,11 +17,6 @@ public class Division extends Exercise implements Arithmetic {
     }
 
     @Override
-    public void setDifficulty(String difficulty) {
-        this.difficulty = difficulty;
-    }
-
-    @Override
     public int[] getTask() {
         int max = 0, min = 0, rand1, rand2, product;
 

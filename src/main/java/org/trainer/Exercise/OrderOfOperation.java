@@ -18,11 +18,6 @@ public class OrderOfOperation extends Exercise implements Arithmetic {
     }
 
     @Override
-    public void setDifficulty(String difficulty) {
-        this.difficulty = difficulty.toLowerCase();
-    }
-
-    @Override
     public int[] getTask() {
         int max = 0, min = 0, rand1, rand2, rand3, sum;
 

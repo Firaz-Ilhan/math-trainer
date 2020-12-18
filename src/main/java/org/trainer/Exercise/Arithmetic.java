@@ -4,8 +4,6 @@ public interface Arithmetic {
 
     String getDifficulty();
 
-    void setDifficulty(String difficulty);
-
     int[] getTask();
 
     String getRenderedTask(int[] task);
