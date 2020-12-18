@@ -2,16 +2,9 @@ package org.trainer;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.trainer.Exercise.Arithmetic;
-import org.trainer.Exercise.Factory;
-import org.trainer.Statistics.Statistics;
-import org.trainer.exceptions.IllegalFactoryArgument;
+import org.trainer.statistics.Statistics;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.Scanner;
 
 public class StatisticsTest {
 

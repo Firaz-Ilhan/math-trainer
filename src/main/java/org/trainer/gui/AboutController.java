@@ -1,4 +1,4 @@
-package org.trainer.GUI;
+package org.trainer.gui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

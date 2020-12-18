@@ -1,14 +1,13 @@
-package org.trainer.Exercise;
-
+package org.trainer.exercise;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class OrderOfOperation extends Exercise implements Arithmetic {
+public class Subtraction extends Exercise implements Arithmetic {
 
-    final Logger log = LogManager.getLogger(OrderOfOperation.class);
+    final Logger log = LogManager.getLogger(Subtraction.class);
     private String difficulty;
 
-    public OrderOfOperation(String difficulty) {
+    public Subtraction(String difficulty) {
         this.difficulty = difficulty.toLowerCase();
     }
 
@@ -19,34 +18,33 @@ public class OrderOfOperation extends Exercise implements Arithmetic {
 
     @Override
     public int[] getTask() {
-        int max = 0, min = 0, rand1, rand2, rand3, sum;
+        int max = 0, min = 0, rand1, rand2, diff;
 
         switch (difficulty) {
             case "beginner":
-                max = 10;
+                max = 20;
                 min = 1;
                 break;
             case "medium":
-                max = 15;
-                min = 11;
+                max = 30;
+                min = 20;
                 break;
             case "hard":
-                max = 20;
-                min = 16;
+                max = 40;
+                min = 30;
                 break;
         }
 
         rand1 = rand.nextInt((max - min) + 1) + min;
         rand2 = rand.nextInt((max - min) + 1) + min;
-        rand3 = rand.nextInt((max - min) + 1) + min;
-        sum = rand1 + rand2 * rand3;
+        diff = rand1 - rand2;
 
-        log.info(rand1 + "+" + rand2 + "*" + rand3 + "=" + sum);
-        return new int[]{rand1, rand2, rand3, sum};
+        log.info(rand1 + "-" + rand2 + "=" + diff);
+        return new int[]{rand1, rand2, diff};
     }
 
     @Override
     public String getRenderedTask(int[] task) {
-        return task[0] + "+" + task[1] + "*" + task[2];
+        return task[0] + "-" + task[1];
     }
 }

@@ -1,6 +1,6 @@
 package org.trainer;
 
-import org.trainer.GUI.FxmlGuiDriver;
+import org.trainer.gui.FxmlGuiDriver;
 
 public class Launcher {
 

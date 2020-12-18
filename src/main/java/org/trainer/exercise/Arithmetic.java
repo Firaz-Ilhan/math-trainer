@@ -1,4 +1,4 @@
-package org.trainer.Exercise;
+package org.trainer.exercise;
 
 public interface Arithmetic {
 

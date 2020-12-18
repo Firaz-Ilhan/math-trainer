@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane fx:id="root" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.trainer.GUI.StatisticsController">
+<GridPane fx:id="root" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.trainer.gui.StatisticsController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0" />
         <ColumnConstraints hgrow="SOMETIMES" />

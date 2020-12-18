@@ -1,4 +1,4 @@
-package org.trainer.Exercise;
+package org.trainer.exercise;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

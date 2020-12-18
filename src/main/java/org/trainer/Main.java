@@ -2,9 +2,9 @@ package org.trainer;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.trainer.Exercise.Arithmetic;
-import org.trainer.Exercise.Factory;
-import org.trainer.Statistics.Statistics;
+import org.trainer.exercise.Arithmetic;
+import org.trainer.exercise.Factory;
+import org.trainer.statistics.Statistics;
 import org.trainer.exceptions.IllegalFactoryArgument;
 
 import java.io.IOException;

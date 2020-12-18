@@ -1,15 +1,18 @@
-package org.trainer.Statistics;
-
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Scanner;
+package org.trainer.statistics;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.trainer.Exercise.Arithmetic;
-import org.trainer.Exercise.Factory;
 import org.trainer.exceptions.IllegalFactoryArgument;
+import org.trainer.exercise.Arithmetic;
+import org.trainer.exercise.Factory;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Scanner;
 
 //currently stats for add sub mul div exp root ordOfOp
 public class Statistics {
@@ -46,10 +49,10 @@ public class Statistics {
     }
 
     private void createInitialStatFile() {
-        try(FileWriter initial = new FileWriter(fileName)) {
+        try (FileWriter initial = new FileWriter(fileName)) {
             initial.write("0 0 0 0 0 0 0 0 0 0 0 0 0 0");
             log.info("Creating the default stat file");
-        } catch(IOException e1) {
+        } catch (IOException e1) {
             log.error(e1.toString());
             e1.printStackTrace();
         }
@@ -112,7 +115,7 @@ public class Statistics {
     }
 
     private void statCombiner() {
-        try(BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String fileContent = reader.readLine();
             reader.close();
             log.info("Current stats: " + fileContent);
@@ -138,7 +141,7 @@ public class Statistics {
     public void statSaver() { //careful! this deletes the Session Stats. should be called upon ending program?
         statCombiner();
         try (FileWriter writer = new FileWriter(fileName, false)) {
-                writer.write(tempStats);
+            writer.write(tempStats);
         } catch (IOException e1) {
             log.error(e1.toString());
             e1.printStackTrace();

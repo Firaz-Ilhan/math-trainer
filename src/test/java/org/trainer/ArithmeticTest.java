@@ -2,7 +2,7 @@ package org.trainer;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.trainer.Exercise.*;
+import org.trainer.exercise.*;
 
 /**
  * Unit test for simple App.

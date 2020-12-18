@@ -1,4 +1,4 @@
-package org.trainer.GUI;
+package org.trainer.gui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -6,7 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.layout.GridPane;
-import org.trainer.Statistics.Statistics;
+import org.trainer.statistics.Statistics;
 
 import java.net.URL;
 import java.util.ResourceBundle;

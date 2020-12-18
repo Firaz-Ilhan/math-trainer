@@ -1,13 +1,13 @@
-package org.trainer.Exercise;
+package org.trainer.exercise;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Subtraction extends Exercise implements Arithmetic {
+public class Division extends Exercise implements Arithmetic {
 
-    final Logger log = LogManager.getLogger(Subtraction.class);
+    final Logger log = LogManager.getLogger(Division.class);
     private String difficulty;
 
-    public Subtraction(String difficulty) {
+    public Division(String difficulty) {
         this.difficulty = difficulty.toLowerCase();
     }
 
@@ -18,33 +18,34 @@ public class Subtraction extends Exercise implements Arithmetic {
 
     @Override
     public int[] getTask() {
-        int max = 0, min = 0, rand1, rand2, diff;
+        int max = 0, min = 0, rand1, rand2, product;
 
         switch (difficulty) {
             case "beginner":
-                max = 20;
+                max = 10;
                 min = 1;
                 break;
             case "medium":
-                max = 30;
-                min = 20;
+                max = 12;
+                min = 6;
                 break;
             case "hard":
-                max = 40;
-                min = 30;
+                max = 15;
+                min = 10;
                 break;
+
         }
 
         rand1 = rand.nextInt((max - min) + 1) + min;
         rand2 = rand.nextInt((max - min) + 1) + min;
-        diff = rand1 - rand2;
+        product = rand1 * rand2;
 
-        log.info(rand1 + "-" + rand2 + "=" + diff);
-        return new int[]{rand1, rand2, diff};
+        log.info(product + "/" + rand1 + "=" + rand2);
+        return new int[]{product, rand1, rand2};
     }
 
     @Override
     public String getRenderedTask(int[] task) {
-        return task[0] + "-" + task[1];
+        return task[0] + "/" + task[1];
     }
 }

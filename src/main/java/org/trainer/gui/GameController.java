@@ -1,4 +1,4 @@
-package org.trainer.GUI;
+package org.trainer.gui;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -7,10 +7,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
-import org.trainer.Exercise.Arithmetic;
-import org.trainer.Exercise.Factory;
-import org.trainer.Statistics.Statistics;
 import org.trainer.exceptions.IllegalFactoryArgument;
+import org.trainer.exercise.Arithmetic;
+import org.trainer.exercise.Factory;
+import org.trainer.statistics.Statistics;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -56,7 +56,7 @@ public class GameController extends Controller implements Initializable {
     @FXML
     private void enterAnswer() {
 
-        if (answerField.getText().matches("-?[0-9]{0,10}")) {
+        if (answerField.getText().matches("-?[0-9]{0,10}") && !answerField.getText().isEmpty()) {
             int numericInput = Integer.parseInt(answerField.getText());
 
             if (taskType.checkSolution(task, numericInput)) {
