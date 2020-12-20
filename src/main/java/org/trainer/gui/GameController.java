@@ -39,6 +39,7 @@ public class GameController extends Controller implements Initializable {
 
     @FXML
     private void stopGame() {
+        statCollector.statSaver();
         changeScene(MAIN_MENU_FXML, root);
     }
 
@@ -71,7 +72,6 @@ public class GameController extends Controller implements Initializable {
             }
 
             statCollector.collector(randomType, taskType.checkSolution(task, numericInput));
-            statCollector.statSaver();
             typeLoader();
             displayTask();
             answerField.clear();

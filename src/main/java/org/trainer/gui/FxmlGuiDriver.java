@@ -32,5 +32,9 @@ public class FxmlGuiDriver extends Application {
         stage.setTitle("Math Trainer");
         stage.setScene(scene);
         stage.show();
+
+        log.info("OS: " + System.getProperty("os.name") + " " + System.getProperty("os.arch"));
+        log.info("JRE version: " + System.getProperty("java.version"));
+        log.info("JavaFX version: " + System.getProperty("javafx.version"));
     }
 }

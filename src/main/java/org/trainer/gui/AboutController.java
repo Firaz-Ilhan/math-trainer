@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
 import java.io.IOException;
@@ -13,6 +15,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AboutController extends Controller implements Initializable {
+
+    private static final Logger log = LogManager.getLogger(AboutController.class);
 
     @FXML
     private GridPane root;
@@ -28,9 +32,9 @@ public class AboutController extends Controller implements Initializable {
     private void openGithubLink(ActionEvent actionEvent) {
         try {
             Desktop.getDesktop().browse(new URL("https://github.com/Firaz-Ilhan/math-trainer").toURI());
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (URISyntaxException e) {
+            log.info("User opened github repository");
+        } catch (URISyntaxException | IOException e) {
+            log.error(e.toString());
             e.printStackTrace();
         }
     }
