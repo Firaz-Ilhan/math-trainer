@@ -22,8 +22,9 @@ public class Controller {
 
     public void changeScene(String fxmlFile, Pane root) {
         try {
-            Parent root2 = FXMLLoader.load(getClass().getResource(fxmlFile));
-            Scene scene = new Scene(root2, root.getWidth(), root.getHeight());
+            final FXMLLoader loader = new FXMLLoader();
+            final Parent root2 = loader.load(getClass().getResource(fxmlFile));
+            final Scene scene = new Scene(root2, root.getWidth(), root.getHeight());
             Stage stage = (Stage) root.getScene().getWindow();
             stage.setScene(scene);
             stage.show();
@@ -33,5 +34,4 @@ public class Controller {
             e1.printStackTrace();
         }
     }
-
 }

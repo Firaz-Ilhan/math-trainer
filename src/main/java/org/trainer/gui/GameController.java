@@ -31,6 +31,11 @@ public class GameController extends Controller implements Initializable {
     private Arithmetic taskType;
     private String randomType;
     private int[] task;
+    private String difficulty;
+
+    public void initDifficulty(String selectedDifficulty) {
+        this.difficulty = selectedDifficulty;
+    }
 
     @FXML
     private void stopGame() {
@@ -40,7 +45,7 @@ public class GameController extends Controller implements Initializable {
     private void typeLoader() {
         try {
             randomType = f1.getRandomType(true, true, true, true, true, true, true);
-            taskType = f1.getArithmetic(randomType, "beginner");
+            taskType = f1.getArithmetic(randomType, difficulty);
 
         } catch (IllegalFactoryArgument e1) {
             e1.printStackTrace();
@@ -77,8 +82,8 @@ public class GameController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        displayTask();
         Platform.runLater(() -> answerField.requestFocus());
+        Platform.runLater(() -> displayTask());
 
         answerField.setOnKeyPressed((event) -> {
             if (event.getCode() == KeyCode.ENTER) {
