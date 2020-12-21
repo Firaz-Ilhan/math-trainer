@@ -12,8 +12,10 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.trainer.exercise.ArithmeticType;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class SettingController extends Controller {
 
@@ -27,9 +29,6 @@ public class SettingController extends Controller {
             orderOfOperationCheckbox, exponentCheckbox, rootCheckbox;
 
     @FXML
-    private RadioButton beginnerRadioButton, mediumRadioButton, hardRadioButton;
-
-    @FXML
     private ToggleGroup difficulty;
 
     private String getSelectedDifficulty() {
@@ -37,6 +36,34 @@ public class SettingController extends Controller {
         String toggleGroupValue = selectedRadioButton.getText();
         log.info("User selected difficulty: " + toggleGroupValue);
         return toggleGroupValue;
+    }
+
+    private ArrayList<String> getSelectedTypes() {
+
+        ArrayList<String> result = new ArrayList<>(7);
+
+        if (additionCheckbox.isSelected()) {
+            result.add(ArithmeticType.ADDITION.toString());
+        }
+        if (subtractionCheckbox.isSelected()) {
+            result.add(ArithmeticType.SUBTRACTION.toString());
+        }
+        if (multiplicationCheckbox.isSelected()) {
+            result.add(ArithmeticType.MULTIPLICATION.toString());
+        }
+        if (divisionCheckbox.isSelected()) {
+            result.add(ArithmeticType.DIVISION.toString());
+        }
+        if (orderOfOperationCheckbox.isSelected()) {
+            result.add(ArithmeticType.ORDER_OF_OPERATION.toString());
+        }
+        if (exponentCheckbox.isSelected()) {
+            result.add(ArithmeticType.EXPONENT.toString());
+        }
+        if (rootCheckbox.isSelected()) {
+            result.add(ArithmeticType.ROOT.toString());
+        }
+        return result;
     }
 
     @FXML
@@ -56,10 +83,11 @@ public class SettingController extends Controller {
 
             final GameController gameController = loader.getController();
             gameController.initDifficulty(getSelectedDifficulty());
+            gameController.initTypes(getSelectedTypes());
 
             stage.setScene(scene);
             stage.show();
-            log.info("Switching to: " + GAME_FXML + "and passing parameters");
+            log.info("Switching to: " + GAME_FXML + " and passing parameters");
         } catch (IOException e1) {
             log.error(e1.toString());
             e1.printStackTrace();

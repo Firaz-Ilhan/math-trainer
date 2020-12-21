@@ -14,6 +14,7 @@ import org.trainer.exercise.Factory;
 import org.trainer.statistics.Statistics;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -34,6 +35,7 @@ public class GameController extends Controller implements Initializable {
     private final Factory f1 = new Factory();
     private final Statistics statCollector = new Statistics();
     private Arithmetic taskType;
+    private ArrayList<String> ArithmeticType;
     private String randomType;
     private int[] task;
     private String difficulty;
@@ -46,6 +48,10 @@ public class GameController extends Controller implements Initializable {
         this.difficulty = selectedDifficulty;
     }
 
+    public void initTypes(ArrayList<String> ArithmeticType) {
+        this.ArithmeticType = ArithmeticType;
+    }
+
     @FXML
     private void stopGame() {
         statCollector.statSaver();
@@ -54,7 +60,7 @@ public class GameController extends Controller implements Initializable {
 
     private void typeLoader() {
         try {
-            randomType = f1.getRandomType(true, true, true, true, true, true, true);
+            randomType = f1.getRandomType(ArithmeticType);
             taskType = f1.getArithmetic(randomType, difficulty);
 
         } catch (IllegalFactoryArgument e1) {

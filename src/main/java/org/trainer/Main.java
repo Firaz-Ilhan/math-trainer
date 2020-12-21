@@ -8,6 +8,8 @@ import org.trainer.statistics.Statistics;
 import org.trainer.exceptions.IllegalFactoryArgument;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -25,8 +27,12 @@ public class Main {
 
             System.out.println("enter 9999 to exit\n");
 
+            ArrayList<String> type = new ArrayList<>(7);
+            type.add("addition");
+            type.add("subtraction");
+
             do {
-                String randomType = f1.getRandomType(true, true, true, true, true, true, true);
+                String randomType = f1.getRandomType(type);
 
                 Arithmetic task = f1.getArithmetic(randomType, "medium");
 
