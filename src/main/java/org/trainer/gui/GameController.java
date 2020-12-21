@@ -103,13 +103,13 @@ public class GameController extends Controller implements Initializable {
                 stopGame();
             }
         });
-        MyTask myTask = new MyTask();
+        Clock myTask = new Clock();
         Timer timer = new Timer(true);
         timer.scheduleAtFixedRate(myTask, 0 , 1000);
         setTimer.textProperty().bind(text);
     }
 
-    private class MyTask extends TimerTask implements Runnable {
+    private class Clock extends TimerTask implements Runnable {
 
         @Override
         public void run() {
