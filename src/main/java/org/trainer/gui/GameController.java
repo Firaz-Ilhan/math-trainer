@@ -1,6 +1,7 @@
 package org.trainer.gui;
 
 import javafx.application.Platform;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -14,6 +15,8 @@ import org.trainer.statistics.Statistics;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class GameController extends Controller implements Initializable {
 
@@ -25,6 +28,8 @@ public class GameController extends Controller implements Initializable {
     public TextField answerField;
     @FXML
     private Label gameModeratorAnswer;
+    @FXML
+    private Label setTimer;
 
     private final Factory f1 = new Factory();
     private final Statistics statCollector = new Statistics();
@@ -32,6 +37,10 @@ public class GameController extends Controller implements Initializable {
     private String randomType;
     private int[] task;
     private String difficulty;
+    private SimpleStringProperty text = new SimpleStringProperty("undifined");
+    private int seconds;
+    private int minutes;
+    private int hours;
 
     public void initDifficulty(String selectedDifficulty) {
         this.difficulty = selectedDifficulty;
@@ -94,5 +103,40 @@ public class GameController extends Controller implements Initializable {
                 stopGame();
             }
         });
+        MyTask myTask = new MyTask();
+        Timer timer = new Timer(true);
+        timer.scheduleAtFixedRate(myTask, 0 , 1000);
+        setTimer.textProperty().bind(text);
+    }
+
+    private class MyTask extends TimerTask implements Runnable {
+
+        @Override
+        public void run() {
+            seconds++;
+            if (seconds == 60) {
+                seconds = 0;
+                minutes++;
+            }
+            if (minutes == 60) {
+                minutes = 0;
+                hours++;
+            }
+            Platform.runLater(() -> {
+                text.set(addingNull(minutes) + ":" + addingNull(seconds));
+                if (hours != 0) {
+                    text.set(addingNull(hours) + ":" + addingNull(minutes) + ":" + addingNull(seconds));
+                }
+            });
+        }
+    }
+    private String addingNull(int num) {
+        String resultText;
+        if (Integer.toString(num).length() == 1) {
+            resultText =  "0" + num;
+        } else {
+            resultText = Integer.toString(num);
+        }
+        return resultText;
     }
 }
