@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
@@ -30,6 +31,9 @@ public class SettingController extends Controller {
 
     @FXML
     private ToggleGroup difficulty;
+
+    @FXML
+    private Label errorLabel;
 
     private String getSelectedDifficulty() {
         RadioButton selectedRadioButton = (RadioButton) difficulty.getSelectedToggle();
@@ -73,24 +77,30 @@ public class SettingController extends Controller {
 
     @FXML
     private Stage startGame() {
+
         Stage stage = new Stage();
 
-        try {
-            final FXMLLoader loader = new FXMLLoader();
-            final Parent rootNode = loader.load(getClass().getResourceAsStream(GAME_FXML));
-            stage = (Stage) root.getScene().getWindow();
-            final Scene scene = new Scene(rootNode, root.getWidth(), root.getHeight());
+        if (getSelectedTypes().isEmpty()) {
+           errorLabel.setText("Please choose at least one type of calculation");
+        } else {
 
-            final GameController gameController = loader.getController();
-            gameController.initDifficulty(getSelectedDifficulty());
-            gameController.initTypes(getSelectedTypes());
+            try {
+                final FXMLLoader loader = new FXMLLoader();
+                final Parent rootNode = loader.load(getClass().getResourceAsStream(GAME_FXML));
+                stage = (Stage) root.getScene().getWindow();
+                final Scene scene = new Scene(rootNode, root.getWidth(), root.getHeight());
 
-            stage.setScene(scene);
-            stage.show();
-            log.info("Switching to: " + GAME_FXML + " and passing parameters");
-        } catch (IOException e1) {
-            log.error(e1.toString());
-            e1.printStackTrace();
+                final GameController gameController = loader.getController();
+                gameController.initDifficulty(getSelectedDifficulty());
+                gameController.initTypes(getSelectedTypes());
+
+                stage.setScene(scene);
+                stage.show();
+                log.info("Switching to: " + GAME_FXML + " and passing parameters");
+            } catch (IOException e1) {
+                log.error(e1.toString());
+                e1.printStackTrace();
+            }
         }
         return stage;
     }
