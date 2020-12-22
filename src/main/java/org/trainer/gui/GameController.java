@@ -9,8 +9,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import org.trainer.exceptions.IllegalFactoryArgument;
-import org.trainer.exercise.Arithmetic;
-import org.trainer.exercise.Factory;
+import org.trainer.model.Arithmetic;
+import org.trainer.model.Factory;
 import org.trainer.statistics.Statistics;
 
 import java.net.URL;
@@ -111,7 +111,7 @@ public class GameController extends Controller implements Initializable {
         });
         Clock myTask = new Clock();
         Timer timer = new Timer(true);
-        timer.scheduleAtFixedRate(myTask, 0 , 1000);
+        timer.scheduleAtFixedRate(myTask, 0, 1000);
         setTimer.textProperty().bind(text);
     }
 
@@ -136,10 +136,11 @@ public class GameController extends Controller implements Initializable {
             });
         }
     }
+
     private String addingNull(int num) {
         String resultText;
         if (Integer.toString(num).length() == 1) {
-            resultText =  "0" + num;
+            resultText = "0" + num;
         } else {
             resultText = Integer.toString(num);
         }

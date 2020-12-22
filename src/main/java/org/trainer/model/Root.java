@@ -1,13 +1,13 @@
-package org.trainer.exercise;
+package org.trainer.model;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Exponent extends Exercise implements Arithmetic {
+public class Root extends Task implements Arithmetic {
 
-    final Logger log = LogManager.getLogger(Exponent.class);
+    final Logger log = LogManager.getLogger(Root.class);
     private String difficulty;
 
-    public Exponent(String difficulty) {
+    public Root(String difficulty) {
         this.difficulty = difficulty.toLowerCase();
     }
 
@@ -22,37 +22,36 @@ public class Exponent extends Exercise implements Arithmetic {
 
         switch (difficulty) {
             case "beginner":
-                max = 10;
+                max = 8;
                 min = 1;
                 break;
             case "medium":
                 max = 20;
-                min = 10;
+                min = 8;
                 break;
             case "hard":
-                max = 10;
-                min = 1;
+                max = 15;
+                min = 3;
                 break;
         }
 
         rand1 = rand.nextInt((max - min) + 1) + min;
 
         if (difficulty.equals("hard")) {
-            log.info(rand1 + "³" + "=" + rand1 * rand1 * rand1);
-            return new int[]{rand1, rand1 * rand1 * rand1}; //^3
+            log.info("³√" + rand1 * rand1 * rand1 + "=" + rand1);
+            return new int[]{rand1 * rand1 * rand1, rand1}; //^3
         } else {
-            log.info(rand1 + "²" + "=" + rand1 * rand1);
-            return new int[]{rand1, rand1 * rand1}; //^2
+            log.info("²√" + rand1 * rand1 + "=" + rand1);
+            return new int[]{rand1 * rand1, rand1}; //^2
         }
     }
 
     @Override
     public String getRenderedTask(int[] task) {
         if (difficulty.equals("hard")) {
-            return task[0] + "³";
+            return  "³√" + task[0];
         } else {
-            return task[0] + "²";
+            return  "²√" + task[0];
         }
     }
 }
-

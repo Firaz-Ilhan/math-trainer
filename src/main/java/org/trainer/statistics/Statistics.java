@@ -3,8 +3,8 @@ package org.trainer.statistics;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.trainer.exceptions.IllegalFactoryArgument;
-import org.trainer.exercise.Arithmetic;
-import org.trainer.exercise.Factory;
+import org.trainer.model.Arithmetic;
+import org.trainer.model.Factory;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

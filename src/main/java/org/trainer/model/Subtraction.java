@@ -1,8 +1,8 @@
-package org.trainer.exercise;
+package org.trainer.model;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Subtraction extends Exercise implements Arithmetic {
+public class Subtraction extends Task implements Arithmetic {
 
     final Logger log = LogManager.getLogger(Subtraction.class);
     private String difficulty;

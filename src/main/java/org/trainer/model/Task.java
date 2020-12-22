@@ -1,8 +1,8 @@
-package org.trainer.exercise;
+package org.trainer.model;
 
 import java.util.Random;
 
-public class Exercise {
+public class Task {
 
     final Random rand = new Random();
 

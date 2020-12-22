@@ -1,13 +1,13 @@
-package org.trainer.exercise;
+package org.trainer.model;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Multiplication extends Exercise implements Arithmetic {
+public class Division extends Task implements Arithmetic {
 
-    final Logger log = LogManager.getLogger(Multiplication.class);
+    final Logger log = LogManager.getLogger(Division.class);
     private String difficulty;
 
-    public Multiplication(String difficulty) {
+    public Division(String difficulty) {
         this.difficulty = difficulty.toLowerCase();
     }
 
@@ -40,12 +40,12 @@ public class Multiplication extends Exercise implements Arithmetic {
         rand2 = rand.nextInt((max - min) + 1) + min;
         product = rand1 * rand2;
 
-        log.info(rand1 + "*" + rand2 + "=" + product);
-        return new int[]{rand1, rand2, product};
+        log.info(product + "/" + rand1 + "=" + rand2);
+        return new int[]{product, rand1, rand2};
     }
 
     @Override
     public String getRenderedTask(int[] task) {
-        return task[0] + "*" + task[1];
+        return task[0] + "/" + task[1];
     }
 }
