@@ -7,6 +7,10 @@ public class Addition extends Task implements Arithmetic {
     final Logger log = LogManager.getLogger(Addition.class);
     private String difficulty;
 
+    /**
+     * Constructor.
+     * @param difficulty setting the difficulty for {@link #getTask()}.
+     */
     public Addition(String difficulty) {
         this.difficulty = difficulty.toLowerCase();
     }
