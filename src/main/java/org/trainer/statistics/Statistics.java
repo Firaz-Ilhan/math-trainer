@@ -66,8 +66,9 @@ public class Statistics {
 
     /**
      * The collector collects information on the solved state after each task.
+     *
      * @param taskType String with information of the Type.
-     * @param result boolean for solved successfully.
+     * @param result   boolean for solved successfully.
      */
     public void collector(String taskType, boolean result) {
         switch (taskType.toLowerCase()) {
@@ -123,6 +124,7 @@ public class Statistics {
 
     /**
      * Method to give testing information about the current stats.
+     *
      * @return giving back the array.
      */
     public int[][] getCurrentCollection() {
@@ -183,6 +185,7 @@ public class Statistics {
 
     /**
      * Calculates the percentage of correct answered tasks.
+     *
      * @param arr is the array input gathered from the stat file.
      * @param pos is the position of the task type to be calculated.
      * @return returns the rounded percentage.
@@ -199,6 +202,7 @@ public class Statistics {
     /**
      * Generates a percentage array to be displayed in the GUI.
      * Calls {@link #percentStat(int[][], int)}.
+     *
      * @param lifetime boolean to decide if u want lifetime stats or just current.
      * @return returns an int array containing the percent of solved tasks per type.
      */
@@ -220,6 +224,7 @@ public class Statistics {
 
     /**
      * Generates a String showing the stats of lifetime or current stats.
+     *
      * @param lifetime decides whether it is all or current stats.
      * @return returns the String.
      */

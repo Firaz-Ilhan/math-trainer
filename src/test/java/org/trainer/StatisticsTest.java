@@ -70,14 +70,14 @@ public class StatisticsTest {
         reader0.close();
         Statistics statCollector = new Statistics();
 
-        statCollector.collector("addition",true);
+        statCollector.collector("addition", true);
         statCollector.statSaver();
         statCollector.statReset();
         String expected = "0 0 0 0 0 0 0 0 0 0 0 0 0 0";
         BufferedReader reader1 = new BufferedReader(new FileReader("stats.txt"));
         String actual = reader1.readLine();
         reader1.close();
-        Assert.assertEquals(expected,actual);
+        Assert.assertEquals(expected, actual);
 
         FileWriter testWriter1 = new FileWriter("stats.txt", false);
         testWriter1.write(fileReset);
