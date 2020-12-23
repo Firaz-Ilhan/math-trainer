@@ -28,15 +28,15 @@ public class Addition extends Task implements Arithmetic {
 
         switch (difficulty) {
             case "beginner":
-                max = 20;
+                max = 30;
                 min = 1;
                 break;
             case "medium":
-                max = 30;
+                max = 40;
                 min = 20;
                 break;
             case "hard":
-                max = 40;
+                max = 50;
                 min = 30;
                 break;
         }

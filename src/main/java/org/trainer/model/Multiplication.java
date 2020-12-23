@@ -28,7 +28,7 @@ public class Multiplication extends Task implements Arithmetic {
 
         switch (difficulty) {
             case "beginner":
-                max = 10;
+                max = 9;
                 min = 1;
                 break;
             case "medium":

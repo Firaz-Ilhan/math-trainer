@@ -4,9 +4,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.trainer.model.*;
 
-/**
- * Unit test for simple App.
- */
 public class ArithmeticTest {
 
     /* -- Addition -- */
@@ -14,21 +11,21 @@ public class ArithmeticTest {
     public void test_addition_beginner() {
         Arithmetic add = new Addition("beginner");
         int result = add.getSolution(add.getTask());
-        Assert.assertTrue(result >= 2 && result <= 40);
+        Assert.assertTrue(result >= 2 && result <= 60);
     }
 
     @Test
     public void test_addition_medium() {
         Arithmetic add = new Addition("medium");
         int result = add.getSolution(add.getTask());
-        Assert.assertTrue(result >= 40 && result <= 60);
+        Assert.assertTrue(result >= 40 && result <= 80);
     }
 
     @Test
     public void test_addition_hard() {
         Arithmetic add = new Addition("hard");
         int result = add.getSolution(add.getTask());
-        Assert.assertTrue(result >= 60 && result <= 80);
+        Assert.assertTrue(result >= 60 && result <= 100);
     }
 
     /* -- Subtraction -- */
@@ -58,7 +55,7 @@ public class ArithmeticTest {
     public void test_multiplication_beginner() {
         Arithmetic multi = new Multiplication("beginner");
         int result = multi.getSolution(multi.getTask());
-        Assert.assertTrue(result >= 2 && result <= 100);
+        Assert.assertTrue(result >= 2 && result <= 81);
     }
 
     @Test

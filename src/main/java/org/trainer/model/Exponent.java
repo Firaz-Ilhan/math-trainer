@@ -28,16 +28,13 @@ public class Exponent extends Task implements Arithmetic {
 
         switch (difficulty) {
             case "beginner":
+            case "hard":
                 max = 10;
                 min = 1;
                 break;
             case "medium":
                 max = 20;
                 min = 10;
-                break;
-            case "hard":
-                max = 10;
-                min = 1;
                 break;
         }
 
