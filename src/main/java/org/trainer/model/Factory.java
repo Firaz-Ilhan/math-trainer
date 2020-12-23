@@ -12,17 +12,29 @@ public class Factory {
     private final Random rand = new Random();
     private static final Logger log = LogManager.getLogger(Factory.class);
 
+    /**
+     * Provides a random type for {@link #getArithmetic(String, String)}
+     *
+     * @param ArithmeticType a collection of selected types
+     * @return a random type
+     */
     public String getRandomType(ArrayList<String> ArithmeticType) {
 
         ArrayList<String> typeList = new ArrayList<>(7);
 
-        for (String types : ArithmeticType) {
-            typeList.add(types);
-        }
+        typeList.addAll(ArithmeticType);
 
         return typeList.get(rand.nextInt(typeList.size()));
     }
 
+    /**
+     * Provides an instance of a concrete class
+     *
+     * @param arithmeticType a type which is provided by {@link #getRandomType(ArrayList)}
+     * @param difficulty
+     * @return an instance of one type
+     * @throws IllegalFactoryArgument
+     */
     public Arithmetic getArithmetic(String arithmeticType, String difficulty) throws IllegalFactoryArgument {
 
         switch (arithmeticType.toLowerCase()) {

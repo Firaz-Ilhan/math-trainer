@@ -20,6 +20,12 @@ public class Controller {
     final String Statistics_FXML = "/fxml/statistics.fxml";
     final String SETTING_FXML = "/fxml/setting.fxml";
 
+    /**
+     * Provides a method to change to a Scene without passing parameters
+     *
+     * @param fxmlFile the view you would like to switch to
+     * @param root     the root pane of the current scene
+     */
     public void changeScene(String fxmlFile, Pane root) {
         try {
             final FXMLLoader loader = new FXMLLoader();
