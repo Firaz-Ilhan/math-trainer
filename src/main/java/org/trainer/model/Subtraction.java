@@ -7,6 +7,10 @@ public class Subtraction extends Task implements Arithmetic {
     final Logger log = LogManager.getLogger(Subtraction.class);
     private String difficulty;
 
+    /**
+     * Constructor.
+     * @param difficulty setting the difficulty for {@link #getTask()}.
+     */
     public Subtraction(String difficulty) {
         this.difficulty = difficulty.toLowerCase();
     }
