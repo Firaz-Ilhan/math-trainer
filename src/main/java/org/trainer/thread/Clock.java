@@ -10,10 +10,10 @@ public class Clock extends TimerTask implements Runnable {
     private int seconds;
     private int minutes;
     private int hours;
-    private SimpleStringProperty text = new SimpleStringProperty("undifined");
+    private SimpleStringProperty text = new SimpleStringProperty();
 
     @Override
-    public void run () {
+    public void run() {
         seconds++;
         if (seconds == 60) {
             seconds = 0;
@@ -31,7 +31,7 @@ public class Clock extends TimerTask implements Runnable {
         });
     }
 
-    private String addingNull ( int num){
+    private String addingNull(int num) {
         String resultText;
         if (Integer.toString(num).length() == 1) {
             resultText = "0" + num;

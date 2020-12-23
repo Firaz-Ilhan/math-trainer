@@ -50,7 +50,7 @@ public class GameController extends Controller implements Initializable {
     @FXML
     private void stopGame() {
         statCollector.statSaver();
-        changeScene(MAIN_MENU_FXML, root);
+        changeScene(RESULT_FXML, root);
     }
 
     private void typeLoader() {

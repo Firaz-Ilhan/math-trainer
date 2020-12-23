@@ -19,6 +19,7 @@ public class Controller {
     final String GAME_FXML = "/fxml/game.fxml";
     final String Statistics_FXML = "/fxml/statistics.fxml";
     final String SETTING_FXML = "/fxml/setting.fxml";
+    final String RESULT_FXML = "/fxml/result.fxml";
 
     /**
      * Provides a method to change to a Scene without passing parameters
