@@ -40,6 +40,9 @@ public class Statistics {
         statCollector.statSaver();
     }
 
+    /**
+     * Constructor with creation of the necessary initial forms for file and array.
+     */
     public Statistics() {
         currentCollection = new int[][]{{0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}};
         tempCollection = new int[][]{{0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}};
@@ -48,6 +51,9 @@ public class Statistics {
         }
     }
 
+    /**
+     * This method creates the initial File with a set form to match the arrays.
+     */
     private void createInitialStatFile() {
         try (FileWriter initial = new FileWriter(fileName)) {
             initial.write("0 0 0 0 0 0 0 0 0 0 0 0 0 0");
@@ -58,6 +64,11 @@ public class Statistics {
         }
     }
 
+    /**
+     * The collector collects information on the solved state after each task.
+     * @param taskType String with information of the Type.
+     * @param result boolean for solved successfully.
+     */
     public void collector(String taskType, boolean result) {
         switch (taskType.toLowerCase()) {
             case "addition":
@@ -110,10 +121,17 @@ public class Statistics {
         }
     }
 
+    /**
+     * Method to give testing information about the current stats.
+     * @return giving back the array.
+     */
     public int[][] getCurrentCollection() {
         return currentCollection;
     }
 
+    /**
+     * The Combiner combines the current stats with the saved stats from the stat file stats.txt.
+     */
     private void statCombiner() {
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String fileContent = reader.readLine();
@@ -138,7 +156,11 @@ public class Statistics {
         }
     }
 
-    public void statSaver() { //careful! this deletes the Session Stats. should be called upon ending program?
+    /**
+     * Saves stats to the stats.txt file and deletes current stats.
+     * Calls the {@link #statCombiner}.
+     */
+    public void statSaver() {
         statCombiner();
         try (FileWriter writer = new FileWriter(fileName, false)) {
             writer.write(tempStats);
@@ -151,17 +173,20 @@ public class Statistics {
         currentCollection = new int[][]{{0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}};
     }
 
-    private void statReset() {
-        try {
-            Files.deleteIfExists(Paths.get(fileName));
-        } catch (IOException e1) {
-            log.error(e1.toString());
-            e1.printStackTrace();
-        }
-        log.info("Deleting the stats File");
+    /**
+     * Deletes the saved stats and creates a new initial File.
+     */
+    public void statReset() {
+        log.info("Resetting the stats");
         createInitialStatFile();
     }
 
+    /**
+     * Calculates the percentage of correct answered tasks.
+     * @param arr is the array input gathered from the stat file.
+     * @param pos is the position of the task type to be calculated.
+     * @return returns the rounded percentage.
+     */
     public int percentStat(int[][] arr, int pos) {
         if (arr[pos][0] != 0) {
             float percent = ((float) arr[pos][1] / (float) arr[pos][0]) * 100;
@@ -171,6 +196,12 @@ public class Statistics {
         }
     }
 
+    /**
+     * Generates a percentage array to be displayed in the GUI.
+     * Calls {@link #percentStat(int[][], int)}.
+     * @param lifetime boolean to decide if u want lifetime stats or just current.
+     * @return returns an int array containing the percent of solved tasks per type.
+     */
     public int[] getPercentStats(boolean lifetime) {
 
         int[][] array;
@@ -181,13 +212,18 @@ public class Statistics {
         } else {
             array = currentCollection;
         }
-        for (int position = 0; position < 7; position++) {
+        for (int position = 0; position < currentCollection.length; position++) {
             stats[position] = percentStat(array, position);
         }
         return stats;
     }
 
-    public String getStats(boolean lifetime) {
+    /**
+     * Generates a String showing the stats of lifetime or current stats.
+     * @param lifetime decides whether it is all or current stats.
+     * @return returns the String.
+     */
+    public String getStats(boolean lifetime) { //currently only in Main, if not needed delete method
         int[][] array;
         String whatStats;
         if (lifetime) {
