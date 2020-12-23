@@ -1,4 +1,5 @@
 package org.trainer.model;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -9,6 +10,7 @@ public class Addition extends Task implements Arithmetic {
 
     /**
      * Constructor.
+     *
      * @param difficulty setting the difficulty for {@link #getTask()}.
      */
     public Addition(String difficulty) {
@@ -46,7 +48,6 @@ public class Addition extends Task implements Arithmetic {
         log.info(rand1 + "+" + rand2 + "=" + sum);
         return new int[]{rand1, rand2, sum};
     }
-
 
 
     @Override

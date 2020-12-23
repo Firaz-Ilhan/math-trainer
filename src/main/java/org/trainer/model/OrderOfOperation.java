@@ -10,6 +10,7 @@ public class OrderOfOperation extends Task implements Arithmetic {
 
     /**
      * Constructor.
+     *
      * @param difficulty setting the difficulty for {@link #getTask()}.
      */
     public OrderOfOperation(String difficulty) {

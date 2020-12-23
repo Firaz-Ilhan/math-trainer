@@ -1,4 +1,5 @@
 package org.trainer.model;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -9,6 +10,7 @@ public class Root extends Task implements Arithmetic {
 
     /**
      * Constructor.
+     *
      * @param difficulty setting the difficulty for {@link #getTask()}.
      */
     public Root(String difficulty) {
@@ -53,9 +55,9 @@ public class Root extends Task implements Arithmetic {
     @Override
     public String getRenderedTask(int[] task) {
         if (difficulty.equals("hard")) {
-            return  "³√" + task[0];
+            return "³√" + task[0];
         } else {
-            return  "²√" + task[0];
+            return "²√" + task[0];
         }
     }
 }
