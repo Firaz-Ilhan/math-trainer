@@ -1,11 +1,11 @@
-package org.trainer.gui;
+package org.trainer.thread;
 
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 
 import java.util.TimerTask;
 
-public class ThreadClock extends TimerTask implements Runnable {
+public class Clock extends TimerTask implements Runnable {
 
     private int seconds;
     private int minutes;

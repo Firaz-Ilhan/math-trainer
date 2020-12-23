@@ -1,7 +1,6 @@
 package org.trainer.gui;
 
 import javafx.application.Platform;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -12,6 +11,7 @@ import org.trainer.exceptions.IllegalFactoryArgument;
 import org.trainer.model.Arithmetic;
 import org.trainer.model.Factory;
 import org.trainer.statistics.Statistics;
+import org.trainer.thread.Clock;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -104,7 +104,7 @@ public class GameController extends Controller implements Initializable {
                 stopGame();
             }
         });
-        ThreadClock clock = new ThreadClock();
+        Clock clock = new Clock();
         Timer timer = new Timer(true);
         timer.scheduleAtFixedRate(clock, 0, 1000);
         setTimer.textProperty().bind(clock.updateText());
