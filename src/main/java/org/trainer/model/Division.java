@@ -7,6 +7,10 @@ public class Division extends Task implements Arithmetic {
     final Logger log = LogManager.getLogger(Division.class);
     private String difficulty;
 
+    /**
+     * Constructor.
+     * @param difficulty setting the difficulty for {@link #getTask()}.
+     */
     public Division(String difficulty) {
         this.difficulty = difficulty.toLowerCase();
     }
