@@ -7,6 +7,10 @@ public class Exponent extends Task implements Arithmetic {
     final Logger log = LogManager.getLogger(Exponent.class);
     private String difficulty;
 
+    /**
+     * Constructor.
+     * @param difficulty setting the difficulty for {@link #getTask()}.
+     */
     public Exponent(String difficulty) {
         this.difficulty = difficulty.toLowerCase();
     }
