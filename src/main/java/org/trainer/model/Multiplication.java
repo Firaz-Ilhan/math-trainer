@@ -7,6 +7,10 @@ public class Multiplication extends Task implements Arithmetic {
     final Logger log = LogManager.getLogger(Multiplication.class);
     private String difficulty;
 
+    /**
+     * Constructor.
+     * @param difficulty setting the difficulty for {@link #getTask()}.
+     */
     public Multiplication(String difficulty) {
         this.difficulty = difficulty.toLowerCase();
     }
