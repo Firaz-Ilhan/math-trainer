@@ -1,6 +1,5 @@
 package org.trainer.gui;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
@@ -24,12 +23,12 @@ public class AboutController extends Controller implements Initializable {
     private TextArea aboutTextArea;
 
     @FXML
-    private void openHome(ActionEvent actionEvent) {
+    private void openHome() {
         changeScene(MAIN_MENU_FXML, root);
     }
 
     @FXML
-    private void openGithubLink(ActionEvent actionEvent) {
+    private void openGithubLink() {
         try {
             Desktop.getDesktop().browse(new URL("https://github.com/Firaz-Ilhan/math-trainer").toURI());
             log.info("User opened github repository");

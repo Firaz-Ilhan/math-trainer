@@ -30,7 +30,7 @@
           <NumberAxis animated="false" autoRanging="false" side="LEFT" tickUnit="10.0" />
         </yAxis>
       </BarChart>
-      <Button fx:id="backMenuButton" mnemonicParsing="false" onAction="#backMenu" prefHeight="25.0" prefWidth="87.0" text="Main Menu" GridPane.columnIndex="1">
+      <Button fx:id="backMenuButton" mnemonicParsing="false" onAction="#openMenu" prefHeight="25.0" prefWidth="87.0" text="Main Menu" GridPane.columnIndex="1">
          <GridPane.margin>
             <Insets left="15.0" top="20.0" />
          </GridPane.margin>

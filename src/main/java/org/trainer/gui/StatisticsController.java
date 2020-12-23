@@ -1,6 +1,5 @@
 package org.trainer.gui;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
@@ -21,7 +20,7 @@ public class StatisticsController extends Controller implements Initializable {
     private BarChart<String, Number> barchart;
 
     @FXML
-    private void backMenu(ActionEvent actionEvent) {
+    private void openMenu() {
         changeScene(MAIN_MENU_FXML, root);
     }
 

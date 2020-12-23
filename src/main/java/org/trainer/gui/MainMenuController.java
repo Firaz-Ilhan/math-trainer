@@ -1,6 +1,5 @@
 package org.trainer.gui;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.VBox;
 
@@ -10,17 +9,17 @@ public class MainMenuController extends Controller {
     private VBox root;
 
     @FXML
-    private void openAbout(ActionEvent actionEvent) {
+    private void openAbout() {
         changeScene(ABOUT_FXML, root);
     }
 
     @FXML
-    private void openStatistics(ActionEvent actionEvent) {
+    private void openStatistics() {
         changeScene(Statistics_FXML, root);
     }
 
     @FXML
-    private void newGame(ActionEvent actionEvent) {
+    private void newGame() {
         changeScene(SETTING_FXML, root);
     }
 

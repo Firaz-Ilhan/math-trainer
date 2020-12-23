@@ -1,6 +1,5 @@
 package org.trainer.gui;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -71,7 +70,7 @@ public class SettingController extends Controller {
     }
 
     @FXML
-    private void openMenu(ActionEvent actionEvent) {
+    private void openMenu() {
         changeScene(MAIN_MENU_FXML, root);
     }
 
@@ -81,7 +80,7 @@ public class SettingController extends Controller {
         Stage stage = new Stage();
 
         if (getSelectedTypes().isEmpty()) {
-           errorLabel.setText("Please choose at least one type of calculation");
+            errorLabel.setText("Please choose at least one type of calculation");
         } else {
 
             try {
