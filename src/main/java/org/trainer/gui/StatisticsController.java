@@ -38,6 +38,7 @@ public class StatisticsController extends Controller implements Initializable {
         series.getData().add(new XYChart.Data<>("Exponent", stats[4]));
         series.getData().add(new XYChart.Data<>("Root", stats[5]));
         series.getData().add(new XYChart.Data<>("Order of Operation", stats[6]));
+        series.setName("Correct answers in percent");
         barchart.getData().add(series);
     }
 }
