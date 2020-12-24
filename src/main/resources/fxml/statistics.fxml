@@ -26,7 +26,7 @@
           <NumberAxis animated="false" autoRanging="false" side="LEFT" tickUnit="10.0" />
         </yAxis>
       </BarChart>
-      <Button fx:id="backMenuButton" mnemonicParsing="false" onAction="#openMenu" prefHeight="25.0" prefWidth="87.0" text="Main Menu" GridPane.columnIndex="1" GridPane.valignment="BOTTOM">
+      <Button mnemonicParsing="false" onAction="#openMenu" prefHeight="25.0" prefWidth="87.0" text="Main Menu" GridPane.columnIndex="1" GridPane.valignment="BOTTOM">
          <GridPane.margin>
             <Insets left="17.0" />
          </GridPane.margin>
