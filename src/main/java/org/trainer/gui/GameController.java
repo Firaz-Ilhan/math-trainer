@@ -30,6 +30,8 @@ public class GameController extends Controller implements Initializable {
     private final static Logger log = LogManager.getLogger(GameController.class);
 
     @FXML
+    private Label difficultyLabel;
+    @FXML
     private GridPane root;
     @FXML
     private Label taskLabel;
@@ -83,7 +85,6 @@ public class GameController extends Controller implements Initializable {
         try {
             randomType = f1.getRandomType(ArithmeticType);
             taskType = f1.getArithmetic(randomType, difficulty);
-
         } catch (IllegalFactoryArgument e1) {
             e1.printStackTrace();
         }
@@ -97,7 +98,6 @@ public class GameController extends Controller implements Initializable {
 
     @FXML
     private void enterAnswer() {
-
         if (answerField.getText().matches("-?[0-9]{0,10}") && !answerField.getText().isEmpty()) {
             int numericInput = Integer.parseInt(answerField.getText());
 
@@ -120,6 +120,7 @@ public class GameController extends Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Platform.runLater(() -> answerField.requestFocus());
         Platform.runLater(() -> displayTask());
+        Platform.runLater(() -> difficultyLabel.setText(difficulty));
 
         answerField.setOnKeyPressed((event) -> {
             if (event.getCode() == KeyCode.ENTER) {
