@@ -6,31 +6,36 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.layout.GridPane;
 import org.trainer.statistics.Statistics;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class StatisticsController extends Controller implements Initializable {
-
-    int[] stats;
 
     @FXML
     private GridPane root;
     @FXML
     private BarChart<String, Number> barchart;
 
+    XYChart.Series<String, Number> series = new XYChart.Series<>();
+    Statistics statistics = new Statistics();
+
     @FXML
     private void openMenu() {
         changeScene(MAIN_MENU_FXML, root);
     }
 
+    @FXML
+    private void resetStatistic() {
+       statistics.statReset();
+        series.getData().clear();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        int[] stats;
 
-        Statistics statistics = new Statistics();
         stats = statistics.getPercentStats(true);
 
-        XYChart.Series<String, Number> series = new XYChart.Series<>();
         series.getData().add(new XYChart.Data<>("Addition", stats[0]));
         series.getData().add(new XYChart.Data<>("Subtraktion", stats[1]));
         series.getData().add(new XYChart.Data<>("Multiplikation", stats[2]));
