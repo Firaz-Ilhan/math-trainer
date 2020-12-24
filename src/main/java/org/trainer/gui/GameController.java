@@ -2,23 +2,32 @@ package org.trainer.gui;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.trainer.exceptions.IllegalFactoryArgument;
 import org.trainer.model.Arithmetic;
 import org.trainer.model.Factory;
 import org.trainer.statistics.Statistics;
 import org.trainer.thread.Clock;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Timer;
 
 public class GameController extends Controller implements Initializable {
+
+    private final static Logger log = LogManager.getLogger(GameController.class);
 
     @FXML
     private GridPane root;
@@ -49,8 +58,25 @@ public class GameController extends Controller implements Initializable {
 
     @FXML
     private void stopGame() {
+        String userResult = statCollector.getStats(false);
         statCollector.statSaver();
-        changeScene(RESULT_FXML, root);
+
+        try {
+            final FXMLLoader loader = new FXMLLoader();
+            final Parent rootNode = loader.load(getClass().getResourceAsStream(RESULT_FXML));
+            Stage stage = (Stage) root.getScene().getWindow();
+            final Scene scene = new Scene(rootNode, root.getWidth(), root.getHeight());
+
+            final ResultController resultController = loader.getController();
+            resultController.initUserResult(userResult);
+
+            stage.setScene(scene);
+            stage.show();
+            log.info("Switching to: " + RESULT_FXML + " and passing parameters");
+        } catch (IOException e1) {
+            log.error(e1.toString());
+            e1.printStackTrace();
+        }
     }
 
     private void typeLoader() {

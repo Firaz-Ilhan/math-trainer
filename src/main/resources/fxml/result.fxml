@@ -32,10 +32,13 @@
             </Button>
          </children>
       </HBox>
-      <TextArea fx:id="resultField" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+      <TextArea fx:id="resultField" prefHeight="200.0" prefWidth="200.0" wrapText="true" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
          </GridPane.margin>
+         <font>
+            <Font size="30.0" />
+         </font>
       </TextArea>
    </children>
 </GridPane>

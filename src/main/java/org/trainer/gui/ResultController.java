@@ -11,6 +11,10 @@ public class ResultController extends Controller {
     @FXML
     private TextArea resultField;
 
+    public void initUserResult(String userResult) {
+        resultField.setText(userResult);
+    }
+
     @FXML
     private void openMenu() {
         changeScene(MAIN_MENU_FXML, root);

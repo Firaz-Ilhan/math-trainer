@@ -75,9 +75,7 @@ public class SettingController extends Controller {
     }
 
     @FXML
-    private Stage startGame() {
-
-        Stage stage = new Stage();
+    private void startGame() {
 
         if (getSelectedTypes().isEmpty()) {
             errorLabel.setText("Please choose at least one type of calculation");
@@ -86,7 +84,7 @@ public class SettingController extends Controller {
             try {
                 final FXMLLoader loader = new FXMLLoader();
                 final Parent rootNode = loader.load(getClass().getResourceAsStream(GAME_FXML));
-                stage = (Stage) root.getScene().getWindow();
+                Stage stage = (Stage) root.getScene().getWindow();
                 final Scene scene = new Scene(rootNode, root.getWidth(), root.getHeight());
 
                 final GameController gameController = loader.getController();
@@ -101,6 +99,5 @@ public class SettingController extends Controller {
                 e1.printStackTrace();
             }
         }
-        return stage;
     }
 }
