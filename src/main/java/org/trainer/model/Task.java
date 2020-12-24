@@ -11,7 +11,7 @@ public class Task {
      *
      * @param task  int array with task numbers and solution.
      * @param input the users input.
-     * @return boolean if solved successfully.
+     * @return true if solved successfully.
      */
     public boolean checkSolution(int[] task, int input) {
         if (task == null || task.length == 0) {
@@ -22,7 +22,7 @@ public class Task {
     }
 
     /**
-     * Returns the solution provided in the last array slot.
+     * Returns the solution provided in the last array index.
      *
      * @param task int array with task numbers and solution.
      * @return solution int.

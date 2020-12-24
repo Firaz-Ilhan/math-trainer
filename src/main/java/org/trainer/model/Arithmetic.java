@@ -6,6 +6,9 @@ public interface Arithmetic {
 
     /**
      * Creates the task array which holds all number information.
+     * The Solution of the task should always be stored
+     * in the last index of the array.
+     * see {@link #checkSolution(int[], int)} and {@link #getSolution(int[])}.
      *
      * @return int array with numbers and solution of the task.
      */

@@ -13,10 +13,10 @@ public class Factory {
     private static final Logger log = LogManager.getLogger(Factory.class);
 
     /**
-     * Provides a random type for {@link #getArithmetic(String, String)}
+     * Provides a random type for {@link #getArithmetic(String, String)}.
      *
-     * @param ArithmeticType a collection of selected types
-     * @return a random type
+     * @param ArithmeticType a collection of selected types.
+     * @return a random type.
      */
     public String getRandomType(ArrayList<String> ArithmeticType) {
 
@@ -28,11 +28,11 @@ public class Factory {
     }
 
     /**
-     * Provides an instance of a concrete class
+     * Provides an instance of a concrete class.
      *
-     * @param arithmeticType a type which is provided by {@link #getRandomType(ArrayList)}
-     * @param difficulty
-     * @return an instance of one type
+     * @param arithmeticType a type which is provided by {@link #getRandomType(ArrayList)}.
+     * @param difficulty selected difficulty for all types
+     * @return an instance of one type.
      * @throws IllegalFactoryArgument
      */
     public Arithmetic getArithmetic(String arithmeticType, String difficulty) throws IllegalFactoryArgument {
