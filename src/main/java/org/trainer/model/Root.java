@@ -5,7 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 public class Root extends Task implements Arithmetic {
 
-    final Logger log = LogManager.getLogger(Root.class);
+    private static final Logger log = LogManager.getLogger(Root.class);
     private final String difficulty;
 
     /**

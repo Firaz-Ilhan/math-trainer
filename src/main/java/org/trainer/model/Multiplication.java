@@ -5,7 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 public class Multiplication extends Task implements Arithmetic {
 
-    final Logger log = LogManager.getLogger(Multiplication.class);
+    private static final Logger log = LogManager.getLogger(Multiplication.class);
     private final String difficulty;
 
     /**

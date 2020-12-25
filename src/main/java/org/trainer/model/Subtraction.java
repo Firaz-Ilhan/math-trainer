@@ -5,7 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 public class Subtraction extends Task implements Arithmetic {
 
-    final Logger log = LogManager.getLogger(Subtraction.class);
+    private static final Logger log = LogManager.getLogger(Subtraction.class);
     private final String difficulty;
 
     /**

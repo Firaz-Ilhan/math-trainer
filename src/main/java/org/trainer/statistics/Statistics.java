@@ -20,7 +20,7 @@ public class Statistics {
     private int[][] tempCollection;
     private final String fileName = "stats.txt";
     private String tempStats;
-    private final Logger log = LogManager.getLogger(Statistics.class);
+    private static final Logger log = LogManager.getLogger(Statistics.class);
 
     //for testing
     public static void main(String[] args) throws IllegalFactoryArgument {
