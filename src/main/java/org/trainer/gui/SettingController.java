@@ -1,5 +1,6 @@
 package org.trainer.gui;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,7 +15,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 public class SettingController extends Controller {
 
@@ -24,7 +27,7 @@ public class SettingController extends Controller {
     private GridPane root;
 
     @FXML
-    private CheckBox additionCheckbox, subtractionCheckbox, multiplicationCheckbox, divisionCheckbox,
+    private CheckBox setAllCheckbox, additionCheckbox, subtractionCheckbox, multiplicationCheckbox, divisionCheckbox,
             orderOfOperationCheckbox, exponentCheckbox, rootCheckbox;
 
     @FXML
@@ -44,6 +47,15 @@ public class SettingController extends Controller {
 
         ArrayList<String> result = new ArrayList<>(7);
 
+        if (setAllCheckbox.isSelected()) {
+            result.add("addition");
+            result.add("subtraction");
+            result.add("multiplication");
+            result.add("division");
+            result.add("orderofoperation");
+            result.add("exponent");
+            result.add("root");
+        }
         if (additionCheckbox.isSelected()) {
             result.add("addition");
         }
