@@ -4,7 +4,10 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.trainer.statistics.Statistics;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class StatisticsTest {
 

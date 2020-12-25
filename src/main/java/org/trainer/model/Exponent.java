@@ -5,7 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 public class Exponent extends Task implements Arithmetic {
 
-    final Logger log = LogManager.getLogger(Exponent.class);
+    private static final Logger log = LogManager.getLogger(Exponent.class);
     private final String difficulty;
 
     /**
