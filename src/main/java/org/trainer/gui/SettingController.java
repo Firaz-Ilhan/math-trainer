@@ -12,7 +12,6 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.trainer.model.ArithmeticType;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -46,25 +45,25 @@ public class SettingController extends Controller {
         ArrayList<String> result = new ArrayList<>(7);
 
         if (additionCheckbox.isSelected()) {
-            result.add(ArithmeticType.ADDITION.toString());
+            result.add("addition");
         }
         if (subtractionCheckbox.isSelected()) {
-            result.add(ArithmeticType.SUBTRACTION.toString());
+            result.add("subtraction");
         }
         if (multiplicationCheckbox.isSelected()) {
-            result.add(ArithmeticType.MULTIPLICATION.toString());
+            result.add("multiplication");
         }
         if (divisionCheckbox.isSelected()) {
-            result.add(ArithmeticType.DIVISION.toString());
+            result.add("division");
         }
         if (orderOfOperationCheckbox.isSelected()) {
-            result.add(ArithmeticType.ORDER_OF_OPERATION.toString());
+            result.add("orderofoperation");
         }
         if (exponentCheckbox.isSelected()) {
-            result.add(ArithmeticType.EXPONENT.toString());
+            result.add("exponent");
         }
         if (rootCheckbox.isSelected()) {
-            result.add(ArithmeticType.ROOT.toString());
+            result.add("root");
         }
         return result;
     }

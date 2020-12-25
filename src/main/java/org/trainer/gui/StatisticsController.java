@@ -6,18 +6,18 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.layout.GridPane;
 import org.trainer.statistics.Statistics;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class StatisticsController extends Controller implements Initializable {
 
+    private final Statistics statistics = new Statistics();
+
     @FXML
     private GridPane root;
     @FXML
     private BarChart<String, Number> barchart;
-
-    XYChart.Series<String, Number> series = new XYChart.Series<>();
-    Statistics statistics = new Statistics();
 
     @FXML
     private void openMenu() {
@@ -25,20 +25,18 @@ public class StatisticsController extends Controller implements Initializable {
     }
 
     @FXML
-    private void resetStatistic() {
-       statistics.statReset();
-        series.getData().clear();
+    private void resetStats() {
+        statistics.statReset();
+        changeScene(MAIN_MENU_FXML, root);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        int[] stats;
-
-        stats = statistics.getPercentStats(true);
-
+        int[] stats = statistics.getPercentStats(true);
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
         series.getData().add(new XYChart.Data<>("Addition", stats[0]));
-        series.getData().add(new XYChart.Data<>("Subtraktion", stats[1]));
-        series.getData().add(new XYChart.Data<>("Multiplikation", stats[2]));
+        series.getData().add(new XYChart.Data<>("Subtraction", stats[1]));
+        series.getData().add(new XYChart.Data<>("Multiplication", stats[2]));
         series.getData().add(new XYChart.Data<>("Division", stats[3]));
         series.getData().add(new XYChart.Data<>("Exponent", stats[4]));
         series.getData().add(new XYChart.Data<>("Root", stats[5]));

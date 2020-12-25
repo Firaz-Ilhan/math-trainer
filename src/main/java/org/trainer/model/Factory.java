@@ -31,9 +31,9 @@ public class Factory {
      * Provides an instance of a concrete class.
      *
      * @param arithmeticType a type which is provided by {@link #getRandomType(ArrayList)}.
-     * @param difficulty selected difficulty for all types
+     * @param difficulty     selected difficulty for all types
      * @return an instance of one type.
-     * @throws IllegalFactoryArgument
+     * @throws IllegalFactoryArgument if type could not be found
      */
     public Arithmetic getArithmetic(String arithmeticType, String difficulty) throws IllegalFactoryArgument {
 
