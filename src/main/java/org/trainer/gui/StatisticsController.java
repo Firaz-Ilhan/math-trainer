@@ -12,7 +12,8 @@ import java.util.ResourceBundle;
 
 public class StatisticsController extends Controller implements Initializable {
 
-    int[] stats;
+    private int[] stats;
+    private final Statistics statistics = new Statistics();
 
     @FXML
     private GridPane root;
@@ -24,16 +25,19 @@ public class StatisticsController extends Controller implements Initializable {
         changeScene(MAIN_MENU_FXML, root);
     }
 
+    @FXML
+    private void resetStats() {
+        statistics.statReset();
+        changeScene(MAIN_MENU_FXML, root);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        Statistics statistics = new Statistics();
         stats = statistics.getPercentStats(true);
-
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         series.getData().add(new XYChart.Data<>("Addition", stats[0]));
-        series.getData().add(new XYChart.Data<>("Subtraktion", stats[1]));
-        series.getData().add(new XYChart.Data<>("Multiplikation", stats[2]));
+        series.getData().add(new XYChart.Data<>("Subtraction", stats[1]));
+        series.getData().add(new XYChart.Data<>("Multiplication", stats[2]));
         series.getData().add(new XYChart.Data<>("Division", stats[3]));
         series.getData().add(new XYChart.Data<>("Exponent", stats[4]));
         series.getData().add(new XYChart.Data<>("Root", stats[5]));
