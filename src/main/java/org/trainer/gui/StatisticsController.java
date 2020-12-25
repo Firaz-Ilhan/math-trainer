@@ -8,6 +8,8 @@ import javafx.scene.layout.GridPane;
 import org.trainer.statistics.Statistics;
 
 import java.net.URL;
+import java.util.Arrays;
+import java.util.OptionalDouble;
 import java.util.ResourceBundle;
 
 public class StatisticsController extends Controller implements Initializable {
@@ -33,6 +35,7 @@ public class StatisticsController extends Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         int[] stats = statistics.getPercentStats(true);
+        OptionalDouble average = Arrays.stream(stats).average();
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         series.getData().add(new XYChart.Data<>("Addition", stats[0]));
         series.getData().add(new XYChart.Data<>("Subtraction", stats[1]));
@@ -41,7 +44,7 @@ public class StatisticsController extends Controller implements Initializable {
         series.getData().add(new XYChart.Data<>("Exponent", stats[4]));
         series.getData().add(new XYChart.Data<>("Root", stats[5]));
         series.getData().add(new XYChart.Data<>("Order of Operation", stats[6]));
-        series.setName("Correct answers in percent");
+        series.setName("Correct answers in percent - your average is: " + (int) average.getAsDouble() + "%");
         barchart.getData().add(series);
     }
 }
