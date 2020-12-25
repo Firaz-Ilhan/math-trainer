@@ -2,18 +2,17 @@ package org.trainer;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.trainer.exceptions.IllegalFactoryArgument;
 import org.trainer.model.Arithmetic;
 import org.trainer.model.Factory;
 import org.trainer.statistics.Statistics;
-import org.trainer.exceptions.IllegalFactoryArgument;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         final Logger log = LogManager.getLogger(Main.class);
         Factory f1 = new Factory();

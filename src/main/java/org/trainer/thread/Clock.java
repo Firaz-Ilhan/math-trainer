@@ -10,7 +10,7 @@ public class Clock extends TimerTask implements Runnable {
     private int seconds;
     private int minutes;
     private int hours;
-    private SimpleStringProperty text = new SimpleStringProperty();
+    private final SimpleStringProperty text = new SimpleStringProperty();
 
     @Override
     public void run() {

@@ -6,7 +6,7 @@ import org.apache.logging.log4j.Logger;
 public class OrderOfOperation extends Task implements Arithmetic {
 
     final Logger log = LogManager.getLogger(OrderOfOperation.class);
-    private String difficulty;
+    private final String difficulty;
 
     /**
      * Constructor.
