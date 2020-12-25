@@ -12,7 +12,6 @@ import java.util.ResourceBundle;
 
 public class StatisticsController extends Controller implements Initializable {
 
-    private int[] stats;
     private final Statistics statistics = new Statistics();
 
     @FXML
@@ -33,7 +32,7 @@ public class StatisticsController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        stats = statistics.getPercentStats(true);
+        int[] stats = statistics.getPercentStats(true);
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         series.getData().add(new XYChart.Data<>("Addition", stats[0]));
         series.getData().add(new XYChart.Data<>("Subtraction", stats[1]));
