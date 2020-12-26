@@ -203,19 +203,13 @@ public class Statistics {
      * Generates a percentage array to be displayed in the GUI.
      * Calls {@link #percentStat(int[][], int)}.
      *
-     * @param lifetime boolean to decide if u want lifetime stats or just current.
      * @return returns an int array containing the percent of solved tasks per type.
      */
-    public int[] getPercentStats(boolean lifetime) {
-
+    public int[] getPercentStats() {
         int[][] array;
         int[] stats = new int[7];
-        if (lifetime) {
-            statCombiner();
-            array = tempCollection;
-        } else {
-            array = currentCollection;
-        }
+        statCombiner();
+        array = tempCollection;
         for (int position = 0; position < currentCollection.length; position++) {
             stats[position] = percentStat(array, position);
         }
