@@ -34,7 +34,7 @@ public class StatisticsController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        int[] stats = statistics.getPercentStats(true);
+        int[] stats = statistics.getPercentStats();
         OptionalDouble average = Arrays.stream(stats).average();
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         series.getData().add(new XYChart.Data<>("Addition", stats[0]));
