@@ -47,7 +47,7 @@
                 </Button>
             </children>
         </HBox>
-        <Label fx:id="gameModeratorAnswer" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+        <Label fx:id="gameModerator" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
             <font>
                 <Font size="20.0" />
             </font>
@@ -65,6 +65,11 @@
             <Font size="15.0" />
          </font>
       </Label>
+      <Button mnemonicParsing="false" onAction="#skipTask" text="Skip Task" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
     </children>
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

@@ -38,11 +38,11 @@ public class GameController extends Controller implements Initializable {
     @FXML
     public TextField answerField;
     @FXML
-    private Label gameModeratorAnswer;
+    private Label gameModerator;
     @FXML
     private Label setTimer;
 
-    private final Factory f1 = new Factory();
+    private final Factory factory = new Factory();
     private final Statistics statCollector = new Statistics();
     private Arithmetic taskType;
     private ArrayList<String> ArithmeticType;
@@ -83,8 +83,8 @@ public class GameController extends Controller implements Initializable {
 
     private void typeLoader() {
         try {
-            randomType = f1.getRandomType(ArithmeticType);
-            taskType = f1.getArithmetic(randomType, difficulty);
+            randomType = factory.getRandomType(ArithmeticType);
+            taskType = factory.getArithmetic(randomType, difficulty);
         } catch (IllegalFactoryArgument e1) {
             e1.printStackTrace();
         }
@@ -97,14 +97,22 @@ public class GameController extends Controller implements Initializable {
     }
 
     @FXML
+    private void skipTask() {
+        int solution = taskType.getSolution(task);
+        gameModerator.setText("Correct answer was: " + solution);
+        typeLoader();
+        displayTask();
+    }
+
+    @FXML
     private void enterAnswer() {
         if (answerField.getText().matches("-?[0-9]{0,10}") && !answerField.getText().isEmpty()) {
             int numericInput = Integer.parseInt(answerField.getText());
 
             if (taskType.checkSolution(task, numericInput)) {
-                gameModeratorAnswer.setText(numericInput + " is correct");
+                gameModerator.setText(numericInput + " is correct");
             } else {
-                gameModeratorAnswer.setText(numericInput + " is NOT correct. Correct answer " + taskType.getSolution(task));
+                gameModerator.setText(numericInput + " is NOT correct. Correct answer " + taskType.getSolution(task));
             }
 
             statCollector.collector(randomType, taskType.checkSolution(task, numericInput));
@@ -112,7 +120,7 @@ public class GameController extends Controller implements Initializable {
             displayTask();
             answerField.clear();
         } else {
-            gameModeratorAnswer.setText("Enter a number into the input field");
+            gameModerator.setText("Enter a number into the input field");
         }
     }
 
