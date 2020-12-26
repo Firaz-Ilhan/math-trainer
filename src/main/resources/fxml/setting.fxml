@@ -18,42 +18,42 @@
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" GridPane.rowIndex="1">
          <children>
-            <CheckBox fx:id="setAllCheckbox" layoutX="35.0" layoutY="35.0" mnemonicParsing="false" selected="true" text="All exercises">
+            <CheckBox fx:id="setAllCheckbox" layoutX="35.0" layoutY="35.0" mnemonicParsing="false" onAction="#uncheckExercises" selected="true" text="All exercises">
                <font>
                   <Font size="18.0" />
                </font>
             </CheckBox>
-            <CheckBox fx:id="additionCheckbox" mnemonicParsing="false" text="Addition">
+            <CheckBox fx:id="additionCheckbox" mnemonicParsing="false" onAction="#uncheckSetAll" text="Addition">
                <font>
                   <Font size="18.0" />
                </font>
             </CheckBox>
-            <CheckBox fx:id="subtractionCheckbox" mnemonicParsing="false" text="Subtraction">
+            <CheckBox fx:id="subtractionCheckbox" mnemonicParsing="false" onAction="#uncheckSetAll" text="Subtraction">
                <font>
                   <Font size="18.0" />
                </font>
             </CheckBox>
-            <CheckBox fx:id="multiplicationCheckbox" mnemonicParsing="false" text="Multiplication">
+            <CheckBox fx:id="multiplicationCheckbox" mnemonicParsing="false" onAction="#uncheckSetAll" text="Multiplication">
                <font>
                   <Font size="18.0" />
                </font>
             </CheckBox>
-            <CheckBox fx:id="divisionCheckbox" mnemonicParsing="false" text="Division">
+            <CheckBox fx:id="divisionCheckbox" mnemonicParsing="false" onAction="#uncheckSetAll" text="Division">
                <font>
                   <Font size="18.0" />
                </font>
             </CheckBox>
-            <CheckBox fx:id="orderOfOperationCheckbox" mnemonicParsing="false" text="Order of operation">
+            <CheckBox fx:id="orderOfOperationCheckbox" mnemonicParsing="false" onAction="#uncheckSetAll" text="Order of operation">
                <font>
                   <Font size="18.0" />
                </font>
             </CheckBox>
-            <CheckBox fx:id="exponentCheckbox" mnemonicParsing="false" text="Exponent">
+            <CheckBox fx:id="exponentCheckbox" mnemonicParsing="false" onAction="#uncheckSetAll" text="Exponent">
                <font>
                   <Font size="18.0" />
                </font>
             </CheckBox>
-            <CheckBox fx:id="rootCheckbox" mnemonicParsing="false" text="Root">
+            <CheckBox fx:id="rootCheckbox" mnemonicParsing="false" onAction="#uncheckSetAll" text="Root">
                <font>
                   <Font size="18.0" />
                </font>

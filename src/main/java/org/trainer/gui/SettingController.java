@@ -108,4 +108,20 @@ public class SettingController extends Controller {
             }
         }
     }
+
+    @FXML
+    private void uncheckSetAll() {
+        setAllCheckbox.setSelected(false);
+    }
+
+    @FXML
+    private void uncheckExercises() {
+        additionCheckbox.setSelected(false);
+        subtractionCheckbox.setSelected(false);
+        multiplicationCheckbox.setSelected(false);
+        divisionCheckbox.setSelected(false);
+        orderOfOperationCheckbox.setSelected(false);
+        exponentCheckbox.setSelected(false);
+        rootCheckbox.setSelected(false);
+    }
 }
