@@ -20,6 +20,10 @@
    <children>
       <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
          <children>
+            <Button fx:id="textAreaToggle" mnemonicParsing="false" onAction="#showWrongAnswers" text="wrong answers">
+               <font>
+                  <Font size="16.0" />
+               </font></Button>
             <Button mnemonicParsing="false" onAction="#openMenu" text="Main Menu">
                <font>
                   <Font size="16.0" />

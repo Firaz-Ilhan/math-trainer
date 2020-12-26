@@ -17,6 +17,7 @@ import org.trainer.exceptions.IllegalFactoryArgument;
 import org.trainer.model.Arithmetic;
 import org.trainer.model.Factory;
 import org.trainer.statistics.Statistics;
+import org.trainer.streams.WrongAnswer;
 import org.trainer.thread.Clock;
 
 import java.io.IOException;
@@ -118,8 +119,9 @@ public class GameController extends Controller implements Initializable {
                 gameModerator.setText(numericInput + " is correct");
             } else {
                 gameModerator.setText(numericInput + " is NOT correct. Correct answer " + taskType.getSolution(task));
+                WrongAnswer wrongAnswer = new WrongAnswer();
+                wrongAnswer.addWrongAnswer(taskType.getRenderedTask(task), Integer.toString(taskType.getSolution(task)), answerField.getText());
             }
-
             statCollector.collector(randomType, taskType.checkSolution(task, numericInput));
             typeLoader();
             displayTask();
