@@ -100,6 +100,7 @@ public class GameController extends Controller implements Initializable {
     private void skipTask() {
         int solution = taskType.getSolution(task);
         gameModerator.setText("Correct answer was: " + solution);
+        log.info("User skipped task");
         typeLoader();
         displayTask();
     }
@@ -108,6 +109,8 @@ public class GameController extends Controller implements Initializable {
     private void enterAnswer() {
         if (answerField.getText().matches("-?[0-9]{0,10}") && !answerField.getText().isEmpty()) {
             int numericInput = Integer.parseInt(answerField.getText());
+
+            log.info("User entered: " + numericInput);
 
             if (taskType.checkSolution(task, numericInput)) {
                 gameModerator.setText(numericInput + " is correct");
