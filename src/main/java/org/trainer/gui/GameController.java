@@ -101,8 +101,10 @@ public class GameController extends Controller implements Initializable {
         int solution = taskType.getSolution(task);
         gameModerator.setText("Correct answer was: " + solution);
         log.info("User skipped task");
+        statCollector.collector(randomType, false);
         typeLoader();
         displayTask();
+        answerField.clear();
     }
 
     @FXML
