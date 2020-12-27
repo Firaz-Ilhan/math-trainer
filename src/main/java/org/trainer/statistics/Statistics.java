@@ -235,13 +235,13 @@ public class Statistics {
         }
 
         String displayStats = whatStats + "\n" +
-                "Addition: " + percentStat(array, 0) + "% von " + array[0][0] + "\n" +
-                "Subtraction: " + percentStat(array, 1) + "% von " + array[1][0] + "\n" +
-                "Multiplication: " + percentStat(array, 2) + "% von " + array[2][0] + "\n" +
-                "Division: " + percentStat(array, 3) + "% von " + array[3][0] + "\n" +
-                "Exponent: " + percentStat(array, 4) + "% von " + array[4][0] + "\n" +
-                "Root: " + percentStat(array, 5) + "% von " + array[5][0] + "\n" +
-                "OrderOfOperation: " + percentStat(array, 6) + "% von " + array[6][0];
+                "Addition: " + percentStat(array, 0) + "% out of " + array[0][0] + " tasks\n" +
+                "Subtraction: " + percentStat(array, 1) + "% out of " + array[1][0] + " task\n" +
+                "Multiplication: " + percentStat(array, 2) + "% out of " + array[2][0] + " tasks\n" +
+                "Division: " + percentStat(array, 3) + "% out of " + array[3][0] + " tasks\n" +
+                "Exponent: " + percentStat(array, 4) + "% out of " + array[4][0] + " tasks\n" +
+                "Root: " + percentStat(array, 5) + "% out of " + array[5][0] + " tasks\n" +
+                "OrderOfOperation: " + percentStat(array, 6) + "% out of " + array[6][0] + " tasks";
         log.info(displayStats);
         return displayStats;
     }
