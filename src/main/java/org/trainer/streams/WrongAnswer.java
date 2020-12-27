@@ -2,6 +2,7 @@ package org.trainer.streams;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -12,7 +13,7 @@ import java.util.stream.Stream;
 
 public class WrongAnswer {
 
-    private String fileName = "WrongAnswers.txt";
+    private final String fileName = "WrongAnswers.txt";
     private static final Logger log = LogManager.getLogger(WrongAnswer.class);
     public List<String> listAddi = new ArrayList<>();
     public List<String> listMinus = new ArrayList<>();
@@ -24,13 +25,13 @@ public class WrongAnswer {
     public List<String> listRoot3 = new ArrayList<>();
     public List<String> listOrder = new ArrayList<>();
 
-    public void addWrongAnswer(String exercise, String solution, String userInput)  {
+    public void addWrongAnswer(String exercise, String solution, String userInput) {
         try {
             PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(fileName, true)));
             writer.println(exercise + "=" + solution + " not " + userInput);
             writer.flush();
             writer.close();
-            log.info("Writing wrong answer to file WrongAnswers");
+            log.info("Writing wrong answer to file " + fileName);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -94,8 +95,7 @@ public class WrongAnswer {
 
     public String listToString(List<String> list) {
         StringBuilder listString = new StringBuilder();
-        for (String s : list)
-        {
+        for (String s : list) {
             listString.append(s).append("\n");
         }
         return listString.toString();

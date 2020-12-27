@@ -13,6 +13,7 @@ dependency-reduced-pom.xml
 .idea/
 math-trainer.iml
 stats.txt
+WrongAnswers.txt
 
 # CMake
 cmake-build-debug/
