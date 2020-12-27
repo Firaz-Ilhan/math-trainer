@@ -9,11 +9,6 @@
         </Console>
     </Appenders>
     <Loggers>
-
-        <!-- You my want to define class or package level per-logger rules -->
-        <Logger name="org.trainer" level="debug">
-            <AppenderRef ref="A1"/>
-        </Logger>
         <Root level="info">
             <AppenderRef ref="STDOUT"/>
             <AppenderRef ref="A1"/>

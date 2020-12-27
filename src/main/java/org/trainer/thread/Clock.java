@@ -2,10 +2,14 @@ package org.trainer.thread;
 
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.TimerTask;
 
 public class Clock extends TimerTask implements Runnable {
+
+    private final static Logger log = LogManager.getLogger(Clock.class);
 
     private int seconds;
     private int minutes;
@@ -18,10 +22,12 @@ public class Clock extends TimerTask implements Runnable {
         if (seconds == 60) {
             seconds = 0;
             minutes++;
+            log.info(minutes + " minute(s) has passed");
         }
         if (minutes == 60) {
             minutes = 0;
             hours++;
+            log.info(hours + " hour(s) has passed");
         }
         Platform.runLater(() -> {
             text.set(addingNull(minutes) + ":" + addingNull(seconds));

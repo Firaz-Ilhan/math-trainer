@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
 <GridPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.trainer.gui.ResultController">
   <columnConstraints>
@@ -16,7 +20,7 @@
    <children>
       <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
          <children>
-            <Button fx:id="textAreaToggle" mnemonicParsing="false" onAction="#showWrongAnswers" text="wrong answers">
+            <Button fx:id="textAreaToggle" mnemonicParsing="false" onAction="#showWrongAnswers" text="Wrong answers">
                <font>
                   <Font size="16.0" />
                </font></Button>
