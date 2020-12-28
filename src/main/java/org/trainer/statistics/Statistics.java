@@ -139,7 +139,7 @@ public class Statistics {
             String fileContent = reader.readLine();
             reader.close();
             log.info("Current stats: " + fileContent);
-            String[] splitFileContent = fileContent.split(" ");
+            final String[] splitFileContent = fileContent.split(" ");
             int counter = 0;
             StringBuilder toWrite = new StringBuilder();
             for (int i = 0; i < currentCollection.length; i++) {
@@ -191,11 +191,11 @@ public class Statistics {
      * @return returns the rounded percentage.
      */
     public int percentStat(int[][] arr, int pos) {
-        if (arr[pos][0] != 0) {
-            float percent = ((float) arr[pos][1] / (float) arr[pos][0]) * 100;
-            return Math.round(percent);
-        } else {
+        if (arr[pos][0] == 0) {
             return 0;
+        } else {
+            float percent = (arr[pos][1] / (float) arr[pos][0]) * 100.0F;
+            return Math.round(percent);
         }
     }
 
