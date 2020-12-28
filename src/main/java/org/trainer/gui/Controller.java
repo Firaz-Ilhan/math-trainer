@@ -27,7 +27,7 @@ public class Controller {
      * @param fxmlFile the view you would like to switch to
      * @param root     the root pane of the current scene
      */
-    public void changeScene(String fxmlFile, Pane root) {
+    void changeScene(String fxmlFile, Pane root) {
         try {
             final Parent root2 = FXMLLoader.load(getClass().getResource(fxmlFile));
             final Scene scene = new Scene(root2, root.getWidth(), root.getHeight());

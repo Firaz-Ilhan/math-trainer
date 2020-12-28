@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class WrongAnswer {
 
     public void addWrongAnswer(String exercise, String solution, String userInput) {
         try {
-            PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(fileName, true)));
+            PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(fileName, StandardCharsets.UTF_8, true)));
             writer.println(exercise + "=" + solution + " not " + userInput);
             writer.flush();
             writer.close();

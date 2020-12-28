@@ -15,14 +15,14 @@ public class Factory {
     /**
      * Provides a random type for {@link #getArithmetic(String, String)}.
      *
-     * @param ArithmeticType a collection of selected types.
+     * @param arithmeticType a collection of selected types.
      * @return a random type.
      */
-    public String getRandomType(ArrayList<String> ArithmeticType) {
+    public String getRandomType(ArrayList<String> arithmeticType) {
 
         ArrayList<String> typeList = new ArrayList<>(7);
 
-        typeList.addAll(ArithmeticType);
+        typeList.addAll(arithmeticType);
 
         return typeList.get(rand.nextInt(typeList.size()));
     }

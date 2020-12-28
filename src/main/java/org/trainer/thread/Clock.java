@@ -7,7 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.TimerTask;
 
-public class Clock extends TimerTask implements Runnable {
+public class Clock extends TimerTask {
 
     private final static Logger log = LogManager.getLogger(Clock.class);
 

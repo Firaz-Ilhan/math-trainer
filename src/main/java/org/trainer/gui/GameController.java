@@ -37,7 +37,7 @@ public class GameController extends Controller implements Initializable {
     @FXML
     private Label taskLabel;
     @FXML
-    public TextField answerField;
+    private TextField answerField;
     @FXML
     private Label gameModerator;
     @FXML
@@ -53,11 +53,11 @@ public class GameController extends Controller implements Initializable {
     private final Timer timer = new Timer(true);
 
     public void initDifficulty(String selectedDifficulty) {
-        this.difficulty = selectedDifficulty;
+        difficulty = selectedDifficulty;
     }
 
-    public void initTypes(ArrayList<String> ArithmeticType) {
-        this.ArithmeticType = ArithmeticType;
+    public void initTypes(ArrayList<String> arithmeticType) {
+        ArithmeticType = arithmeticType;
     }
 
     @FXML

@@ -6,10 +6,8 @@ import org.trainer.exceptions.IllegalFactoryArgument;
 import org.trainer.model.Arithmetic;
 import org.trainer.model.Factory;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Scanner;
@@ -135,13 +133,13 @@ public class Statistics {
      * The Combiner combines the current stats with the saved stats from the stat file stats.txt.
      */
     private void statCombiner() {
-        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName, StandardCharsets.UTF_8))) {
             String fileContent = reader.readLine();
             reader.close();
             log.info("Current stats: " + fileContent);
             final String[] splitFileContent = fileContent.split(" ");
             int counter = 0;
-            StringBuilder toWrite = new StringBuilder();
+            final StringBuilder toWrite = new StringBuilder();
             for (int i = 0; i < currentCollection.length; i++) {
                 toWrite.append(tempCollection[i][0] = currentCollection[i][0] + Integer.parseInt(splitFileContent[counter++]));
                 toWrite.append(' ');
@@ -152,6 +150,9 @@ public class Statistics {
             }
             tempStats = toWrite.toString();
             log.info("Saved stats:   " + tempStats);
+        } catch (FileNotFoundException e) {
+            log.error(e.toString());
+            e.printStackTrace();
         } catch (IOException e1) {
             log.error(e1.toString());
             e1.printStackTrace();

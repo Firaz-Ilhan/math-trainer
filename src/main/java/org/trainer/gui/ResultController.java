@@ -17,7 +17,7 @@ public class ResultController extends Controller {
 
     private String userStats;
     private boolean wrongAnswersEnabled;
-    final WrongAnswer wrongAnswer = new WrongAnswer();
+    private final WrongAnswer wrongAnswer = new WrongAnswer();
 
     public void initUserResult(String userResult) {
         resultField.setText(userResult);
