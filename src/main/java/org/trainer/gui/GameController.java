@@ -50,6 +50,7 @@ public class GameController extends Controller implements Initializable {
     private String randomType;
     private int[] task;
     private String difficulty;
+    private final Timer timer = new Timer(true);
 
     public void initDifficulty(String selectedDifficulty) {
         this.difficulty = selectedDifficulty;
@@ -80,6 +81,8 @@ public class GameController extends Controller implements Initializable {
             log.error(e1.toString());
             e1.printStackTrace();
         }
+        timer.cancel();
+        timer.purge();
     }
 
     private void typeLoader() {
@@ -147,7 +150,6 @@ public class GameController extends Controller implements Initializable {
             }
         });
         Clock clock = new Clock();
-        Timer timer = new Timer(true);
         timer.scheduleAtFixedRate(clock, 0, 1000);
         setTimer.textProperty().bind(clock.updateText());
     }
