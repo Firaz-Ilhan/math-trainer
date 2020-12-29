@@ -26,10 +26,17 @@ public class WrongAnswer {
     public List<String> listRoot3 = new ArrayList<>();
     public List<String> listOrder = new ArrayList<>();
 
-    public void addWrongAnswer(String exercise, String solution, String userInput) {
+    /**
+     * adds the tasks that the user answered incorrectly to the file WrongAnswers.txt
+     *
+     * @param task the task
+     * @param solution the solution
+     * @param userInput the wrong answer from the user
+     */
+    public void addWrongAnswer(String task, String solution, String userInput) {
         try {
             PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(fileName, StandardCharsets.UTF_8, true)));
-            writer.println(exercise + "=" + solution + " not " + userInput);
+            writer.println(task + "=" + solution + " not " + userInput);
             writer.flush();
             writer.close();
             log.info("Writing wrong answer to file " + fileName);
@@ -38,6 +45,9 @@ public class WrongAnswer {
         }
     }
 
+    /**
+     * sorts the wrong answers to the asked exercise categories
+     */
     public void sortWrongAnswers() {
         File file = new File(fileName);
         if (file.exists()) {
@@ -94,6 +104,12 @@ public class WrongAnswer {
         }
     }
 
+    /**
+     * merges the entries from the lists, one below the other
+     *
+     * @param list the lists with the wrong answers of the different exercise categories
+     * @return the strings of the tasks with the wrong answers
+     */
     public String listToString(List<String> list) {
         StringBuilder listString = new StringBuilder();
         for (String s : list) {
