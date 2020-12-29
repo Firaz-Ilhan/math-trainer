@@ -23,12 +23,12 @@ public class Clock extends TimerTask {
         if (seconds == 60) {
             seconds = 0;
             minutes++;
-            log.info(minutes + " minute(s) has passed");
+            log.info("{} minute(s) has passed", minutes);
         }
         if (minutes == 60) {
             minutes = 0;
             hours++;
-            log.info(hours + " hour(s) has passed");
+            log.info("{} hour(s) has passed", hours);
         }
         Platform.runLater(() -> {
             text.set(addingNull(minutes) + ":" + addingNull(seconds));

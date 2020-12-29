@@ -46,7 +46,7 @@ public class Division extends Task implements Arithmetic {
         rand2 = rand.nextInt((max - min) + 1) + min;
         product = rand1 * rand2;
 
-        log.info(product + "/" + rand1 + "=" + rand2);
+        log.info("{}/{}={}", product, rand1, rand2);
         return new int[]{product, rand1, rand2};
     }
 

@@ -34,7 +34,7 @@ public class Controller {
             Stage stage = (Stage) root.getScene().getWindow();
             stage.setScene(scene);
             stage.show();
-            log.info("Switching to: " + fxmlFile);
+            log.info("Switching to: {}", fxmlFile);
         } catch (IOException e1) {
             log.error(e1.toString());
             e1.printStackTrace();

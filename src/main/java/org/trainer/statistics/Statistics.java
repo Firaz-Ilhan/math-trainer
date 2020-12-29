@@ -136,7 +136,7 @@ public class Statistics {
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName, StandardCharsets.UTF_8))) {
             String fileContent = reader.readLine();
             reader.close();
-            log.info("Current stats: " + fileContent);
+            log.info("Current stats: {}", fileContent);
             final String[] splitFileContent = fileContent.split(" ");
             int counter = 0;
             final StringBuilder toWrite = new StringBuilder();
@@ -149,7 +149,7 @@ public class Statistics {
                 }
             }
             tempStats = toWrite.toString();
-            log.info("Saved stats:   " + tempStats);
+            log.info("Saved stats:   {}", tempStats);
         } catch (FileNotFoundException e) {
             log.error(e.toString());
             e.printStackTrace();

@@ -53,7 +53,7 @@ public class Factory {
             case "division":
                 return new Division(difficulty);
             default:
-                log.error(arithmeticType + " Type not found");
+                log.error("{} Type not found", arithmeticType);
                 throw new IllegalFactoryArgument("Invalid type of Arithmetic");
         }
     }

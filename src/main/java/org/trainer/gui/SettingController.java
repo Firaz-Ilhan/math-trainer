@@ -36,7 +36,7 @@ public class SettingController extends Controller {
     private String getSelectedDifficulty() {
         RadioButton selectedRadioButton = (RadioButton) difficulty.getSelectedToggle();
         String toggleGroupValue = selectedRadioButton.getText();
-        log.info("User selected difficulty: " + toggleGroupValue);
+        log.info("User selected difficulty: {}", toggleGroupValue);
         return toggleGroupValue;
     }
 

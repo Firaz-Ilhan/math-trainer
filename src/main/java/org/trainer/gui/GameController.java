@@ -116,7 +116,7 @@ public class GameController extends Controller implements Initializable {
         if (answerField.getText().matches("-?[0-9]{0,10}") && !answerField.getText().isEmpty()) {
             int numericInput = Integer.parseInt(answerField.getText());
 
-            log.info("User entered: " + numericInput);
+            log.info("User entered: {}", numericInput);
 
             if (taskType.checkSolution(task, numericInput)) {
                 gameModerator.setText(numericInput + " is correct");

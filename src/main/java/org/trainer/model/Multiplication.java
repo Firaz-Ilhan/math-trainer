@@ -46,7 +46,7 @@ public class Multiplication extends Task implements Arithmetic {
         rand2 = rand.nextInt((max - min) + 1) + min;
         product = rand1 * rand2;
 
-        log.info(rand1 + "*" + rand2 + "=" + product);
+        log.info("{}*{}={}", rand1, rand2, product);
         return new int[]{rand1, rand2, product};
     }
 

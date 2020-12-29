@@ -45,7 +45,7 @@ public class Addition extends Task implements Arithmetic {
         rand2 = rand.nextInt((max - min) + 1) + min;
         sum = rand1 + rand2;
 
-        log.info(rand1 + "+" + rand2 + "=" + sum);
+        log.info("{}+{}={}", rand1, rand2, sum);
         return new int[]{rand1, rand2, sum};
     }
 
