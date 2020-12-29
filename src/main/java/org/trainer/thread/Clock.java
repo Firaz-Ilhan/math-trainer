@@ -4,18 +4,19 @@ import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import java.util.TimerTask;
 
 public class Clock extends TimerTask {
 
     private final static Logger log = LogManager.getLogger(Clock.class);
-
     private int seconds;
     private int minutes;
     private int hours;
     private final SimpleStringProperty text = new SimpleStringProperty();
 
+    /**
+     * is called every second and adds a second to the time
+     */
     @Override
     public void run() {
         seconds++;
@@ -37,6 +38,12 @@ public class Clock extends TimerTask {
         });
     }
 
+    /**
+     *adds a zero in front of the seconds or minutes if these are only single digits
+     *
+     * @param num gets seconds or minutes
+     * @return seconds or minutes as a two-digit string
+     */
     private String addingNull(int num) {
         String resultText;
         if (Integer.toString(num).length() == 1) {
@@ -47,6 +54,11 @@ public class Clock extends TimerTask {
         return resultText;
     }
 
+    /**
+     * The GameController class gets the time
+     *
+     * @return text as SimpleStringProperty
+     */
     public SimpleStringProperty updateText() {
         return text;
     }
