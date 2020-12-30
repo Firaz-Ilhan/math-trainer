@@ -25,6 +25,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Timer;
+import java.util.regex.Pattern;
 
 public class GameController extends Controller implements Initializable {
 
@@ -51,6 +52,7 @@ public class GameController extends Controller implements Initializable {
     private int[] task;
     private String difficulty;
     private final Timer timer = new Timer(true);
+    private final Pattern pattern = Pattern.compile("-?[0-9]{0,10}");
 
     public void initDifficulty(String selectedDifficulty) {
         difficulty = selectedDifficulty;
@@ -62,13 +64,13 @@ public class GameController extends Controller implements Initializable {
 
     @FXML
     private void stopGame() {
-        String userResult = statCollector.getStats(false);
+        final String userResult = statCollector.getStats(false);
         statCollector.statSaver();
 
         try {
             final FXMLLoader loader = new FXMLLoader();
             final Parent rootNode = loader.load(getClass().getResourceAsStream(RESULT_FXML));
-            Stage stage = (Stage) root.getScene().getWindow();
+            final Stage stage = (Stage) root.getScene().getWindow();
             final Scene scene = new Scene(rootNode, root.getWidth(), root.getHeight());
 
             final ResultController resultController = loader.getController();
@@ -113,7 +115,7 @@ public class GameController extends Controller implements Initializable {
 
     @FXML
     private void enterAnswer() {
-        if (answerField.getText().matches("-?[0-9]{0,10}") && !answerField.getText().isEmpty()) {
+        if (pattern.matcher(answerField.getText()).matches() && !answerField.getText().isEmpty()) {
             int numericInput = Integer.parseInt(answerField.getText());
 
             log.info("User entered: {}", numericInput);
