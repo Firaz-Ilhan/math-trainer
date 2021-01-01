@@ -4,9 +4,8 @@ import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import java.util.TimerTask;
 
-public class Clock extends TimerTask {
+public class Clock extends Thread {
 
     private final static Logger log = LogManager.getLogger(Clock.class);
     private int seconds;
@@ -39,7 +38,7 @@ public class Clock extends TimerTask {
     }
 
     /**
-     *adds a zero in front of the seconds or minutes if these are only single digits
+     * adds a zero in front of the seconds or minutes if these are only single digits
      *
      * @param num gets seconds or minutes
      * @return seconds or minutes as a two-digit string

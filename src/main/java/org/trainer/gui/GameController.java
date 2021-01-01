@@ -24,7 +24,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.Timer;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
 public class GameController extends Controller implements Initializable {
@@ -51,8 +53,8 @@ public class GameController extends Controller implements Initializable {
     private String randomType;
     private int[] task;
     private String difficulty;
-    private final Timer timer = new Timer(true);
     private final Pattern pattern = Pattern.compile("-?[0-9]{0,10}");
+    ScheduledExecutorService executorService;
 
     public void initDifficulty(String selectedDifficulty) {
         difficulty = selectedDifficulty;
@@ -83,8 +85,7 @@ public class GameController extends Controller implements Initializable {
             log.error(e1.toString());
             e1.printStackTrace();
         }
-        timer.cancel();
-        timer.purge();
+        executorService.shutdown();
     }
 
     private void typeLoader() {
@@ -151,8 +152,17 @@ public class GameController extends Controller implements Initializable {
                 stopGame();
             }
         });
+
+        executorService = Executors.newScheduledThreadPool(1, r -> {
+            Thread thread = Executors.defaultThreadFactory().newThread(r);
+            thread.setDaemon(true);
+            return thread;
+        });
+
         Clock clock = new Clock();
-        timer.scheduleAtFixedRate(clock, 0, 1000);
+        clock.setDaemon(true);
+        clock.start();
+        executorService.scheduleAtFixedRate(clock, 0, 1, TimeUnit.SECONDS);
         setTimer.textProperty().bind(clock.updateText());
     }
 }
