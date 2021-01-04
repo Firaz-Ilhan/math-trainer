@@ -4,7 +4,11 @@ import java.util.Random;
 
 public class Task {
 
-    final Random rand = new Random();
+    final Random RAND = new Random();
+
+    final String BEGINNER = "beginner";
+    final String MEDIUM = "medium";
+    final String HARD = "hard";
 
     /**
      * Checks if the user input matches the calculated solution.

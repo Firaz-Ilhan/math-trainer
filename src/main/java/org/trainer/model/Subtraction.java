@@ -27,22 +27,22 @@ public class Subtraction extends Task implements Arithmetic {
         int max = 0, min = 0, rand1, rand2, diff;
 
         switch (difficulty) {
-            case "beginner":
+            case BEGINNER:
                 max = 20;
                 min = 1;
                 break;
-            case "medium":
+            case MEDIUM:
                 max = 30;
                 min = 20;
                 break;
-            case "hard":
+            case HARD:
                 max = 40;
                 min = 30;
                 break;
         }
 
-        rand1 = rand.nextInt((max - min) + 1) + min;
-        rand2 = rand.nextInt((max - min) + 1) + min;
+        rand1 = RAND.nextInt((max - min) + 1) + min;
+        rand2 = RAND.nextInt((max - min) + 1) + min;
         diff = rand1 - rand2;
 
         log.info("{}-{}={}", rand1, rand2, diff);

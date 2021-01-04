@@ -27,18 +27,18 @@ public class Exponent extends Task implements Arithmetic {
         int max = 0, min = 0, rand1;
 
         switch (difficulty) {
-            case "beginner":
-            case "hard":
+            case BEGINNER:
+            case HARD:
                 max = 10;
                 min = 1;
                 break;
-            case "medium":
+            case MEDIUM:
                 max = 20;
                 min = 10;
                 break;
         }
 
-        rand1 = rand.nextInt((max - min) + 1) + min;
+        rand1 = RAND.nextInt((max - min) + 1) + min;
 
         if (difficulty.equals("hard")) {
             log.info("{}³={}", rand1, rand1 * rand1 * rand1);

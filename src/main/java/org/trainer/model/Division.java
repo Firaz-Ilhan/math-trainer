@@ -27,23 +27,23 @@ public class Division extends Task implements Arithmetic {
         int max = 0, min = 0, rand1, rand2, product;
 
         switch (difficulty) {
-            case "beginner":
+            case BEGINNER:
                 max = 10;
                 min = 1;
                 break;
-            case "medium":
+            case MEDIUM:
                 max = 12;
                 min = 6;
                 break;
-            case "hard":
+            case HARD:
                 max = 15;
                 min = 10;
                 break;
 
         }
 
-        rand1 = rand.nextInt((max - min) + 1) + min;
-        rand2 = rand.nextInt((max - min) + 1) + min;
+        rand1 = RAND.nextInt((max - min) + 1) + min;
+        rand2 = RAND.nextInt((max - min) + 1) + min;
         product = rand1 * rand2;
 
         log.info("{}/{}={}", product, rand1, rand2);

@@ -27,21 +27,21 @@ public class Root extends Task implements Arithmetic {
         int max = 0, min = 0, rand1;
 
         switch (difficulty) {
-            case "beginner":
+            case BEGINNER:
                 max = 8;
                 min = 1;
                 break;
-            case "medium":
+            case MEDIUM:
                 max = 20;
                 min = 8;
                 break;
-            case "hard":
+            case HARD:
                 max = 15;
                 min = 3;
                 break;
         }
 
-        rand1 = rand.nextInt((max - min) + 1) + min;
+        rand1 = RAND.nextInt((max - min) + 1) + min;
 
         if (difficulty.equals("hard")) {
             log.info("³√{}={}", rand1 * rand1 * rand1, rand1);

@@ -27,23 +27,23 @@ public class OrderOfOperation extends Task implements Arithmetic {
         int max = 0, min = 0, rand1, rand2, rand3, sum;
 
         switch (difficulty) {
-            case "beginner":
+            case BEGINNER:
                 max = 10;
                 min = 1;
                 break;
-            case "medium":
+            case MEDIUM:
                 max = 15;
                 min = 11;
                 break;
-            case "hard":
+            case HARD:
                 max = 20;
                 min = 16;
                 break;
         }
 
-        rand1 = rand.nextInt((max - min) + 1) + min;
-        rand2 = rand.nextInt((max - min) + 1) + min;
-        rand3 = rand.nextInt((max - min) + 1) + min;
+        rand1 = RAND.nextInt((max - min) + 1) + min;
+        rand2 = RAND.nextInt((max - min) + 1) + min;
+        rand3 = RAND.nextInt((max - min) + 1) + min;
         sum = rand1 + rand2 * rand3;
 
         log.info("{}+{}*{}={}", rand1, rand2, rand3, sum);
