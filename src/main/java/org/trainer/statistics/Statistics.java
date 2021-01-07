@@ -53,7 +53,7 @@ public class Statistics {
      * This method creates the initial File with a set form to match the arrays.
      */
     private void createInitialStatFile() {
-        try (FileWriter initial = new FileWriter(fileName)) {
+        try (FileWriter initial = new FileWriter(fileName,false)) {
             initial.write("0 0 0 0 0 0 0 0 0 0 0 0 0 0");
             log.info("Creating the default stat file");
         } catch (IOException e1) {
@@ -114,7 +114,7 @@ public class Statistics {
                 break;
         }
         if (result) {
-            log.info("Adding a correct answer to statistics\n");
+            log.info("Adding a correct answer to the statistics\n");
         } else {
             log.info("Adding an incorrect answer to the statistics\n");
         }
@@ -125,8 +125,8 @@ public class Statistics {
      *
      * @return giving back the array.
      */
-    public int[][] getCurrentCollection() {
-        return currentCollection;
+    public int[][] getCurrentCollection() { //returning a copy to make sure the user doesnt get anything of the Original.
+        return currentCollection.clone();
     }
 
     /**
@@ -150,12 +150,9 @@ public class Statistics {
             }
             tempStats = toWrite.toString();
             log.info("Saved stats:   {}", tempStats);
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             log.error(e.toString());
             e.printStackTrace();
-        } catch (IOException e1) {
-            log.error(e1.toString());
-            e1.printStackTrace();
         }
     }
 
@@ -214,7 +211,7 @@ public class Statistics {
         for (int position = 0; position < currentCollection.length; position++) {
             stats[position] = percentStat(array, position);
         }
-        return stats;
+        return stats.clone();
     }
 
     /**
