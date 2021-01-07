@@ -54,7 +54,7 @@ public class GameController extends Controller implements Initializable {
     private int[] task;
     private String difficulty;
     private final Pattern pattern = Pattern.compile("-?[0-9]{0,10}");
-    ScheduledExecutorService executorService;
+    private ScheduledExecutorService executorService;
 
     public void initDifficulty(String selectedDifficulty) {
         difficulty = selectedDifficulty;
@@ -159,8 +159,7 @@ public class GameController extends Controller implements Initializable {
             return thread;
         });
 
-        Clock clock = new Clock();
-        clock.setDaemon(true);
+        final Clock clock = new Clock();
         clock.start();
         executorService.scheduleAtFixedRate(clock, 0, 1, TimeUnit.SECONDS);
         setTimer.textProperty().bind(clock.updateText());
