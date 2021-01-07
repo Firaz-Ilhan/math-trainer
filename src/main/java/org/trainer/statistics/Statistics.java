@@ -20,24 +20,6 @@ public class Statistics {
     private String tempStats;
     private static final Logger log = LogManager.getLogger(Statistics.class);
 
-    //for testing
-    public static void main(String[] args) throws IllegalFactoryArgument {
-        Statistics statCollector = new Statistics();
-        Factory f1 = new Factory();
-        Scanner scanner = new Scanner(System.in);
-
-        Arithmetic task0 = f1.getArithmetic("addition", "beginner");
-        System.out.println(task0.getRenderedTask(task0.getTask()));
-        int userInput0 = scanner.nextInt();
-        statCollector.collector("addition", task0.checkSolution(task0.getTask(), userInput0));
-
-        Arithmetic task1 = f1.getArithmetic("addition", "beginner");
-        System.out.println(task1.getRenderedTask(task1.getTask()));
-        int userInput1 = scanner.nextInt();
-        statCollector.collector("addition", task1.checkSolution(task1.getTask(), userInput1));
-        statCollector.statSaver();
-    }
-
     /**
      * Constructor with creation of the necessary initial forms for file and array.
      */
