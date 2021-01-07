@@ -2,15 +2,14 @@ package org.trainer.statistics;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.trainer.exceptions.IllegalFactoryArgument;
-import org.trainer.model.Arithmetic;
-import org.trainer.model.Factory;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Scanner;
 
 //currently stats for add sub mul div exp root ordOfOp
 public class Statistics {
