@@ -33,6 +33,9 @@ public class ArithmeticTest {
         Assert.assertFalse(task.checkInputPattern("123_a"));
         Assert.assertFalse(task.checkInputPattern("123 ä"));
         Assert.assertFalse(task.checkInputPattern("123_ä"));
+        Assert.assertFalse(task.checkInputPattern("123_4"));
+        Assert.assertFalse(task.checkInputPattern("123 4"));
+        Assert.assertFalse(task.checkInputPattern("123h4"));
     }
 
     /* -- Addition -- */

@@ -27,7 +27,6 @@ import java.util.ResourceBundle;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-import java.util.regex.Pattern;
 
 public class GameController extends Controller implements Initializable {
 
@@ -53,7 +52,6 @@ public class GameController extends Controller implements Initializable {
     private String randomType;
     private int[] task;
     private String difficulty;
-    private final Pattern pattern = Pattern.compile("-?[0-9]{0,10}");
     private ScheduledExecutorService executorService;
 
     public void initDifficulty(String selectedDifficulty) {
