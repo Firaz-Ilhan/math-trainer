@@ -6,9 +6,34 @@ import org.trainer.model.*;
 
 public class ArithmeticTest {
 
+    private final Task task = new Task();
+
     private final String BEGINNER = "beginner";
     private final String MEDIUM = "medium";
     private final String HARD = "hard";
+
+    @Test
+    public void test_checkInputPattern_positive() {
+        Assert.assertTrue(task.checkInputPattern("1234567890"));
+    }
+
+    @Test
+    public void test_checkInputPattern_negative() {
+        Assert.assertFalse(task.checkInputPattern(""));
+        Assert.assertFalse(task.checkInputPattern("abc"));
+        Assert.assertFalse(task.checkInputPattern("ABC"));
+        Assert.assertFalse(task.checkInputPattern("öäü"));
+        Assert.assertFalse(task.checkInputPattern("ÖÄÜ"));
+        Assert.assertFalse(task.checkInputPattern("+#-/,.²³$%&/()=?`´<>"));
+        Assert.assertFalse(task.checkInputPattern("a123"));
+        Assert.assertFalse(task.checkInputPattern("ä123"));
+        Assert.assertFalse(task.checkInputPattern("a 123"));
+        Assert.assertFalse(task.checkInputPattern("ä 123"));
+        Assert.assertFalse(task.checkInputPattern("123 a"));
+        Assert.assertFalse(task.checkInputPattern("123_a"));
+        Assert.assertFalse(task.checkInputPattern("123 ä"));
+        Assert.assertFalse(task.checkInputPattern("123_ä"));
+    }
 
     /* -- Addition -- */
     @Test

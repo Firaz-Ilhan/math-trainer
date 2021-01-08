@@ -1,10 +1,12 @@
 package org.trainer.model;
 
 import java.util.Random;
+import java.util.regex.Pattern;
 
 public class Task {
 
     final Random RAND = new Random();
+    private final Pattern pattern = Pattern.compile("-?[0-9]{0,10}");
 
     final String BEGINNER = "beginner";
     final String MEDIUM = "medium";
@@ -33,5 +35,19 @@ public class Task {
      */
     public int getSolution(int[] task) {
         return task[task.length - 1];
+    }
+
+    /**
+     * Checks if the user userInput matches the regular expression
+     *
+     * @param userInput user userInput
+     * @return true if userInput matches regular expression
+     */
+    public boolean checkInputPattern(String userInput) {
+        if (userInput.isEmpty()) {
+            return false;
+        } else {
+            return pattern.matcher(userInput).matches();
+        }
     }
 }

@@ -116,7 +116,7 @@ public class GameController extends Controller implements Initializable {
 
     @FXML
     private void enterAnswer() {
-        if (pattern.matcher(answerField.getText()).matches() && !answerField.getText().isEmpty()) {
+        if (taskType.checkInputPattern(answerField.getText())) {
             int numericInput = Integer.parseInt(answerField.getText());
 
             log.info("User entered: {}", numericInput);

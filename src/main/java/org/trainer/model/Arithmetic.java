@@ -38,4 +38,12 @@ public interface Arithmetic {
      * @return int of the solution.
      */
     int getSolution(int[] task);
+
+    /**
+     * Checks if the user userInput matches the regular expression
+     *
+     * @param userInput user userInput
+     * @return true if userInput matches regular expression
+     */
+    boolean checkInputPattern(String userInput);
 }
