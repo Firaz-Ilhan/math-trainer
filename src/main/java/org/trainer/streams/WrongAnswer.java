@@ -1,6 +1,5 @@
 package org.trainer.streams;
 
-import javafx.scene.control.Alert;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -30,27 +29,16 @@ public class WrongAnswer {
     /**
      * adds the tasks that the user answered incorrectly to the file WrongAnswers.txt
      *
-     * @param task the task
-     * @param solution the solution
+     * @param task      the task
+     * @param solution  the solution
      * @param userInput the wrong answer from the user
      */
-    public void addWrongAnswer(String task, String solution, String userInput) {
-        try {
-            PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(fileName, StandardCharsets.UTF_8, true)));
-            writer.println(task + "=" + solution + " not " + userInput);
-            writer.flush();
-            writer.close();
-            log.info("Writing wrong answer to file " + fileName);
-        } catch (IOException e1) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("File Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Error: WrongAnswers.txt cannot be created or written to. Please check if " +
-                    "file WrongAnswers.txt exists or the permissions of file.");
-            alert.showAndWait();
-            log.error(e1.toString());
-            e1.printStackTrace();
-        }
+    public void addWrongAnswer(String task, String solution, String userInput) throws IOException {
+        PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(fileName, StandardCharsets.UTF_8, true)));
+        writer.println(task + "=" + solution + " not " + userInput);
+        writer.flush();
+        writer.close();
+        log.info("Writing wrong answer to file " + fileName);
     }
 
     /**

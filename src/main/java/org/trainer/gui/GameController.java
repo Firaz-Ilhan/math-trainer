@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -124,7 +125,19 @@ public class GameController extends Controller implements Initializable {
             } else {
                 gameModerator.setText(numericInput + " is NOT correct. Correct answer " + taskType.getSolution(task));
                 WrongAnswer wrongAnswer = new WrongAnswer();
-                wrongAnswer.addWrongAnswer(taskType.getRenderedTask(task), Integer.toString(taskType.getSolution(task)), answerField.getText());
+
+                try {
+                    wrongAnswer.addWrongAnswer(taskType.getRenderedTask(task), Integer.toString(taskType.getSolution(task)), answerField.getText());
+                } catch (IOException e1) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("File Error");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Error: WrongAnswers.txt cannot be created or written to. Please check if " +
+                            "file WrongAnswers.txt exists or the permissions of file.");
+                    alert.showAndWait();
+                    log.error(e1.toString());
+                    e1.printStackTrace();
+                }
             }
             statCollector.collector(randomType, taskType.checkSolution(task, numericInput));
             typeLoader();
