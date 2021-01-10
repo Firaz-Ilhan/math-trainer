@@ -1,5 +1,6 @@
 package org.trainer.streams;
 
+import javafx.scene.control.Alert;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -40,8 +41,15 @@ public class WrongAnswer {
             writer.flush();
             writer.close();
             log.info("Writing wrong answer to file " + fileName);
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        } catch (IOException e1) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("File Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Error: WrongAnswers.txt cannot be created or written to. Please check if " +
+                    "file WrongAnswers.txt exists or the permissions of file.");
+            alert.showAndWait();
+            log.error(e1.toString());
+            e1.printStackTrace();
         }
     }
 
@@ -98,8 +106,9 @@ public class WrongAnswer {
                         .filter(line -> line.contains("+"))
                         .filter(line -> line.contains("*"))
                         .collect(Collectors.toList());
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (IOException e1) {
+                log.error(e1.toString());
+                e1.printStackTrace();
             }
         }
     }
