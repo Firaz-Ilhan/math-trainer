@@ -2,6 +2,7 @@ package org.trainer.gui;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 import org.apache.logging.log4j.LogManager;
@@ -33,6 +34,11 @@ public class AboutController extends Controller implements Initializable {
             Desktop.getDesktop().browse(new URL("https://github.com/Firaz-Ilhan/math-trainer").toURI());
             log.info("User opened github repository");
         } catch (URISyntaxException | IOException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("URL Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Could not open link with your default web browser. Try to copy the link in your web browser");
+            alert.showAndWait();
             log.error(e.toString());
             e.printStackTrace();
         }
