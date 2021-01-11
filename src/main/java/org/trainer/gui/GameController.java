@@ -132,8 +132,7 @@ public class GameController extends Controller implements Initializable {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("File Error");
                     alert.setHeaderText(null);
-                    alert.setContentText("Error: WrongAnswers.txt cannot be created or written to. Please check if " +
-                            "file WrongAnswers.txt exists or the permissions of file.");
+                    alert.setContentText("Error: WrongAnswers.txt cannot be created or written to. Please check if file WrongAnswers.txt exists or the permissions of file.");
                     alert.showAndWait();
                     log.error(e1.toString());
                     e1.printStackTrace();
