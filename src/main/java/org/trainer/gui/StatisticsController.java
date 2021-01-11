@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
 
 public class StatisticsController extends Controller implements Initializable {
 
-    private static final Statistics statistics = new Statistics();
+    private final Statistics statistics = new Statistics();
 
     @FXML
     private GridPane root;
