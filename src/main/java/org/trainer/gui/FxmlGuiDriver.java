@@ -27,7 +27,6 @@ public class FxmlGuiDriver extends Application {
 
         log.info("Showing JFX scene");
         final Scene scene = new Scene(rootNode);
-        //scene.getStylesheets().add("/styles/styles.css");
 
         stage.setTitle("Math Trainer");
         stage.setScene(scene);
