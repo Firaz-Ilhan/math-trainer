@@ -76,4 +76,9 @@ public class FactoryTest {
         Assert.assertFalse(root instanceof OrderOfOperation);
         Assert.assertFalse(orderOfOperation instanceof Addition);
     }
+
+    @Test(expected = IllegalFactoryArgument.class)
+    public void test_factory_exception() throws IllegalFactoryArgument {
+        factory.getArithmetic("abc", "def");
+    }
 }
