@@ -21,6 +21,7 @@ import org.trainer.statistics.Statistics;
 import org.trainer.streams.WrongAnswer;
 import org.trainer.thread.Clock;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -47,13 +48,27 @@ public class GameController extends Controller implements Initializable {
     private Label setTimer;
 
     private final Factory factory = new Factory();
-    private final Statistics statCollector = new Statistics();
+    private Statistics statCollector;
     private Arithmetic taskType;
     private ArrayList<String> ArithmeticType;
     private String randomType;
     private int[] task;
     private String difficulty;
     private ScheduledExecutorService executorService;
+
+    {
+        try {
+            statCollector = new Statistics();
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("File Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Error: stat.txt cannot be created or written to. Please check if file stat.txt exists or the permissions of file.");
+            alert.showAndWait();
+            log.error(e.toString());
+            e.printStackTrace();
+        }
+    }
 
     public void initDifficulty(String selectedDifficulty) {
         difficulty = selectedDifficulty;
@@ -66,7 +81,17 @@ public class GameController extends Controller implements Initializable {
     @FXML
     private void stopGame() {
         final String userResult = statCollector.getStats(false);
-        statCollector.statSaver();
+        try {
+            statCollector.statSaver();
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("File Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Error: stat.txt cannot be written to. Please check if file stat.txt exists or the permissions of file.");
+            alert.showAndWait();
+            log.error(e.toString());
+            e.printStackTrace();
+        }
 
         try {
             final FXMLLoader loader = new FXMLLoader();

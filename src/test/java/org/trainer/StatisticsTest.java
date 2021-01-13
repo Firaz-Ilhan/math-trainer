@@ -47,7 +47,7 @@ public class StatisticsTest {
     }
 
     @Test
-    public void test_current_stats() {
+    public void test_current_stats() throws IOException {
         Statistics statCollector = new Statistics();
         int[][] testCurrentCollection = new int[][]{{2, 1}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}};
         statCollector.collector("addition", true);
@@ -57,7 +57,7 @@ public class StatisticsTest {
     }
 
     @Test
-    public void test_percentStat() {
+    public void test_percentStat() throws IOException {
         Statistics statsPercent = new Statistics();
         int[][] arr = new int[][]{{2, 1}, {1, 1}, {3, 1}, {3, 2}};
         Assert.assertEquals(50, statsPercent.percentStat(arr, 0));

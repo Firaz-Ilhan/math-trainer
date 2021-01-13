@@ -3,10 +3,7 @@ package org.trainer.statistics;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -22,7 +19,7 @@ public class Statistics {
     /**
      * Constructor with creation of the necessary initial forms for file and array.
      */
-    public Statistics() {
+    public Statistics() throws IOException {
         currentCollection = new int[][]{{0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}};
         tempCollection = new int[][]{{0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}};
         if (!Files.exists(Paths.get(fileName))) {
@@ -33,14 +30,11 @@ public class Statistics {
     /**
      * This method creates the initial File with a set form to match the arrays.
      */
-    private void createInitialStatFile() {
-        try (FileWriter initial = new FileWriter(fileName,false)) {
-            initial.write("0 0 0 0 0 0 0 0 0 0 0 0 0 0");
-            log.info("Creating the default stat file");
-        } catch (IOException e1) {
-            log.error(e1.toString());
-            e1.printStackTrace();
-        }
+    private void createInitialStatFile() throws IOException {
+        FileWriter initial = new FileWriter(fileName, false);
+        initial.write("0 0 0 0 0 0 0 0 0 0 0 0 0 0");
+        initial.close();
+        log.info("Creating the default stat file");
     }
 
     /**
@@ -141,14 +135,11 @@ public class Statistics {
      * Saves stats to the stats.txt file and deletes current stats.
      * Calls the {@link #statCombiner}.
      */
-    public void statSaver() {
+    public void statSaver() throws IOException {
         statCombiner();
-        try (FileWriter writer = new FileWriter(fileName, false)) {
-            writer.write(tempStats);
-        } catch (IOException e1) {
-            log.error(e1.toString());
-            e1.printStackTrace();
-        }
+        FileWriter writer = new FileWriter(fileName, false);
+        writer.write(tempStats);
+        writer.close();
         log.info("Saving the current stats to lifetime stats");
         tempCollection = new int[][]{{0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}};
         currentCollection = new int[][]{{0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}};
@@ -157,7 +148,7 @@ public class Statistics {
     /**
      * Deletes the saved stats and creates a new initial File.
      */
-    public void statReset() {
+    public void statReset() throws IOException {
         log.info("Resetting the stats");
         createInitialStatFile();
     }
