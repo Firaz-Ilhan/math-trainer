@@ -68,10 +68,10 @@ public class StatisticsTest {
 
     @Test
     public void test_statReset() throws IOException {
+        Statistics statCollector = new Statistics();
         BufferedReader reader0 = new BufferedReader(new FileReader("stats.txt"));
         String fileReset = reader0.readLine();
         reader0.close();
-        Statistics statCollector = new Statistics();
 
         statCollector.collector("addition", true);
         statCollector.statSaver();
