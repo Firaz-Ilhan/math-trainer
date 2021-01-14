@@ -174,14 +174,16 @@ public class GameController extends Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Platform.runLater(() -> answerField.requestFocus());
-        Platform.runLater(() -> displayTask());
+        Platform.runLater(this::displayTask);
         Platform.runLater(() -> difficultyLabel.setText(difficulty));
 
         answerField.setOnKeyPressed((event) -> {
             if (event.getCode() == KeyCode.ENTER) {
                 enterAnswer();
             }
+        });
 
+        root.setOnKeyPressed((event) -> {
             if (event.getCode() == KeyCode.ESCAPE) {
                 stopGame();
             }

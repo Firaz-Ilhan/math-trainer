@@ -1,12 +1,17 @@
 package org.trainer.gui;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import org.trainer.streams.WrongAnswer;
 
-public class ResultController extends Controller {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class ResultController extends Controller implements Initializable {
 
     @FXML
     private GridPane root;
@@ -56,5 +61,14 @@ public class ResultController extends Controller {
     @FXML
     public void openStatistics() {
         changeScene(Statistics_FXML, root);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        root.setOnKeyPressed((event) -> {
+            if (event.getCode() == KeyCode.ESCAPE) {
+                openMenu();
+            }
+        });
     }
 }

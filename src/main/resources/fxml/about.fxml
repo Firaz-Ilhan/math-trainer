@@ -24,7 +24,7 @@
       <RowConstraints minHeight="10.0" percentHeight="5.0" prefHeight="30.0" vgrow="SOMETIMES" />
       </rowConstraints>
       <children>
-          <Button mnemonicParsing="false" onAction="#openHome" text="Main Menu" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+          <Button mnemonicParsing="false" onAction="#openMenu" text="Main Menu" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>

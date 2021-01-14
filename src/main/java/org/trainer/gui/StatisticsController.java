@@ -5,6 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -76,5 +77,11 @@ public class StatisticsController extends Controller implements Initializable {
         series.getData().add(new XYChart.Data<>("Order of Operation", stats[6]));
         series.setName("Correct answers in percent - your average is: " + (int) average.getAsDouble() + "%");
         barchart.getData().add(series);
+
+        root.setOnKeyPressed((event) -> {
+            if (event.getCode() == KeyCode.ESCAPE) {
+               openMenu();
+            }
+        });
     }
 }
