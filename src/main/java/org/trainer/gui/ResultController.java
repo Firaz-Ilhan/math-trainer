@@ -40,14 +40,14 @@ public class ResultController extends Controller implements Initializable {
             resultField.setStyle("-fx-font: 25 System;");
             wrongAnswer.sortWrongAnswers();
             resultField.setText("Addition\n" + wrongAnswer.listToString(wrongAnswer.listAddi) + "\n"
-                    + "Minus\n" + wrongAnswer.listToString(wrongAnswer.listMinus) + "\n"
+                    + "Subtraction\n" + wrongAnswer.listToString(wrongAnswer.listSubt) + "\n"
                     + "Multiplication\n" + wrongAnswer.listToString(wrongAnswer.listMulti) + "\n"
                     + "Division\n" + wrongAnswer.listToString(wrongAnswer.listDivi) + "\n"
                     + "Exponent\n" + wrongAnswer.listToString(wrongAnswer.listExpo2)
                     + wrongAnswer.listToString(wrongAnswer.listExpo3) + "\n"
                     + "Root\n" + wrongAnswer.listToString(wrongAnswer.listRoot2)
                     + wrongAnswer.listToString(wrongAnswer.listRoot3) + "\n"
-                    + "OrderOfOperation\n" + wrongAnswer.listToString(wrongAnswer.listOrder) + "\n");
+                    + "Order Of Operation\n" + wrongAnswer.listToString(wrongAnswer.listOrder) + "\n");
             textAreaToggle.setText("Result");
             wrongAnswersEnabled = true;
         }

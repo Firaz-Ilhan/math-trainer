@@ -10,11 +10,12 @@ import java.nio.file.Paths;
 
 //currently stats for add sub mul div exp root ordOfOp
 public class Statistics {
+    public static final String[] operations = {"Addition", "Subtraction", "Multiplication", "Division", "Exponent", "Root", "Order of Operation"};
+    private static final Logger log = LogManager.getLogger(Statistics.class);
+    private final String fileName = "stats.txt";
     private int[][] currentCollection;
     private int[][] tempCollection;
-    private final String fileName = "stats.txt";
     private String tempStats;
-    private static final Logger log = LogManager.getLogger(Statistics.class);
 
     /**
      * Constructor with creation of the necessary initial forms for file and array.
@@ -162,7 +163,7 @@ public class Statistics {
      */
     public int percentStat(int[][] arr, int pos) {
         if (arr[pos][0] == 0) {
-            return 0;
+            return 100;
         } else {
             float percent = (arr[pos][1] / (float) arr[pos][0]) * 100.0F;
             return Math.round(percent);
@@ -204,15 +205,15 @@ public class Statistics {
             whatStats = "Current Stats:";
         }
 
-        String displayStats = whatStats + "\n" +
-                "Addition: " + percentStat(array, 0) + "% out of " + array[0][0] + " tasks\n" +
-                "Subtraction: " + percentStat(array, 1) + "% out of " + array[1][0] + " task\n" +
-                "Multiplication: " + percentStat(array, 2) + "% out of " + array[2][0] + " tasks\n" +
-                "Division: " + percentStat(array, 3) + "% out of " + array[3][0] + " tasks\n" +
-                "Exponent: " + percentStat(array, 4) + "% out of " + array[4][0] + " tasks\n" +
-                "Root: " + percentStat(array, 5) + "% out of " + array[5][0] + " tasks\n" +
-                "OrderOfOperation: " + percentStat(array, 6) + "% out of " + array[6][0] + " tasks";
-        log.info(displayStats);
-        return displayStats;
+        StringBuilder displayStats = new StringBuilder();
+        displayStats.append(whatStats).append("\n");
+        for (int i = 0; i < operations.length; i++) {
+            displayStats.append(operations[i]).append(": ").append(percentStat(array, i)).append("% out of ").append(array[i][0]).append(" tasks");
+            if (i != operations.length - 1) {
+                displayStats.append("\n");
+            }
+        }
+        log.info(displayStats.toString());
+        return displayStats.toString();
     }
 }

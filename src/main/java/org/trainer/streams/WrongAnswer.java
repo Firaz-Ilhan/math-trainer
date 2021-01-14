@@ -12,12 +12,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class WrongAnswer {
+public class WrongAnswer { //TODO the lists do not reset after finishing a Game instance!
 
     private final String fileName = "WrongAnswers.txt";
     private static final Logger log = LogManager.getLogger(WrongAnswer.class);
     public List<String> listAddi = new ArrayList<>();
-    public List<String> listMinus = new ArrayList<>();
+    public List<String> listSubt = new ArrayList<>();
     public List<String> listMulti = new ArrayList<>();
     public List<String> listDivi = new ArrayList<>();
     public List<String> listExpo2 = new ArrayList<>();
@@ -53,7 +53,7 @@ public class WrongAnswer {
                         .filter(line -> !line.contains("*"))
                         .collect(Collectors.toList());
                 Stream<String> stream1 = Files.lines(Paths.get(fileName));
-                listMinus = stream1
+                listSubt = stream1
                         .parallel()
                         .filter(line -> line.contains("-"))
                         .collect(Collectors.toList());
