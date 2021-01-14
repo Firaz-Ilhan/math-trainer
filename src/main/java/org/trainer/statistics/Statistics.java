@@ -46,7 +46,14 @@ public class Statistics {
      */
     private void createInitialStatFile() throws IOException {
         FileWriter initial = new FileWriter(fileName, false);
-        initial.write("0 0 0 0 0 0 0 0 0 0 0 0 0 0");
+        StringBuilder initialString = new StringBuilder();
+        for (int i = 0; i < operations.length; i++) {
+            initialString.append("0 0");
+            if (i < operations.length - 1) {
+                initialString.append(" ");
+            }
+        }
+        initial.write(initialString.toString());
         initial.close();
         log.info("Creating the default stat file");
     }
