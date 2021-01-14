@@ -21,7 +21,6 @@ import org.trainer.statistics.Statistics;
 import org.trainer.streams.WrongAnswer;
 import org.trainer.thread.Clock;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -196,7 +195,7 @@ public class GameController extends Controller implements Initializable {
 
         final Clock clock = new Clock();
         clock.start();
-        executorService.scheduleAtFixedRate(clock, 0, 1, TimeUnit.SECONDS);
+        executorService.scheduleAtFixedRate(clock, 0L, 1L, TimeUnit.SECONDS);
         setTimer.textProperty().bind(clock.updateText());
     }
 }
