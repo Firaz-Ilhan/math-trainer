@@ -86,4 +86,10 @@ public class StatisticsTest {
         testWriter1.write(fileReset);
         testWriter1.close();
     }
+
+    @Test
+    public void test_arrayLength() throws IOException {
+        Statistics testStatistics = new Statistics();
+        Assert.assertEquals(testStatistics.getCurrentCollection().length,testStatistics.getTempCollection().length,testStatistics.getOperationsArray().length);
+    }
 }

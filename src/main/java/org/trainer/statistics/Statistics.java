@@ -21,10 +21,23 @@ public class Statistics {
      * Constructor with creation of the necessary initial forms for file and array.
      */
     public Statistics() throws IOException {
-        currentCollection = new int[][]{{0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}};
-        tempCollection = new int[][]{{0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}};
+        createInitialStatArrays();
         if (!Files.exists(Paths.get(fileName))) {
             createInitialStatFile();
+        }
+    }
+
+    /**
+     * This method creates the initial Arrays with operations.length-1
+     */
+    private void createInitialStatArrays() {
+        currentCollection = new int[operations.length][2];
+        tempCollection = new int[operations.length][2];
+        for (int i = 0; i < operations.length; i++) {
+            currentCollection[i][0] = 0;
+            currentCollection[i][1] = 0;
+            tempCollection[i][0] = 0;
+            tempCollection[i][1] = 0;
         }
     }
 
@@ -103,6 +116,24 @@ public class Statistics {
      */
     public int[][] getCurrentCollection() { //returning a copy to make sure the user doesnt get anything of the Original.
         return currentCollection.clone();
+    }
+
+    /**
+     * Method to give testing information about the temp stats.
+     *
+     * @return giving back the array.
+     */
+    public int[][] getTempCollection() { //returning a copy to make sure the user doesnt get anything of the Original.
+        return tempCollection.clone();
+    }
+
+    /**
+     * Method to give testing information about the temp stats.
+     *
+     * @return giving back the array.
+     */
+    public String[] getOperationsArray() { //returning a copy to make sure the user doesnt get anything of the Original.
+        return operations.clone();
     }
 
     /**
@@ -216,4 +247,6 @@ public class Statistics {
         log.info(displayStats.toString());
         return displayStats.toString();
     }
+
 }
+
