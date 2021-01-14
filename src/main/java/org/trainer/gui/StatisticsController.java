@@ -68,8 +68,9 @@ public class StatisticsController extends Controller implements Initializable {
         int[] stats = statistics.getPercentStats();
         OptionalDouble average = Arrays.stream(stats).average();
         XYChart.Series<String, Number> series = new XYChart.Series<>();
+        String[] operations = statistics.getOperationsArray();
         for (int i = 0; i < stats.length; i++) {
-            series.getData().add(new XYChart.Data<>(Statistics.operations[i], stats[i])); //TODO how to get operations in clean code?
+            series.getData().add(new XYChart.Data<>(operations[i], stats[i]));
         }
 
         series.setName("Correct answers in percent - your average is: " + (int) average.getAsDouble() + "%");

@@ -10,7 +10,7 @@ import java.nio.file.Paths;
 
 //currently stats for add sub mul div exp root ordOfOp
 public class Statistics {
-    public static final String[] operations = {"Addition", "Subtraction", "Multiplication", "Division", "Exponent", "Root", "Order of Operation"};
+    public final String[] operations = {"Addition", "Subtraction", "Multiplication", "Division", "Exponent", "Root", "Order of Operation"};
     private static final Logger log = LogManager.getLogger(Statistics.class);
     private final String fileName = "stats.txt";
     private int[][] currentCollection;
