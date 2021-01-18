@@ -76,7 +76,7 @@ public class StatisticsTest {
         statCollector.collector("addition", true);
         statCollector.statSaver();
         statCollector.statReset();
-        String expected = "0 0 0 0 0 0 0 0 0 0 0 0 0 0";
+        String expected = "0 0 0 0 0 0 0 0 0 0 0 0 0 0 ";
         BufferedReader reader1 = new BufferedReader(new FileReader("stats.txt"));
         String actual = reader1.readLine();
         reader1.close();

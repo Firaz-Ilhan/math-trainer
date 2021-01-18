@@ -3,14 +3,20 @@ package org.trainer.statistics;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Objects;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 //currently stats for add sub mul div exp root ordOfOp
 public class Statistics {
-    public final String[] operations = {"Addition", "Subtraction", "Multiplication", "Division", "Exponent", "Root", "Order of Operation"};
+    private final String[] operations = {"Addition", "Subtraction", "Multiplication", "Division", "Exponent", "Root", "Order of Operation"};
     private static final Logger log = LogManager.getLogger(Statistics.class);
     private final String fileName = "stats.txt";
     private int[][] currentCollection;
@@ -45,14 +51,15 @@ public class Statistics {
      * This method creates the initial File with a set form to match the arrays.
      */
     private void createInitialStatFile() throws IOException {
-        FileWriter initial = new FileWriter(fileName, false);
-        StringBuilder initialString = new StringBuilder();
-        for (int i = 0; i < operations.length; i++) {
-            initialString.append("0 0");
-            if (i < operations.length - 1) {
-                initialString.append(" ");
-            }
-        }
+        final FileWriter initial = new FileWriter(fileName, false);
+        final StringBuilder initialString = new StringBuilder();
+        Stream<String> operationsStream = Stream.of(operations);
+
+        operationsStream
+                .filter(Objects::nonNull)
+                .filter(Predicate.not(String::isEmpty))
+                .forEach(i -> initialString.append("0 0 "));
+
         initial.write(initialString.toString());
         initial.close();
         log.info("Creating the default stat file");
