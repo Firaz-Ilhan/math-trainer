@@ -147,7 +147,7 @@ public class GameController extends Controller implements Initializable {
             if (taskType.checkSolution(task, numericInput)) {
                 gameModerator.setText(numericInput + " is correct");
             } else {
-                gameModerator.setText(numericInput + " is NOT correct. Correct answer " + taskType.getSolution(task));
+                gameModerator.setText(numericInput + " is NOT correct. Correct answer: " + taskType.getSolution(task));
                 WrongAnswer wrongAnswer = new WrongAnswer();
 
                 try {
@@ -196,8 +196,9 @@ public class GameController extends Controller implements Initializable {
         });
 
         final Clock clock = new Clock();
+        clock.setDaemon(true);
         clock.start();
-        executorService.scheduleAtFixedRate(clock, 0L, 1L, TimeUnit.SECONDS);
+        executorService.scheduleAtFixedRate(clock, 1L, 1L, TimeUnit.SECONDS);
         setTimer.textProperty().bind(clock.updateText());
     }
 }
