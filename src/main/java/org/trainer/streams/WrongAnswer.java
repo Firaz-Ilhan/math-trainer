@@ -29,7 +29,7 @@ public class WrongAnswer {
      * @param solution  the solution
      * @param userInput the wrong answer from the user
      */
-    public void addWrongAnswer(String task, String solution, String userInput) throws IOException {
+    public void addWrongAnswer(String task, String solution, String userInput) {
         wrongAnswers.add(task + "=" + solution + " not " + userInput);
         log.info("Add wrong answer to list");
     }
@@ -39,6 +39,7 @@ public class WrongAnswer {
      */
     public void sortWrongAnswers() {
         listAddi = wrongAnswers.stream()
+                .parallel()
                 .filter(line -> line.contains("+") && !line.contains("*"))
                 .collect(Collectors.toList());
         listSubt = wrongAnswers.stream()

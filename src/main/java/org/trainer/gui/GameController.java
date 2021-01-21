@@ -149,17 +149,7 @@ public class GameController extends Controller implements Initializable {
                 gameModerator.setText(numericInput + " is correct");
             } else {
                 gameModerator.setText(numericInput + " is NOT correct. Correct answer: " + taskType.getSolution(task));
-                try {
-                    wrongAnswer.addWrongAnswer(taskType.getRenderedTask(task), Integer.toString(taskType.getSolution(task)), answerField.getText());
-                } catch (IOException e1) {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("File Error");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Error: WrongAnswers.txt cannot be created or written to. Please check if file WrongAnswers.txt exists or the permissions of file.");
-                    alert.showAndWait();
-                    log.error(e1.toString());
-                    e1.printStackTrace();
-                }
+                wrongAnswer.addWrongAnswer(taskType.getRenderedTask(task), Integer.toString(taskType.getSolution(task)), answerField.getText());
             }
             statCollector.collector(randomType, taskType.checkSolution(task, numericInput));
             typeLoader();
