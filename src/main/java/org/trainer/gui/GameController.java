@@ -54,6 +54,7 @@ public class GameController extends Controller implements Initializable {
     private int[] task;
     private String difficulty;
     private ScheduledExecutorService executorService;
+    private final WrongAnswer wrongAnswer = new WrongAnswer();
 
     {
         try {
@@ -148,8 +149,6 @@ public class GameController extends Controller implements Initializable {
                 gameModerator.setText(numericInput + " is correct");
             } else {
                 gameModerator.setText(numericInput + " is NOT correct. Correct answer: " + taskType.getSolution(task));
-                WrongAnswer wrongAnswer = new WrongAnswer();
-
                 try {
                     wrongAnswer.addWrongAnswer(taskType.getRenderedTask(task), Integer.toString(taskType.getSolution(task)), answerField.getText());
                 } catch (IOException e1) {

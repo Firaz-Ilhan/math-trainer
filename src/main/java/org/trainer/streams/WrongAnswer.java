@@ -4,18 +4,14 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class WrongAnswer { //TODO the lists do not reset after finishing a Game instance!
+public class WrongAnswer {
 
-    private final String fileName = "WrongAnswers.txt";
     private static final Logger log = LogManager.getLogger(WrongAnswer.class);
+    private static final List<String> wrongAnswers = new ArrayList<>();
     public List<String> listAddi = new ArrayList<>();
     public List<String> listSubt = new ArrayList<>();
     public List<String> listMulti = new ArrayList<>();
@@ -27,78 +23,56 @@ public class WrongAnswer { //TODO the lists do not reset after finishing a Game 
     public List<String> listOrder = new ArrayList<>();
 
     /**
-     * adds the tasks that the user answered incorrectly to the file WrongAnswers.txt
+     * adds the tasks that the user answered incorrectly to the list
      *
      * @param task      the task
      * @param solution  the solution
      * @param userInput the wrong answer from the user
      */
     public void addWrongAnswer(String task, String solution, String userInput) throws IOException {
-        PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(fileName, StandardCharsets.UTF_8, true)));
-        writer.println(task + "=" + solution + " not " + userInput);
-        writer.flush();
-        writer.close();
-        log.info("Writing wrong answer to file " + fileName);
+        wrongAnswers.add(task + "=" + solution + " not " + userInput);
+        log.info("Add wrong answer to list");
     }
 
     /**
      * sorts the wrong answers to the asked exercise categories
      */
     public void sortWrongAnswers() {
-        File file = new File(fileName);
-        if (file.exists()) {
-            try (Stream<String> stream = Files.lines(Paths.get(fileName))) {
-                listAddi = stream
-                        .filter(line -> line.contains("+"))
-                        .filter(line -> !line.contains("*"))
-                        .collect(Collectors.toList());
-                Stream<String> stream1 = Files.lines(Paths.get(fileName));
-                listSubt = stream1
-                        .parallel()
-                        .filter(line -> line.contains("-"))
-                        .collect(Collectors.toList());
-                Stream<String> stream2 = Files.lines(Paths.get(fileName));
-                listMulti = stream2
-                        .parallel()
-                        .filter(line -> line.contains("*"))
-                        .filter(line -> !line.contains("+"))
-                        .collect(Collectors.toList());
-                Stream<String> stream3 = Files.lines(Paths.get(fileName));
-                listDivi = stream3
-                        .parallel()
-                        .filter(line -> line.contains("/"))
-                        .collect(Collectors.toList());
-                Stream<String> stream4 = Files.lines(Paths.get(fileName));
-                listExpo2 = stream4
-                        .parallel()
-                        .filter(line -> line.contains("²"))
-                        .collect(Collectors.toList());
-                Stream<String> stream5 = Files.lines(Paths.get(fileName));
-                listExpo3 = stream5
-                        .parallel()
-                        .filter(line -> line.contains("³"))
-                        .collect(Collectors.toList());
-                Stream<String> stream6 = Files.lines(Paths.get(fileName));
-                listRoot2 = stream6
-                        .parallel()
-                        .filter(line -> line.contains("²√"))
-                        .collect(Collectors.toList());
-                Stream<String> stream7 = Files.lines(Paths.get(fileName));
-                listRoot3 = stream7
-                        .parallel()
-                        .filter(line -> line.contains("³√"))
-                        .collect(Collectors.toList());
-                Stream<String> stream8 = Files.lines(Paths.get(fileName));
-                listOrder = stream8
-                        .parallel()
-                        .filter(line -> line.contains("+"))
-                        .filter(line -> line.contains("*"))
-                        .collect(Collectors.toList());
-            } catch (IOException e1) {
-                log.error(e1.toString());
-                e1.printStackTrace();
-            }
-        }
+        listAddi = wrongAnswers.stream()
+                .filter(line -> line.contains("+") && !line.contains("*"))
+                .collect(Collectors.toList());
+        listSubt = wrongAnswers.stream()
+                .parallel()
+                .filter(line -> line.contains("-"))
+                .collect(Collectors.toList());
+        listMulti = wrongAnswers.stream()
+                .parallel()
+                .filter(line -> line.contains("*") && !line.contains("+"))
+                .collect(Collectors.toList());
+        listDivi = wrongAnswers.stream()
+                .parallel()
+                .filter(line -> line.contains("/"))
+                .collect(Collectors.toList());
+        listExpo2 = wrongAnswers.stream()
+                .parallel()
+                .filter(line -> line.contains("²"))
+                .collect(Collectors.toList());
+        listExpo3 = wrongAnswers.stream()
+                .parallel()
+                .filter(line -> line.contains("³"))
+                .collect(Collectors.toList());
+        listRoot2 = wrongAnswers.stream()
+                .parallel()
+                .filter(line -> line.contains("²√"))
+                .collect(Collectors.toList());
+        listRoot3 = wrongAnswers.stream()
+                .parallel()
+                .filter(line -> line.contains("³√"))
+                .collect(Collectors.toList());
+        listOrder = wrongAnswers.stream()
+                .parallel()
+                .filter(line -> line.contains("+") && line.contains("*"))
+                .collect(Collectors.toList());
     }
 
     /**
