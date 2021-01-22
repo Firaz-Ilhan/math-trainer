@@ -3,7 +3,7 @@ package org.trainer.model2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Division extends Task implements Interface {
+public class Division extends Task implements Arithmetic {
 
     private static final Logger log = LogManager.getLogger(Division.class);
 

@@ -1,6 +1,6 @@
 package org.trainer.model2;
 
-public interface Interface {
+public interface Arithmetic {
 
     int[] createTask();
 

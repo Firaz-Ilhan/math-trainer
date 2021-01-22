@@ -3,7 +3,7 @@ package org.trainer.model2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Subtraction extends Task implements Interface {
+public class Subtraction extends Task implements Arithmetic {
 
     private static final Logger log = LogManager.getLogger(Subtraction.class);
 
