@@ -1,0 +1,51 @@
+package org.trainer.model2;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+public class Addition extends Task implements Interface {
+
+    private static final Logger log = LogManager.getLogger(Addition.class);
+
+    public Addition(String difficulty) {
+        this.difficulty = difficulty;
+        this.operands = new int[3];
+        this.operands = createTask();
+        this.renderedTask = renderTask();
+    }
+
+    public int[] createTask() { //TODO can I make this somehow private (only the class itself calls it) Clashes with Interface?
+        int max = 0, min = 0, rand1, rand2;
+
+        switch (difficulty) {
+            case BEGINNER:
+                max = 30;
+                min = 1;
+                break;
+            case MEDIUM:
+                max = 40;
+                min = 20;
+                break;
+            case HARD:
+                max = 50;
+                min = 30;
+                break;
+        }
+
+        rand1 = RAND.nextInt((max - min) + 1) + min;
+        rand2 = RAND.nextInt((max - min) + 1) + min;
+        operands[0] = rand1;
+        operands[1] = rand2;
+        operands[2] = rand1 + rand2;
+
+        log.info("{}+{}={}", operands[0], operands[1], operands[2]);
+
+        return operands.clone(); //TODO does this have to be clone()
+
+    }
+
+    public String renderTask() {
+        return operands[0] + "+" + operands[1];
+    }
+
+}
