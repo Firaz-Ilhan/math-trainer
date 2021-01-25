@@ -4,17 +4,14 @@ import java.util.Random;
 
 public class Task {
 
-    protected int[] operands;
-    protected String difficulty = "beginner";
-    protected String renderedTask = "";
+    int[] operands;
+    String difficulty;
+    String renderedTask;
 
-    protected final String BEGINNER = "beginner";
-    protected final String MEDIUM = "medium";
-    protected final String HARD = "hard";
-    protected final Random RAND = new Random();
-
-    public Task() {
-    }
+    final String BEGINNER = "beginner";
+    final String MEDIUM = "medium";
+    final String HARD = "hard";
+    final Random RAND = new Random();
 
     public int[] getOperands() {
         return operands;
