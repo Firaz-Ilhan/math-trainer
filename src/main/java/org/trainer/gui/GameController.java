@@ -71,7 +71,7 @@ public class GameController extends Controller implements Initializable {
     }
 
     public void initDifficulty(String selectedDifficulty) {
-        difficulty = selectedDifficulty;
+        difficulty = selectedDifficulty.toLowerCase();
     }
 
     public void initTypes(ArrayList<String> arithmeticType) {
