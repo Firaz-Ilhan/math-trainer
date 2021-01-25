@@ -3,7 +3,7 @@ package org.trainer;
 import org.junit.Assert;
 import org.junit.Test;
 import org.trainer.exceptions.IllegalFactoryArgument;
-import org.trainer.modelOld.*;
+import org.trainer.model.*;
 
 public class FactoryTest {
 

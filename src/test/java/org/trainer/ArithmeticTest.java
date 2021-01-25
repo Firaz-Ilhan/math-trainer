@@ -43,21 +43,21 @@ public class ArithmeticTest {
     public void test_addition_beginner() {
         Arithmetic add = new Addition(BEGINNER);
         int result = add.getSolution();
-        Assert.assertTrue(result >= 2 && result <= 60);
+        Assert.assertTrue(result >= 2 && result <= 100);
     }
 
     @Test
     public void test_addition_medium() {
         Arithmetic add = new Addition(MEDIUM);
         int result = add.getSolution();
-        Assert.assertTrue(result >= 40 && result <= 80);
+        Assert.assertTrue(result >= 200 && result <= 1000);
     }
 
     @Test
     public void test_addition_hard() {
         Arithmetic add = new Addition(HARD);
         int result = add.getSolution();
-        Assert.assertTrue(result >= 60 && result <= 100);
+        Assert.assertTrue(result >= 2000 && result <= 10000);
     }
 
     /* -- Subtraction -- */
