@@ -10,11 +10,11 @@ public class Addition extends Task implements Arithmetic {
     public Addition(String difficulty) {
         this.difficulty = difficulty;
         this.operands = new int[3];
-        this.operands = createTask();
+        this.operands = createOperationArray();
         this.renderedTask = renderTask();
     }
 
-    private int[] createTask() { //TODO can I make this somehow private (only the class itself calls it) Clashes with Interface?
+    private int[] createOperationArray() { //TODO can I make this somehow private (only the class itself calls it) Clashes with Interface?
         int max = 0, min = 0, rand1, rand2;
 
         switch (difficulty) {

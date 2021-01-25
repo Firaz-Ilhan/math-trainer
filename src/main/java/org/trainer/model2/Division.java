@@ -10,11 +10,11 @@ public class Division extends Task implements Arithmetic {
     public Division(String difficulty) {
         this.difficulty = difficulty;
         this.operands = new int[3];
-        this.operands = createTask();
+        this.operands = createOperationArray();
         this.renderedTask = renderTask();
     }
 
-    public int[] createTask() {
+    private int[] createOperationArray() {
         int max = 0, min = 0, rand1, rand2;
 
         switch (difficulty) {
@@ -45,7 +45,7 @@ public class Division extends Task implements Arithmetic {
         return operands.clone();
     }
 
-    public String renderTask() {
+    private String renderTask() {
         return operands[0] + "/" + operands[1];
     }
 }

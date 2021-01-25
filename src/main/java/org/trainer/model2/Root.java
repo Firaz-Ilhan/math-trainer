@@ -10,12 +10,12 @@ public class Root extends Task implements Arithmetic {
     public Root(String difficulty) {
         this.difficulty = difficulty;
         this.operands = new int[2];
-        this.operands = createTask();
+        this.operands = createOperationArray();
         this.renderedTask = renderTask();
     }
 
 
-    public int[] createTask() {
+    private int[] createOperationArray() {
         int max = 0, min = 0, rand1;
 
         switch (difficulty) {
@@ -47,7 +47,7 @@ public class Root extends Task implements Arithmetic {
         return operands.clone();
     }
 
-    public String renderTask() {
+    private String renderTask() {
         if (difficulty.equals("hard")) {
             return "³√" + operands[0];
         } else {
