@@ -6,25 +6,16 @@ import org.apache.logging.log4j.Logger;
 public class Subtraction extends Task implements Arithmetic {
 
     private static final Logger log = LogManager.getLogger(Subtraction.class);
-    private final String difficulty;
 
-    /**
-     * Constructor.
-     *
-     * @param difficulty setting the difficulty for {@link #getTask()}.
-     */
     public Subtraction(String difficulty) {
-        this.difficulty = difficulty.toLowerCase();
+        this.difficulty = difficulty;
+        this.operands = new int[3];
+        this.operands = createOperationArray();
+        this.renderedTask = renderTask();
     }
 
-    @Override
-    public String getDifficulty() {
-        return difficulty;
-    }
-
-    @Override
-    public int[] getTask() {
-        int max = 0, min = 0, rand1, rand2, diff;
+    private int[] createOperationArray() {
+        int max = 0, min = 0, rand1, rand2;
 
         switch (difficulty) {
             case BEGINNER:
@@ -43,14 +34,16 @@ public class Subtraction extends Task implements Arithmetic {
 
         rand1 = RAND.nextInt((max - min) + 1) + min;
         rand2 = RAND.nextInt((max - min) + 1) + min;
-        diff = rand1 - rand2;
+        operands[0] = rand1;
+        operands[1] = rand2;
+        operands[2] = rand1 - rand2;
 
-        log.info("{}-{}={}", rand1, rand2, diff);
-        return new int[]{rand1, rand2, diff};
+        log.info("{}-{}={}", operands[0], operands[1], operands[2]);
+
+        return operands.clone();
     }
 
-    @Override
-    public String getRenderedTask(int[] task) {
-        return task[0] + "-" + task[1];
+    private String renderTask() {
+        return operands[0] + "-" + operands[1];
     }
 }

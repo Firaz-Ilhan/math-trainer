@@ -1,4 +1,4 @@
-package org.trainer.model2;
+package org.trainer.modelOld;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

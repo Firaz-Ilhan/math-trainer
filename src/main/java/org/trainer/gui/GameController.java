@@ -17,6 +17,7 @@ import org.apache.logging.log4j.Logger;
 import org.trainer.exceptions.IllegalFactoryArgument;
 import org.trainer.model.Arithmetic;
 import org.trainer.model.Factory;
+import org.trainer.model.Helper;
 import org.trainer.statistics.Statistics;
 import org.trainer.streams.WrongAnswer;
 import org.trainer.thread.Clock;
@@ -51,7 +52,6 @@ public class GameController extends Controller implements Initializable {
     private Arithmetic taskType;
     private ArrayList<String> ArithmeticType;
     private String randomType;
-    private int[] task;
     private String difficulty;
     private ScheduledExecutorService executorService;
     private final WrongAnswer wrongAnswer = new WrongAnswer();
@@ -123,13 +123,12 @@ public class GameController extends Controller implements Initializable {
 
     private void displayTask() {
         typeLoader();
-        task = taskType.getTask();
-        taskLabel.setText(taskType.getRenderedTask(task));
+        taskLabel.setText(taskType.getRenderedTask());
     }
 
     @FXML
     private void skipTask() {
-        int solution = taskType.getSolution(task);
+        int solution = taskType.getSolution();
         gameModerator.setText("Correct answer was: " + solution);
         log.info("User skipped task");
         statCollector.collector(randomType, false);
@@ -140,18 +139,18 @@ public class GameController extends Controller implements Initializable {
 
     @FXML
     private void enterAnswer() {
-        if (taskType.checkInputPattern(answerField.getText())) {
+        if (Helper.checkInputPattern(answerField.getText())) {
             int numericInput = Integer.parseInt(answerField.getText());
 
             log.info("User entered: {}", numericInput);
 
-            if (taskType.checkSolution(task, numericInput)) {
+            if (taskType.checkSolution(numericInput)) {
                 gameModerator.setText(numericInput + " is correct");
             } else {
-                gameModerator.setText(numericInput + " is NOT correct. Correct answer: " + taskType.getSolution(task));
-                wrongAnswer.addWrongAnswer(taskType.getRenderedTask(task), Integer.toString(taskType.getSolution(task)), answerField.getText());
+                gameModerator.setText(numericInput + " is NOT correct. Correct answer: " + taskType.getSolution());
+                wrongAnswer.addWrongAnswer(taskType.getRenderedTask(), Integer.toString(taskType.getSolution()), answerField.getText());
             }
-            statCollector.collector(randomType, taskType.checkSolution(task, numericInput));
+            statCollector.collector(randomType, taskType.checkSolution(numericInput));
             typeLoader();
             displayTask();
             answerField.clear();

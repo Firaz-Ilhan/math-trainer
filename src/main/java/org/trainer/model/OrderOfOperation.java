@@ -6,24 +6,15 @@ import org.apache.logging.log4j.Logger;
 public class OrderOfOperation extends Task implements Arithmetic {
 
     private static final Logger log = LogManager.getLogger(OrderOfOperation.class);
-    private final String difficulty;
 
-    /**
-     * Constructor.
-     *
-     * @param difficulty setting the difficulty for {@link #getTask()}.
-     */
     public OrderOfOperation(String difficulty) {
-        this.difficulty = difficulty.toLowerCase();
+        this.difficulty = difficulty;
+        this.operands = new int[4];
+        this.operands = createOperationArray();
+        this.renderedTask = renderTask();
     }
 
-    @Override
-    public String getDifficulty() {
-        return difficulty;
-    }
-
-    @Override
-    public int[] getTask() {
+    private int[] createOperationArray() {
         int max = 0, min = 0, rand1, rand2, rand3, sum;
 
         switch (difficulty) {
@@ -44,14 +35,17 @@ public class OrderOfOperation extends Task implements Arithmetic {
         rand1 = RAND.nextInt((max - min) + 1) + min;
         rand2 = RAND.nextInt((max - min) + 1) + min;
         rand3 = RAND.nextInt((max - min) + 1) + min;
-        sum = rand1 + rand2 * rand3;
+        operands[0] = rand1;
+        operands[1] = rand2;
+        operands[2] = rand3;
+        operands[operands.length - 1] = rand1 + rand2 * rand3;
 
-        log.info("{}+{}*{}={}", rand1, rand2, rand3, sum);
-        return new int[]{rand1, rand2, rand3, sum};
+        log.info("{}+{}*{}={}", operands[0], operands[1], operands[2], operands[3]);
+
+        return operands.clone();
     }
 
-    @Override
-    public String getRenderedTask(int[] task) {
-        return task[0] + "+" + task[1] + "*" + task[2];
+    private String renderTask() {
+        return operands[0] + "+" + operands[1] + "*" + operands[2];
     }
 }

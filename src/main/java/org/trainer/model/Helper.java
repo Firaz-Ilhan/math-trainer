@@ -1,7 +1,4 @@
-package org.trainer.model2;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+package org.trainer.model;
 
 import java.util.regex.Pattern;
 

@@ -1,4 +1,4 @@
-package org.trainer.model2;
+package org.trainer.modelOld;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -6,16 +6,24 @@ import org.apache.logging.log4j.Logger;
 public class Root extends Task implements Arithmetic {
 
     private static final Logger log = LogManager.getLogger(Root.class);
+    private final String difficulty;
 
+    /**
+     * Constructor.
+     *
+     * @param difficulty setting the difficulty for {@link #getTask()}.
+     */
     public Root(String difficulty) {
-        this.difficulty = difficulty;
-        this.operands = new int[2];
-        this.operands = createOperationArray();
-        this.renderedTask = renderTask();
+        this.difficulty = difficulty.toLowerCase();
     }
 
+    @Override
+    public String getDifficulty() {
+        return difficulty;
+    }
 
-    private int[] createOperationArray() {
+    @Override
+    public int[] getTask() {
         int max = 0, min = 0, rand1;
 
         switch (difficulty) {
@@ -34,24 +42,22 @@ public class Root extends Task implements Arithmetic {
         }
 
         rand1 = RAND.nextInt((max - min) + 1) + min;
-        operands[1] = rand1;
 
         if (difficulty.equals("hard")) {
-            operands[0] = rand1 * rand1 * rand1;
-            log.info("³√{}={}", operands[0], operands[1]);
+            log.info("³√{}={}", rand1 * rand1 * rand1, rand1);
+            return new int[]{rand1 * rand1 * rand1, rand1}; //^3
         } else {
-            operands[0] = rand1 * rand1;
-            log.info("²√{}={}", operands[0], operands[1]);
+            log.info("²√{}={}", rand1 * rand1, rand1);
+            return new int[]{rand1 * rand1, rand1}; //^2
         }
-
-        return operands.clone();
     }
 
-    private String renderTask() {
+    @Override
+    public String getRenderedTask(int[] task) {
         if (difficulty.equals("hard")) {
-            return "³√" + operands[0];
+            return "³√" + task[0];
         } else {
-            return "²√" + operands[0];
+            return "²√" + task[0];
         }
     }
 }

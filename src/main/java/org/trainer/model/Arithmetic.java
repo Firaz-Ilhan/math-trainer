@@ -2,48 +2,11 @@ package org.trainer.model;
 
 public interface Arithmetic {
 
-    String getDifficulty();
+    int[] getOperands();
 
-    /**
-     * Creates the task array which holds all number information.
-     * The Solution of the task should always be stored
-     * in the last index of the array.
-     * see {@link #checkSolution(int[], int)} and {@link #getSolution(int[])}.
-     *
-     * @return int array with numbers and solution of the task.
-     */
-    int[] getTask();
+    boolean checkSolution(int userInput);
 
-    /**
-     * Creates a String out of the task array which the user will see.
-     *
-     * @param task int array with numbers and solution of the task.
-     * @return String which is a fully generated task as seen for the user.
-     */
-    String getRenderedTask(int[] task);
+    String getRenderedTask();
 
-    /**
-     * Checks if the user input matches the calculated solution.
-     *
-     * @param task  int array with numbers and solution of the task.
-     * @param input user input.
-     * @return boolean about successful solving.
-     */
-    boolean checkSolution(int[] task, int input);
-
-    /**
-     * Takes the solution provided by the task array and returns it.
-     *
-     * @param task int array with numbers and solution of the task.
-     * @return int of the solution.
-     */
-    int getSolution(int[] task);
-
-    /**
-     * Checks if the user userInput matches the regular expression
-     *
-     * @param userInput user userInput
-     * @return true if userInput matches regular expression
-     */
-    boolean checkInputPattern(String userInput);
+    int getSolution();
 }

@@ -5,29 +5,20 @@ import org.apache.logging.log4j.Logger;
 
 public class Exponent extends Task implements Arithmetic {
 
-    private static final Logger log = LogManager.getLogger(Exponent.class);
-    private final String difficulty;
+    private static final Logger log = LogManager.getLogger(Subtraction.class);
 
-    /**
-     * Constructor.
-     *
-     * @param difficulty setting the difficulty for {@link #getTask()}.
-     */
     public Exponent(String difficulty) {
-        this.difficulty = difficulty.toLowerCase();
+        this.difficulty = difficulty;
+        this.operands = new int[2];
+        this.operands = createOperationArray();
+        this.renderedTask = renderTask();
     }
 
-    @Override
-    public String getDifficulty() {
-        return difficulty;
-    }
-
-    @Override
-    public int[] getTask() {
+    private int[] createOperationArray() {
         int max = 0, min = 0, rand1;
 
         switch (difficulty) {
-            case BEGINNER:
+            case BEGINNER: //fallthrough since it has the same value as HARD
             case HARD:
                 max = 10;
                 min = 1;
@@ -39,23 +30,24 @@ public class Exponent extends Task implements Arithmetic {
         }
 
         rand1 = RAND.nextInt((max - min) + 1) + min;
+        operands[0] = rand1;
 
         if (difficulty.equals("hard")) {
-            log.info("{}³={}", rand1, rand1 * rand1 * rand1);
-            return new int[]{rand1, rand1 * rand1 * rand1}; //^3
+            operands[1] = rand1 * rand1 * rand1;
+            log.info("{}³={}", operands[0], operands[1]);
         } else {
-            log.info("{}²={}", rand1, rand1 * rand1);
-            return new int[]{rand1, rand1 * rand1}; //^2
+            operands[1] = rand1 * rand1;
+            log.info("{}²={}", operands[0], operands[1]);
         }
+
+        return operands.clone();
     }
 
-    @Override
-    public String getRenderedTask(int[] task) {
+    private String renderTask() {
         if (difficulty.equals("hard")) {
-            return task[0] + "³";
+            return operands[0] + "³";
         } else {
-            return task[0] + "²";
+            return operands[0] + "²";
         }
     }
 }
-
