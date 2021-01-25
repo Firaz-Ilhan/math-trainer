@@ -14,7 +14,7 @@ public class Addition extends Task implements Arithmetic {
         this.renderedTask = renderTask();
     }
 
-    private int[] createOperationArray() { //TODO can I make this somehow private (only the class itself calls it) Clashes with Interface?
+    private int[] createOperationArray() {
         int max = 0, min = 0, rand1, rand2;
 
         switch (difficulty) {
@@ -40,7 +40,7 @@ public class Addition extends Task implements Arithmetic {
 
         log.info("{}+{}={}", operands[0], operands[1], operands[2]);
 
-        return operands.clone(); //TODO does this have to be clone()
+        return operands.clone();
 
     }
 
