@@ -7,9 +7,9 @@ import java.util.regex.Pattern;
 
 public class Helper {
 
-    private final Pattern pattern = Pattern.compile("-?[0-9]{0,10}");
+    private static final Pattern pattern = Pattern.compile("-?[0-9]{0,10}");
 
-    public boolean checkInputPattern(String userInput) {
+    public static boolean checkInputPattern(String userInput) {
         if (userInput.isEmpty()) {
             return false;
         } else {

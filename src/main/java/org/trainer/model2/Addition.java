@@ -14,7 +14,7 @@ public class Addition extends Task implements Arithmetic {
         this.renderedTask = renderTask();
     }
 
-    public int[] createTask() { //TODO can I make this somehow private (only the class itself calls it) Clashes with Interface?
+    private int[] createTask() { //TODO can I make this somehow private (only the class itself calls it) Clashes with Interface?
         int max = 0, min = 0, rand1, rand2;
 
         switch (difficulty) {
@@ -44,7 +44,7 @@ public class Addition extends Task implements Arithmetic {
 
     }
 
-    public String renderTask() {
+    private String renderTask() {
         return operands[0] + "+" + operands[1];
     }
 
