@@ -14,7 +14,6 @@ public class Root extends Task implements Arithmetic {
         this.renderedTask = renderTask();
     }
 
-
     private int[] createOperationArray() {
         int max = 0, min = 0, rand1;
 

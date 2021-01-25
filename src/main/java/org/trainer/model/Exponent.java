@@ -5,7 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 public class Exponent extends Task implements Arithmetic {
 
-    private static final Logger log = LogManager.getLogger(Subtraction.class);
+    private static final Logger log = LogManager.getLogger(Exponent.class);
 
     public Exponent(String difficulty) {
         this.difficulty = difficulty;
@@ -18,7 +18,7 @@ public class Exponent extends Task implements Arithmetic {
         int max = 0, min = 0, rand1;
 
         switch (difficulty) {
-            case BEGINNER: //fallthrough since it has the same value as HARD
+            case BEGINNER:
             case HARD:
                 max = 10;
                 min = 1;
