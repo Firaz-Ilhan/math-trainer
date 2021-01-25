@@ -48,13 +48,13 @@ public class GameController extends Controller implements Initializable {
     private Label setTimer;
 
     private final Factory factory = new Factory();
+    private final WrongAnswer wrongAnswer = new WrongAnswer();
     private Statistics statCollector;
     private Arithmetic taskType;
     private ArrayList<String> ArithmeticType;
     private String randomType;
     private String difficulty;
     private ScheduledExecutorService executorService;
-    private final WrongAnswer wrongAnswer = new WrongAnswer();
 
     {
         try {
@@ -132,7 +132,6 @@ public class GameController extends Controller implements Initializable {
         gameModerator.setText("Correct answer was: " + solution);
         log.info("User skipped task");
         statCollector.collector(randomType, false);
-        typeLoader();
         displayTask();
         answerField.clear();
     }
@@ -151,7 +150,6 @@ public class GameController extends Controller implements Initializable {
                 wrongAnswer.addWrongAnswer(taskType.getRenderedTask(), Integer.toString(taskType.getSolution()), answerField.getText());
             }
             statCollector.collector(randomType, taskType.checkSolution(numericInput));
-            typeLoader();
             displayTask();
             answerField.clear();
         } else {
