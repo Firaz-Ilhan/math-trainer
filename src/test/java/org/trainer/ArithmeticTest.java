@@ -72,14 +72,14 @@ public class ArithmeticTest {
     public void test_subtraction_medium() {
         Arithmetic add = new Subtraction(MEDIUM);
         int result = add.getSolution();
-        Assert.assertTrue(result >= -10 && result <= 10);
+        Assert.assertTrue(result >= -80 && result <= 80);
     }
 
     @Test
     public void test_subtraction_hard() {
         Arithmetic add = new Subtraction(HARD);
         int result = add.getSolution();
-        Assert.assertTrue(result >= -10 && result <= 10);
+        Assert.assertTrue(result >= -900 && result <= 900);
     }
 
     /* -- Multiplication -- */

@@ -23,12 +23,12 @@ public class Subtraction extends Task implements Arithmetic {
                 min = 1;
                 break;
             case MEDIUM:
-                max = 30;
+                max = 100;
                 min = 20;
                 break;
             case HARD:
-                max = 40;
-                min = 30;
+                max = 1000;
+                min = 100;
                 break;
         }
 
