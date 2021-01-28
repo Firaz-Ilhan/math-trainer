@@ -58,5 +58,7 @@ public class Clock extends Thread {
      *
      * @return text as SimpleStringProperty
      */
-    public SimpleStringProperty getClock() { return clock; }
+    public SimpleStringProperty getClock() {
+        return clock;
+    }
 }

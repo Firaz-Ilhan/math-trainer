@@ -70,14 +70,28 @@ public class GameController extends Controller implements Initializable {
         }
     }
 
+    /**
+     * initialize difficulty from {@link SettingController}
+     *
+     * @param selectedDifficulty selected by user in {@link SettingController}
+     */
     public void initDifficulty(String selectedDifficulty) {
         difficulty = selectedDifficulty.toLowerCase();
     }
 
+    /**
+     * initialize arithmetic types from {@link SettingController}
+     *
+     * @param arithmeticType selected by user in {@link SettingController}
+     */
     public void initTypes(ArrayList<String> arithmeticType) {
         ArithmeticType = arithmeticType;
     }
 
+    /**
+     * stops the game and the {@link Clock} thread
+     * and pass statistics related information to {@link ResultController}
+     */
     @FXML
     private void stopGame() {
         final String userResult = statCollector.getStats(false);
@@ -112,6 +126,9 @@ public class GameController extends Controller implements Initializable {
         executorService.shutdown();
     }
 
+    /**
+     * loads an arithmetic type. See implementation {@link Factory}.
+     */
     private void typeLoader() {
         try {
             randomType = factory.getRandomType(ArithmeticType);
@@ -159,10 +176,11 @@ public class GameController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Platform.runLater(() -> answerField.requestFocus());
-        Platform.runLater(this::displayTask);
-        Platform.runLater(() -> difficultyLabel.setText(difficulty));
+        Platform.runLater(() -> answerField.requestFocus()); //sets focus on answerField
+        Platform.runLater(this::displayTask); //displays first task
+        Platform.runLater(() -> difficultyLabel.setText(difficulty)); //displays the selected task
 
+        //while focus is on answerField
         answerField.setOnKeyPressed((event) -> {
             if (event.getCode() == KeyCode.ENTER) {
                 enterAnswer();
@@ -184,7 +202,7 @@ public class GameController extends Controller implements Initializable {
         final Clock clock = new Clock();
         clock.setDaemon(true);
         clock.start();
-        executorService.scheduleAtFixedRate(clock, 1L, 1L, TimeUnit.SECONDS);
+        executorService.scheduleAtFixedRate(clock, 1L, 1L, TimeUnit.SECONDS); //initialDelay is needed because of gui load time
         setTimer.textProperty().bind(clock.getClock());
     }
 }
