@@ -4,9 +4,9 @@ import java.util.Random;
 
 public class Task implements Arithmetic {
 
-    int[] operands;
-    String difficulty;
-    String renderedTask;
+    protected int[] operands;
+    protected String difficulty;
+    protected String renderedTask;
 
     final String BEGINNER = "beginner";
     final String MEDIUM = "medium";
