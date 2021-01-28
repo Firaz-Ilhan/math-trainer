@@ -11,7 +11,7 @@ public class Clock extends Thread {
     private int seconds;
     private int minutes;
     private int hours;
-    private final SimpleStringProperty text = new SimpleStringProperty();
+    private final SimpleStringProperty clock = new SimpleStringProperty();
 
     /**
      * is called every second and adds a second to the time
@@ -30,9 +30,9 @@ public class Clock extends Thread {
             log.info("{} hour(s) has passed", hours);
         }
         Platform.runLater(() -> {
-            text.set(addingNull(minutes) + ":" + addingNull(seconds));
+            clock.set(addingNull(minutes) + ":" + addingNull(seconds));
             if (hours != 0) {
-                text.set(addingNull(hours) + ":" + addingNull(minutes) + ":" + addingNull(seconds));
+                clock.set(addingNull(hours) + ":" + addingNull(minutes) + ":" + addingNull(seconds));
             }
         });
     }
@@ -58,7 +58,7 @@ public class Clock extends Thread {
      *
      * @return text as SimpleStringProperty
      */
-    public SimpleStringProperty updateText() {
-        return text;
+    public SimpleStringProperty getClock() {
+        return clock;
     }
 }

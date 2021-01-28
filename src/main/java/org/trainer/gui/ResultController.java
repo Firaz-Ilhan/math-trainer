@@ -21,7 +21,7 @@ public class ResultController extends Controller implements Initializable {
     private Button textAreaToggle;
 
     private String userStats;
-    private boolean wrongAnswersEnabled;
+    private boolean wrongAnswerEnabled;
     private final WrongAnswer wrongAnswer = new WrongAnswer();
 
     public void initUserResult(String userResult) {
@@ -31,11 +31,11 @@ public class ResultController extends Controller implements Initializable {
 
     @FXML
     private void showWrongAnswers() {
-        if (wrongAnswersEnabled) {
+        if (wrongAnswerEnabled) {
             resultField.setStyle("-fx-font: 30 System;");
             resultField.setText(userStats);
             textAreaToggle.setText("Wrong Answers");
-            wrongAnswersEnabled = false;
+            wrongAnswerEnabled = false;
         } else {
             resultField.setStyle("-fx-font: 25 System;");
             wrongAnswer.sortWrongAnswers();
@@ -49,7 +49,7 @@ public class ResultController extends Controller implements Initializable {
                     + wrongAnswer.listToString(wrongAnswer.listRoot3) + "\n"
                     + "Order Of Operation\n" + wrongAnswer.listToString(wrongAnswer.listOrder) + "\n");
             textAreaToggle.setText("Result");
-            wrongAnswersEnabled = true;
+            wrongAnswerEnabled = true;
         }
     }
 
