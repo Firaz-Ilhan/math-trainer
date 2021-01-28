@@ -7,6 +7,11 @@ public class Division extends Task {
 
     private static final Logger log = LogManager.getLogger(Division.class);
 
+    /**
+     * Constructor calling the methods to set all parameters to work with
+     *
+     * @param difficulty set by the User
+     */
     public Division(String difficulty) {
         this.difficulty = difficulty;
         this.operands = new int[3];
@@ -14,6 +19,11 @@ public class Division extends Task {
         this.renderedTask = renderTask();
     }
 
+    /**
+     * Creates int[] with operands and result
+     *
+     * @return operands.clone int[]
+     */
     private int[] createOperationArray() {
         int max = 0, min = 0, rand1, rand2;
 
@@ -45,6 +55,11 @@ public class Division extends Task {
         return operands.clone();
     }
 
+    /**
+     * Renders the int[] into the desired task format: X / Y
+     *
+     * @return String to be displayed
+     */
     private String renderTask() {
         return operands[0] + "/" + operands[1];
     }

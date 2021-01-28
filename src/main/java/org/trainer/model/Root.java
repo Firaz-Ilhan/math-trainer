@@ -7,6 +7,11 @@ public class Root extends Task {
 
     private static final Logger log = LogManager.getLogger(Root.class);
 
+    /**
+     * Constructor calling the methods to set all parameters to work with
+     *
+     * @param difficulty set by the User
+     */
     public Root(String difficulty) {
         this.difficulty = difficulty;
         this.operands = new int[2];
@@ -14,6 +19,11 @@ public class Root extends Task {
         this.renderedTask = renderTask();
     }
 
+    /**
+     * Creates int[] with operands and result
+     *
+     * @return operands.clone int[]
+     */
     private int[] createOperationArray() {
         int max = 0, min = 0, rand1;
 
@@ -46,6 +56,11 @@ public class Root extends Task {
         return operands.clone();
     }
 
+    /**
+     * Renders the int[] into the desired task format: ³√X or ²√X
+     *
+     * @return String to be displayed
+     */
     private String renderTask() {
         if (difficulty.equals("hard")) {
             return "³√" + operands[0];
