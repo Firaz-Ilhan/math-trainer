@@ -2,7 +2,7 @@ package org.trainer.model;
 
 import java.util.Random;
 
-public class Task {
+public class Task implements Arithmetic {
 
     int[] operands;
     String difficulty;
