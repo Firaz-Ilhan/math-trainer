@@ -185,6 +185,6 @@ public class GameController extends Controller implements Initializable {
         clock.setDaemon(true);
         clock.start();
         executorService.scheduleAtFixedRate(clock, 1L, 1L, TimeUnit.SECONDS);
-        setTimer.textProperty().bind(clock.updateText());
+        setTimer.textProperty().bind(clock.getClock());
     }
 }
