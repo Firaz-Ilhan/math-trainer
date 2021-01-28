@@ -13,10 +13,6 @@ public class Task implements Arithmetic {
     final String HARD = "hard";
     final Random RAND = new Random();
 
-    public int[] getOperands() {
-        return operands;
-    }
-
     public String getDifficulty() {
         return difficulty;
     }
