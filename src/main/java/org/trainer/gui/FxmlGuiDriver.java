@@ -23,6 +23,7 @@ public class FxmlGuiDriver extends Application {
 
     /**
      * Starting the application and setting the main menu fxmlFile
+     *
      * @param stage sets the stage
      * @throws Exception
      */
