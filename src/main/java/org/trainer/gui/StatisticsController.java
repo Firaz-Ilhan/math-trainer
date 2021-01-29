@@ -23,6 +23,9 @@ public class StatisticsController extends Controller implements Initializable {
 
     private Statistics statistics;
 
+    /*
+    creates a new object of the class Statistics and informs the user in case of an error
+    */
     {
         try {
             statistics = new Statistics();
@@ -30,7 +33,7 @@ public class StatisticsController extends Controller implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("File Error");
             alert.setHeaderText(null);
-            alert.setContentText("Error: stat.txt cannot be created or written to. Please check if file stat.txt exists or the permissions of file.");
+            alert.setContentText("Error: stats.txt cannot be created or written to. Please check if file stat.txt exists or the permissions of file.");
             alert.showAndWait();
             log.error(e.toString());
             e.printStackTrace();
@@ -42,11 +45,17 @@ public class StatisticsController extends Controller implements Initializable {
     @FXML
     private BarChart<String, Number> barchart;
 
+    /*
+    change the scene to the main menu
+     */
     @FXML
     private void openMenu() {
         changeScene(MAIN_MENU_FXML, root);
     }
 
+    /*
+    the data of the user will be reset and informs the user in case of an error
+    */
     @FXML
     private void resetStats() {
         try {
@@ -63,6 +72,9 @@ public class StatisticsController extends Controller implements Initializable {
         changeScene(MAIN_MENU_FXML, root);
     }
 
+    /*
+    The data in stats.txt are displayed in a barchart
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         int[] stats = statistics.getPercentStats();
