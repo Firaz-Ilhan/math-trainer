@@ -37,6 +37,10 @@ public class SettingController extends Controller implements Initializable {
     @FXML
     private Label errorLabel;
 
+    /**
+     *
+     * @return selected level of difficulty
+     */
     private String getSelectedDifficulty() {
         RadioButton selectedRadioButton = (RadioButton) difficulty.getSelectedToggle();
         String toggleGroupValue = selectedRadioButton.getText();
@@ -44,6 +48,11 @@ public class SettingController extends Controller implements Initializable {
         return toggleGroupValue;
     }
 
+    /**
+     * adds the selected checkboxes to a list
+     *
+     * @return list with selected checkboxes
+     */
     private ArrayList<String> getSelectedTypes() {
 
         ArrayList<String> result = new ArrayList<>(7);
@@ -81,11 +90,17 @@ public class SettingController extends Controller implements Initializable {
         return result;
     }
 
+    /**
+     * change the scene to the main menu
+     */
     @FXML
     private void openMenu() {
         changeScene(MAIN_MENU_FXML, root);
     }
 
+    /**
+     * creates a new scene for the game controller with the selected parameters from the user, if not all checkboxes are empty
+     */
     @FXML
     private void startGame() {
 
@@ -113,11 +128,17 @@ public class SettingController extends Controller implements Initializable {
         }
     }
 
+    /**
+     * If an other checkbox than 'setAll' is selected, the state of 'setAll' will change to false.
+     */
     @FXML
     private void uncheckSetAll() {
         setAllCheckbox.setSelected(false);
     }
 
+    /**
+     * if 'setAll' is selected, the status of the other checkboxes will change to false
+     */
     @FXML
     private void uncheckExercises() {
         additionCheckbox.setSelected(false);
@@ -129,6 +150,10 @@ public class SettingController extends Controller implements Initializable {
         rootCheckbox.setSelected(false);
     }
 
+    /**
+     * changes scene to main menu if escape button was pressed
+     *
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         root.setOnKeyPressed((event) -> {
