@@ -152,7 +152,6 @@ public class SettingController extends Controller implements Initializable {
 
     /**
      * changes scene to main menu if escape button was pressed
-     *
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

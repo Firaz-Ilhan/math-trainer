@@ -21,7 +21,7 @@ public class ResultController extends Controller implements Initializable {
     private Button textAreaToggle;
 
     private String userStats;
-    private boolean wrongAnswerEnabled;
+    private boolean resultEnabled;
     private final WrongAnswer wrongAnswer = new WrongAnswer();
 
     public void initUserResult(String userResult) {
@@ -29,13 +29,16 @@ public class ResultController extends Controller implements Initializable {
         userStats = userResult;
     }
 
+    /**
+     * shows either the user stats or the wrong answers from the user
+     */
     @FXML
     private void showWrongAnswers() {
-        if (wrongAnswerEnabled) {
+        if (resultEnabled) {
             resultField.setStyle("-fx-font: 30 System;");
             resultField.setText(userStats);
             textAreaToggle.setText("Wrong Answers");
-            wrongAnswerEnabled = false;
+            resultEnabled = false;
         } else {
             resultField.setStyle("-fx-font: 25 System;");
             wrongAnswer.sortWrongAnswers();
@@ -49,20 +52,29 @@ public class ResultController extends Controller implements Initializable {
                     + wrongAnswer.listToString(wrongAnswer.listRoot3) + "\n"
                     + "Order Of Operation\n" + wrongAnswer.listToString(wrongAnswer.listOrder) + "\n");
             textAreaToggle.setText("Result");
-            wrongAnswerEnabled = true;
+            resultEnabled = true;
         }
     }
 
+    /**
+     * change the scene to the main menu
+     */
     @FXML
     private void openMenu() {
         changeScene(MAIN_MENU_FXML, root);
     }
 
+    /**
+     * change the scene to the statistics
+     */
     @FXML
     public void openStatistics() {
         changeScene(Statistics_FXML, root);
     }
 
+    /**
+     * changes scene to main menu if escape button was pressed
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         root.setOnKeyPressed((event) -> {
