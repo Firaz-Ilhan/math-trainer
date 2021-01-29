@@ -12,10 +12,20 @@ public class FxmlGuiDriver extends Application {
 
     private static final Logger log = LogManager.getLogger(FxmlGuiDriver.class);
 
+    /**
+     * launches the game
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }
 
+    /**
+     * Starting the application and setting the main menu fxmlFile
+     * @param stage sets the stage
+     * @throws Exception
+     */
     public void start(Stage stage) throws Exception {
 
         log.info("Starting JavaFX application");
