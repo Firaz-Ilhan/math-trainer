@@ -94,7 +94,7 @@ public class GameController extends Controller implements Initializable {
      */
     @FXML
     private void stopGame() {
-        final String userResult = statCollector.getStats(false);
+        final String userResult = statCollector.getStats(false); //lifetime is a feature that may be implemented in the future
         try {
             statCollector.statSaver();
         } catch (IOException e) {

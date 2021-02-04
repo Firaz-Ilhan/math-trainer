@@ -238,7 +238,7 @@ public class Statistics {
      * @param lifetime decides whether it is all or current stats.
      * @return returns the String.
      */
-    public String getStats(boolean lifetime) {
+    public String getStats(boolean lifetime) { //lifetime is a feature that may be implemented in the future
         int[][] array;
         String whatStats;
         if (lifetime) {
