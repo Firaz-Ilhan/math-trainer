@@ -6,8 +6,6 @@ import org.trainer.model.*;
 
 public class ArithmeticTest {
 
-    private final Task task = new Task();
-
     private final String BEGINNER = "beginner";
     private final String MEDIUM = "medium";
     private final String HARD = "hard";

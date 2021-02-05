@@ -90,6 +90,6 @@ public class StatisticsTest {
     @Test
     public void test_arrayLength() throws IOException {
         Statistics testStatistics = new Statistics();
-        Assert.assertEquals(testStatistics.getCurrentCollection().length,testStatistics.getTempCollection().length,testStatistics.getOperationsArray().length);
+        Assert.assertEquals(testStatistics.getCurrentCollection().length, testStatistics.getTempCollection().length, testStatistics.getOperationsArray().length);
     }
 }
